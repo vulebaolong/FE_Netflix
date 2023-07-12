@@ -2,23 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+.heading-1 {
+	@apply text-5xl font-black leading-normal;
+}
+
+.para-1 {
+	@apply text-2xl font-normal leading-normal;
+}
+
+.heading-3 {
+	@apply text-xl font-normal leading-normal;
+}
+
 /*! SCROLLBAR - start */
 /* Firefox */
 * {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(100, 116, 139, 0.502) rgba(100, 116, 139, 0.161);
+	scrollbar-width: thin;
+	scrollbar-color: rgba(100, 116, 139, 0.502) rgba(100, 116, 139, 0.161);
 }
 
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
-    width: 0.375rem;
+	width: 0.375rem;
 }
 *::-webkit-scrollbar-track {
-    border-radius: 5px;
-    background-color: rgba(100, 116, 139, 0.161);
+	border-radius: 5px;
+	background-color: rgba(100, 116, 139, 0.161);
 }
 *::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-color: rgba(100, 116, 139, 0.502);
+	border-radius: 5px;
+	background-color: rgba(100, 116, 139, 0.502);
 }
 /* SCROLLBAR - end */
