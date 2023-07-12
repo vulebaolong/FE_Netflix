@@ -14,8 +14,8 @@ function Download() {
 								<img className="h-full" src={imgBoxshot} alt="" />
 							</div>
 							<div className="flex flex-col justify-center flex-1">
-								<p className="text-base font-semibold">Cậu bé mất tích</p>
-								<p className="text-sm font-normal text-[#0071eb]">Đang tải xuống...</p>
+								<p className="text-lg font-semibold">Cậu bé mất tích</p>
+								<p className="text-base font-normal text-[#0071eb]">Đang tải xuống...</p>
 							</div>
 							<div className="flex items-center">
 								<img className="h-12 w-12" src={imgDownloadIcon} alt="" />

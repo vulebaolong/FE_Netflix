@@ -1,5 +1,6 @@
 import Banner from "./Banner/Banner";
 import Download from "./Download/Download";
+import EveryWhere from "./EveryWhere/EveryWhere";
 import Tv from "./Tv/Tv";
 
 function LandingPage() {
@@ -8,6 +9,7 @@ function LandingPage() {
 			<Banner />
 			<Tv />
 			<Download />
+			<EveryWhere />
 		</div>
 	);
 }
