@@ -1,0 +1,21 @@
+.content_footer a {
+	transition: all 0.3s;
+	position: relative;
+}
+
+.content_footer a::after {
+	content: "";
+	position: absolute;
+	top: 110%;
+	left: 0;
+	width: 0%;
+	height: 2px;
+	border-radius: 1px;
+	transition: all 0.3s;
+	@apply bg-primary;
+}
+
+.content_footer a:hover::after {
+	width: 100%;
+}
+
