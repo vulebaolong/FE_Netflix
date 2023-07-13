@@ -5,16 +5,44 @@ function Tv() {
 	return (
 		<section className="py-16">
 			<div className="container">
-				<div className="grid grid-cols-1 xl:grid-cols-2">
+				<div
+					className="grid 
+					grid-cols-1 
+					xl:grid-cols-2
+					"
+				>
 					<div className="justify-self-end self-center">
-						<h2 className="heading-1">Thưởng thức trên TV của bạn</h2>
-						<p className="para-1 mt-4">Xem trên TV thông minh, Playstation, Xbox, Chromecast, Apple TV, đầu phát Blu-ray và nhiều thiết bị khác.</p>
+						<h2
+							className="heading-1
+							text-center
+							xl:text-start
+							"
+						>
+							Thưởng thức trên TV của bạn
+						</h2>
+						<p
+							className="para-1 mt-4
+							text-center
+							xl:text-start
+							"
+						>
+							Xem trên TV thông minh, Playstation, Xbox, Chromecast, Apple TV, đầu phát Blu-ray và nhiều thiết bị khác.
+						</p>
 					</div>
 					<div className="relative">
-						<img src={imageTv} alt="" />
+						<img
+							className="
+							mx-auto
+							"
+							src={imageTv}
+							alt=""
+						/>
 						<div
-							className="w-full h-ful absolute overflow-hidden
-							max-w-[64%] max-h-[37%] top-[7%] left-[18%] -z-[1]
+							className="w-full h-ful absolute overflow-hidden -z-[1]
+							max-w-[74%] max-h-[56%] top-[20%] left-[13%] 
+							md:max-w-[68%] md:left-[16%] 
+							lg:max-w-[53%] lg:left-[23%]
+							xl:max-w-[74%] xl:left-[13%] 
 						"
 						>
 							<video autoPlay playsInline muted loop>
