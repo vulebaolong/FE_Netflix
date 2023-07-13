@@ -1,7 +1,9 @@
 import { FaAngleRight } from "react-icons/fa6";
 import Button from "../../components/Button/Button";
+import { v4 as uuidv4} from 'uuid';
 
 function StartWithMail() {
+	const randomUUID = uuidv4()
 	return (
 		<div className="">
 			<h3 className="heading-3 text-center">Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư cách thành viên của bạn.</h3>
@@ -9,7 +11,7 @@ function StartWithMail() {
 				<div className="relative w-full lg:w-1/2 2xl:w-2/5">
 					<input
 						type="text"
-						id="floating_filled"
+						id={`floating_filled${randomUUID}`}
 						className="
 						text-sm pb-3 pt-3.5
 						sm:text-base sm:pb-3 sm:pt-3.5
@@ -20,7 +22,7 @@ function StartWithMail() {
 						// pb-2.5 pt-6
 					/>
 					<label
-						htmlFor="floating_filled"
+						htmlFor={`floating_filled${randomUUID}`}
 						className="
 						text-sm 
 						sm:text-base 
@@ -39,4 +41,5 @@ function StartWithMail() {
 		</div>
 	);
 }
+
 export default StartWithMail;

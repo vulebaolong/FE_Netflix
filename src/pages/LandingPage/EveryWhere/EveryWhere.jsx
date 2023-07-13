@@ -5,18 +5,39 @@ function EveryWhere() {
 	return (
 		<section className="py-16">
 			<div className="container">
-				<div className="grid grid-cols-2">
+				<div
+					className="grid 
+					grid-cols-1 
+					xl:grid-cols-2
+					"
+				>
 					<div className="justify-self-end self-center">
-						<h2 className="heading-1">Xem ở mọi nơi</h2>
-						<p className="para-1 mt-4">Phát trực tuyến không giới hạn phim và chương trình truyền hình trên điện thoại, máy tính bảng, máy tính xách tay và TV.</p>
+						<h2
+							className="heading-1
+							text-center
+							xl:text-start
+						"
+						>
+							Xem ở mọi nơi
+						</h2>
+						<p
+							className="para-1 mt-4
+							text-center
+							xl:text-start
+							"
+						>
+							Phát trực tuyến không giới hạn phim và chương trình truyền hình trên điện thoại, máy tính bảng, máy tính xách tay và TV.
+						</p>
 					</div>
 					<div className="relative">
-						<img src={imgDevice} alt="" />
+						<img className="mx-auto" src={imgDevice} alt="" />
 						<div
-							className="w-full h-ful absolute overflow-hidden 
-                            max-w-[64%] max-h-[37%] top-[7%] left-[18%] -z-[1]
-                            md:max-h-[48%] md:top-[10%]  
-                            2xl:max-w-[53%] 2xl:max-h-[50%] 2xl:top-[10%] 2xl:left-[15%]
+							className="w-full h-ful absolute overflow-hidden -z-[1]
+                            max-w-[63%] max-h-[48%] top-[10%] left-[18%] 
+                            md:max-w-[57%] md:max-h-[47%] md:left-[21%] 
+                            lg:max-w-[45%] lg:left-[27%] 
+                            xl:max-w-[63%] xl:max-h-[48%] xl:top-[10%] xl:left-[18%] 
+                            
                         "
 						>
 							<video autoPlay playsInline muted loop>
