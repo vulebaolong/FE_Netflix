@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 .heading-1 {
-	@apply text-2xl font-black leading-normal
+	@apply text-2xl font-black 
 	sm:text-3xl 
-	lg:text-4xl 
-	2xl:text-5xl;
+	lg:text-4xl lg:leading-normal
+	2xl:text-5xl 2xl:leading-normal;
 }
 
 .para-1 {
-	@apply text-lg font-normal leading-normal
+	@apply text-lg font-normal 
 	sm:text-xl
 	lg:text-2xl;
 }
