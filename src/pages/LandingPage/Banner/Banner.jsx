@@ -6,8 +6,8 @@ function Banner() {
 	return (
 		<section className="banner">
 			<div className="relative overflow-hidden" style={{ height: "700px" }}>
-				<div className="absolute -z-10">
-					<img className="object-cover w-full h-full" src={backgroundBanner} alt="" />
+				<div className="absolute -z-10 h-full w-full">
+					<img className="object-cover w-full h-full " src={backgroundBanner} alt="" />
 					<div
 						className="absolute bg-black/40 top-0 left-0 bottom-0 right-0 "
 						style={{ backgroundImage: "linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%)" }}

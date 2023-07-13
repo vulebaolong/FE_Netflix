@@ -3,17 +3,23 @@
 @tailwind utilities;
 
 .heading-1 {
-	@apply text-5xl font-black leading-normal;
+	@apply text-2xl font-black leading-normal
+	sm:text-3xl 
+	lg:text-4xl 
+	2xl:text-5xl;
 }
 
 .para-1 {
-	@apply text-2xl font-normal leading-normal;
+	@apply text-lg font-normal leading-normal
+	sm:text-xl
+	lg:text-2xl;
 }
 
 .heading-3 {
-	@apply text-xl font-normal leading-normal;
+	@apply text-sm font-normal leading-normal
+	sm:text-base
+	lg:text-xl;
 }
-
 
 .ant-collapse-header {
 	align-items: center !important;
