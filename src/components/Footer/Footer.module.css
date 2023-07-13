@@ -1,9 +1,9 @@
-.content_footer a {
+.content_footer .footer_item {
 	transition: all 0.3s;
 	position: relative;
 }
 
-.content_footer a::after {
+.content_footer .footer_item::after {
 	content: "";
 	position: absolute;
 	top: 110%;
@@ -15,7 +15,7 @@
 	@apply bg-primary;
 }
 
-.content_footer a:hover::after {
+.content_footer .footer_item:hover::after {
 	width: 100%;
 }
 
