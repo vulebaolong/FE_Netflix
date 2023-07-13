@@ -9,7 +9,15 @@ function Footer() {
 			<div className="container">
 				<div className="md:flex md:justify-between">
 					<Logo />
-					<div className={` grid grid-cols-2 gap-20 sm:grid-cols-3`}>
+					<div
+						className="grid 
+						mt-16 gap-10 grid-cols-1 
+						sm:mt-16 sm:gap-10 sm:grid-cols-2 
+						md:mt-0
+						lg:grid-cols-3 
+						"
+						// gap-20
+					>
 						<div>
 							<h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Trợ giúp</h2>
 							<ul className="text-gray-500 dark:text-gray-500 font-medium space-y-2">
@@ -105,14 +113,23 @@ function Footer() {
 			</div>
 			<hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 			<div className="container sm:flex sm:items-center sm:justify-between pb-6">
-				<span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-					© 2023{" "}
+				<p
+					className="text-sm text-gray-500 sm:text-center dark:text-gray-400
+					text-center
+					"
+				>
+					<span>© 2023 </span>
 					<a href="https://github.com/vulebaolong" className=" hover:text-gray-900 dark:hover:text-white transition">
 						VuLeBaoLong/NguyenThiHuynhNhi™
 					</a>
-					. All Rights Reserved.
-				</span>
-				<div className="flex space-x-5 sm:justify-center sm:mt-0">
+					<span>. All Rights Reserved.</span>
+				</p>
+				<div
+					className="flex space-x-5 
+					justify-center mt-3
+					sm:mt-0 sm:justify-center 
+					"
+				>
 					<a
 						target="_blank"
 						rel="noreferrer"
@@ -124,7 +141,12 @@ function Footer() {
 					<a target="_blank" rel="noreferrer" href="https://github.com/vulebaolong" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">
 						<FaGithub size={20} />
 					</a>
-					<a target="_blank" rel="noreferrer" href="https://www.instagram.com/vulebaolong/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href="https://www.instagram.com/vulebaolong/"
+						className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition"
+					>
 						<FaInstagram size={20} />
 					</a>
 					<a target="_blank" rel="noreferrer" href="mailto:vulebaolong@gmail.com" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition">
