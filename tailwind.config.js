@@ -3,10 +3,15 @@ export const COLOR_PRIMARY = "#c11119";
 export const COLOR_PRIMARY_HOVER = "#a10e16";
 export const COLOR_PRIMARY_ACTIVE = "#7e0c12";
 
+export const COLOR_PRIMARY_RGB = "193, 17, 25";
+
+
+export const HEIGHT_HEADER = "86px";
+
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-	presets: [],
 	darkMode: "class", //'media' or 'class'
+	presets: [],
 	theme: {
 		extend: {
 			fontFamily: {
@@ -123,6 +128,7 @@ export default {
 			"2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
 			inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
 			none: "none",
+			header: `rgba(${COLOR_PRIMARY_RGB}, 0.18) 0px 4px 16px`,
 		},
 		boxShadowColor: ({ theme }) => theme("colors"),
 		brightness: {
@@ -201,6 +207,13 @@ export default {
 		},
 		container: {
 			center: true,
+			padding: {
+				DEFAULT: "1rem",
+				sm: "2rem",
+				lg: "4rem",
+				xl: "5rem",
+				"2xl": "8rem",
+			},
 		},
 		content: {
 			none: "none",
@@ -525,6 +538,7 @@ export default {
 			min: "min-content",
 			max: "max-content",
 			fit: "fit-content",
+			header: HEIGHT_HEADER
 		}),
 		hueRotate: {
 			0: "0deg",

@@ -10,7 +10,7 @@ function StartWithMail() {
 					<input
 						type="text"
 						id="floating_filled"
-						className="block text-xl font-semibold rounded-lg px-2.5 pb-2.5 pt-6 w-full text-gray-900 bg-gray-50 dark:bg-gray-700/50 border-0 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+						className="block text-xl transition font-semibold rounded-lg px-2.5 pb-2.5 pt-6 w-full text-gray-900 bg-gray-50 dark:bg-gray-700/50 border-2 dark:border-red-100/20 dark:focus:border-red-100/80 appearance-none dark:text-white   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
 						placeholder=" "
 					/>
 					<label

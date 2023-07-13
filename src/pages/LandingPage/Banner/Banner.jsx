@@ -4,7 +4,7 @@ import StartWithMail from "../../../components/StartWithMail/StartWithMail";
 
 function Banner() {
 	return (
-		<section>
+		<section className="banner">
 			<div className="relative overflow-hidden" style={{ height: "700px" }}>
 				<div className="absolute -z-10">
 					<img className="object-cover w-full h-full" src={backgroundBanner} alt="" />
@@ -15,7 +15,7 @@ function Banner() {
 				</div>
 				<div className="container h-full pt-[5.375rem]">
 					<div className="flex flex-col justify-center h-full ">
-						<h1 className="heading-1 text-center px-32">Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác</h1>
+						<h1 className="heading-1 text-center ">Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác</h1>
 						<p className="para-1 text-center my-4">Xem ở mọi nơi. Hủy bất kỳ lúc nào.</p>
 						<StartWithMail />
 					</div>
