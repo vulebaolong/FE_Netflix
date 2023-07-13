@@ -1,0 +1,33 @@
+.error {
+	position: absolute;
+	top: 90%;
+	transition: all 0.3s;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: #eb3942;
+    opacity: 0;
+    z-index: -1;
+}
+
+.error.openError {
+    top: 110%;
+    opacity: 1;
+}
+
+.input {
+    border: 2px solid rgba(133, 133, 133, 0.5);
+    transition: all 0.3s;
+}
+
+.input:focus {
+    border: 2px solid rgb(133, 133, 133);
+}
+
+div > .input.openError {
+    border-color: rgba(254, 36, 36,1);
+}
+
+div > .input.success {
+    border-color: rgba(36, 254, 69, 0.7);
+}

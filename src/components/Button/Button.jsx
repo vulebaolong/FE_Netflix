@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 function Button(props) {
-	const { children, type, className, size } = props;
+	const { children, type, className, size, ...rest } = props;
 	let classNameType = "";
 	let classNameSize = "";
 	switch (type) {
@@ -24,7 +24,11 @@ function Button(props) {
 		default:
 			break;
 	}
-	return <button className={`${className} ${classNameType} ${classNameSize} rounded-lg transition flex items-center justify-center gap-1 cursor-pointer`}>{children}</button>;
+	return (
+		<button {...rest} className={`${className} ${classNameType} ${classNameSize} rounded-lg transition flex items-center justify-center gap-1 cursor-pointer`}>
+			{children}
+		</button>
+	);
 }
 
 Button.propTypes = {
