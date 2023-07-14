@@ -60,7 +60,7 @@ function StartWithMail() {
 	};
 
 	const handleButton = () => {
-		errorRef.current.classList.add(style.openError);
+		// errorRef.current.classList.add(style.openError);
 	};
 
 	const handleOnblurInput = () => {
@@ -91,7 +91,13 @@ function StartWithMail() {
 
 		inputRef.current.focus();
 
-		if (isOnChangeRef.current) inputRef.current.required = true;
+		if (!isOnChangeRef.current) return
+
+		inputRef.current.required = true
+		
+		const valueInput = inputRef.current.value;
+
+		validate(valueInput);
 	};
 
 	return (
