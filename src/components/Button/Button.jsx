@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 function Button(props) {
-	const { children, type, className, size, ...rest } = props;
+	const { children, type, className, size, htmlFor, ...rest } = props;
 	let classNameType = "";
 	let classNameSize = "";
 	switch (type) {
@@ -25,7 +25,7 @@ function Button(props) {
 			break;
 	}
 	return (
-		<button {...rest} className={`${className} ${classNameType} ${classNameSize} rounded-lg transition flex items-center justify-center gap-1 cursor-pointer`}>
+		<button type={htmlFor} {...rest} className={`${className} ${classNameType} ${classNameSize} rounded-lg transition flex items-center justify-center gap-1 cursor-pointer`}>
 			{children}
 		</button>
 	);
@@ -34,6 +34,7 @@ function Button(props) {
 Button.propTypes = {
 	// ⛔️ incorrect prop type
 	children: PropTypes.any,
+	htmlFor: PropTypes.string,
 	type: PropTypes.string,
 	className: PropTypes.string,
 	size: PropTypes.string,
