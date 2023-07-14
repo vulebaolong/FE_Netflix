@@ -6,17 +6,17 @@ import style from "./Footer.module.css";
 function Footer() {
 	const { pathname } = useLocation();
 
-	const position = () => {
-		let position = "";
+	const backgroundColor = () => {
+		let backgroundColor = "bg-black";
 
-		if (pathname === "/login") {
-			position = "absolute bottom-0  bg-black/50";
+		if (pathname === "/login" || pathname === "/signup") {
+			backgroundColor = "bg-black/50";
 		}
 
-		return position;
+		return backgroundColor;
 	};
 	return (
-		<footer className={`${style.content_footer} ${position()} pt-24 w-full`}>
+		<footer className={`${style.content_footer} ${backgroundColor()} pt-24 w-full`}>
 			<div className="container">
 				<div className="md:flex md:justify-between">
 					<div className="">

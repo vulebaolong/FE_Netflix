@@ -824,6 +824,7 @@ export default {
 			...theme("spacing"),
 		}),
 		spacing: {
+			"height-header": HEIGHT_HEADER,
 			px: "1px",
 			0: "0px",
 			0.5: "0.125rem",

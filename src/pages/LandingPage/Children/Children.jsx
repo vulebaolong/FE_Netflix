@@ -2,7 +2,7 @@ import imgChild from "../../../assets/landingPage/child/child.png";
 
 function Children() {
 	return (
-		<section className="py-16">
+		<section className="py-16 bg-black">
 			<div className="container">
 				<div
 					className="grid 

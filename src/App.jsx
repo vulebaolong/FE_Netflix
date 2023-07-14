@@ -1,15 +1,26 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import MainLayout from "./layouts/MainLayout.jsx/MainLayout";
-import Login from "./pages/Login/Login";
+import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
+import HomePage from "./pages/HomePage/HomePage";
+import Signup from "./pages/AuthenticationPage/Signup/Signup";
+import Login from "./pages/AuthenticationPage/Login/Login";
+export let navigate = null;
 
 function App() {
+	navigate = useNavigate();
 	return (
 		<Routes>
 			{/* LANDING LAYOUT */}
 			<Route element={<MainLayout />}>
 				<Route index element={<LandingPage />} />
-				<Route path="login" element={<Login />} />
+				<Route path="signup" element={<AuthenticationPage />}>
+					<Route index element={<Signup />} />
+				</Route>
+				<Route path="login" element={<AuthenticationPage />}>
+					<Route index element={<Login />} />
+				</Route>
+				<Route path="home" element={<HomePage />}/>
 			</Route>
 
 			{/* USER LAYOUT */}

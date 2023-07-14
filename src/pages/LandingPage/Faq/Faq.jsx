@@ -111,7 +111,7 @@ function Faq() {
 		console.log(key);
 	};
 	return (
-		<section className="py-16">
+		<section className="py-16 bg-black">
 			<div className="container">
 				<Collapse
 					items={items}

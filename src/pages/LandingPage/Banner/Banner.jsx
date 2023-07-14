@@ -13,7 +13,7 @@ function Banner() {
 						style={{ backgroundImage: "linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%)" }}
 					></div>
 				</div>
-				<div className="container h-full pt-[5.375rem]">
+				<div className="container h-full pt-height-header">
 					<div className="flex flex-col justify-center h-full ">
 						<h1 className="heading-1 text-center ">Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác</h1>
 						<p className="para-1 text-center my-4">Xem ở mọi nơi. Hủy bất kỳ lúc nào.</p>

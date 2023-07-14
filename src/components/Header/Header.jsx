@@ -4,10 +4,10 @@ import { MdLanguage } from "react-icons/md";
 import style from "./Header.module.css";
 import { useEffect } from "react";
 import { HEIGHT_HEADER } from "../../../tailwind.config";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { navigate } from "../../App";
 
 function Header() {
-	const navigate = useNavigate();
 
 	const { pathname } = useLocation();
 
@@ -64,7 +64,7 @@ function Header() {
 			</div>
 		);
 
-		if (pathname === "/login") {
+		if (pathname === "/login" || pathname === "/signup") {
 			jsx = <></>;
 		}
 

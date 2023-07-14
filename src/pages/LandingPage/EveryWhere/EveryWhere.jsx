@@ -3,7 +3,7 @@ import videoDevice from "../../../assets/landingPage/everyWhere/video-devices-vn
 
 function EveryWhere() {
 	return (
-		<section className="py-16">
+		<section className="py-16 bg-black">
 			<div className="container">
 				<div
 					className="grid 
@@ -30,9 +30,9 @@ function EveryWhere() {
 						</p>
 					</div>
 					<div className="relative">
-						<img className="mx-auto" src={imgDevice} alt="" />
+						<img className="relative z-[1] mx-auto" src={imgDevice} alt="" />
 						<div
-							className="w-full h-ful absolute overflow-hidden -z-[1]
+							className="w-full h-ful absolute overflow-hidden z-0
                             max-w-[63%] max-h-[48%] top-[10%] left-[18%] 
                             md:max-w-[57%] md:max-h-[47%] md:left-[21%] 
                             lg:max-w-[45%] lg:left-[27%] 
