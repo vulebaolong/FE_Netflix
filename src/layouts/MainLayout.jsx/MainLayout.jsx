@@ -8,7 +8,7 @@ import BackgroundAuth from "./../../pages/AuthenticationPage/BackgroundAuth/Back
 
 function MainLayout() {
 	const { pathname } = useLocation();
-
+	console.log(pathname);
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, [pathname]);
@@ -20,7 +20,7 @@ function MainLayout() {
 
 	return (
 		<div className="relative">
-			{isBackgroundAuth && <BackgroundAuth />}
+			{isBackgroundAuth() && <BackgroundAuth />}
 			<Header />
 			<Outlet />
 			<Footer />

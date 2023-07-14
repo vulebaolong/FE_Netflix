@@ -8,6 +8,7 @@ import "./api/apiConfig.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<ConfigProvider
 		theme={{
@@ -18,8 +19,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			<Provider store={store}>
 				<App />
 			</Provider>
-			;
 		</BrowserRouter>
 	</ConfigProvider>,
 );
-

@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom";
 import { navigate } from "../../App";
 
 function Header() {
-
 	const { pathname } = useLocation();
 
 	useEffect(() => {
@@ -71,11 +70,21 @@ function Header() {
 		return jsx;
 	};
 
+	const containerHeader = () => {
+		let container = "container";
+
+		if (pathname === "/home") {
+			container = "px-[4%] 2xl:px-[60px]";
+		}
+
+		return container;
+	};
+
 	return (
 		<>
 			<div className={`headerScroll absolute w-1/2 top-0 h-header bg-transparent -z-10`}></div>
 			<header className={`${style.header} z-20`}>
-				<div className="container h-full">
+				<div className={`${containerHeader()} h-full`}>
 					<div className="h-full flex items-center">
 						<div className="mr-auto">
 							<Logo />

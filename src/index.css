@@ -48,3 +48,16 @@
 	background-color: rgba(100, 116, 139, 0.502);
 }
 /* SCROLLBAR - end */
+
+.container-home {
+	/* Các tính năng của container trong Tailwind CSS */
+	max-width: 100%;
+	padding-right: 4%;
+	padding-left: 4%;
+	margin-right: auto;
+	margin-left: auto;
+	
+	/* Các tính năng tùy chỉnh của bạn */
+	/* ... */
+  }
+  

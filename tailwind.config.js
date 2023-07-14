@@ -5,7 +5,6 @@ export const COLOR_PRIMARY_ACTIVE = "#7e0c12";
 
 export const COLOR_PRIMARY_RGB = "193, 17, 25";
 
-
 export const HEIGHT_HEADER = "86px";
 
 export default {
@@ -538,7 +537,7 @@ export default {
 			min: "min-content",
 			max: "max-content",
 			fit: "fit-content",
-			header: HEIGHT_HEADER
+			header: HEIGHT_HEADER,
 		}),
 		hueRotate: {
 			0: "0deg",

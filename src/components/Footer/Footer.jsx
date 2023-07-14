@@ -15,9 +15,20 @@ function Footer() {
 
 		return backgroundColor;
 	};
+
+	const containerFooter = () => {
+		let container = "container";
+
+		if (pathname === "/home") {
+			container = "px-[4%] 2xl:px-[60px]";
+		}
+
+		return container;
+	};
+
 	return (
 		<footer className={`${style.content_footer} ${backgroundColor()} pt-24 w-full`}>
-			<div className="container">
+			<div className={`${containerFooter()}`}>
 				<div className="md:flex md:justify-between">
 					<div className="">
 						<Logo />
@@ -135,7 +146,7 @@ function Footer() {
 				</div>
 			</div>
 			<hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-			<div className="container sm:flex sm:items-center sm:justify-between pb-6">
+			<div className={`${containerFooter()} sm:flex sm:items-center sm:justify-between pb-6`}>
 				<p
 					className="text-sm text-gray-500 sm:text-center dark:text-gray-400
 					text-center

@@ -4,7 +4,7 @@ import VN_vi_website_large from "../../../assets/imgBackground/VN_vi_website_lar
 
 function BackgroundAuth() {
 	return (
-		<div className="absolute -z-10 h-full w-full">
+		<div className="backgroundAuth absolute -z-10 h-full w-full">
 			<img
 				className="object-cover w-full h-full"
 				src={VN_vi_website_small}
