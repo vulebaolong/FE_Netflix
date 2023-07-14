@@ -1,11 +1,22 @@
 import { FaFacebookF, FaGithub, FaInstagram, FaGoogle } from "react-icons/fa6";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import style from "./Footer.module.css";
 
 function Footer() {
+	const { pathname } = useLocation();
+
+	const position = () => {
+		let position = "";
+
+		if (pathname === "/login") {
+			position = "absolute bottom-0  bg-black/50";
+		}
+
+		return position;
+	};
 	return (
-		<footer className={`${style.content_footer} pt-28`}>
+		<footer className={`${style.content_footer} ${position()} pt-24 w-full`}>
 			<div className="container">
 				<div className="md:flex md:justify-between">
 					<div className="">
