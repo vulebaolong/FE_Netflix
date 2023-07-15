@@ -1,3 +1,4 @@
 export const userApi = {
-    login: "/QuanLyNguoiDung/DangNhap"
+    login: "/QuanLyNguoiDung/DangNhap",
+    getListMoive: "/QuanLyPhim/LayDanhSachPhim"
 }

@@ -146,7 +146,7 @@ function StartWithMail() {
 						type={"primary"}
 						size={"big"}
 						onClick={handleButton}
-						className="
+						className=" flex gap-1 items-center
 						mt-6
 						lg:mt-0
 						"

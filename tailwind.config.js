@@ -2,6 +2,7 @@
 export const COLOR_PRIMARY = "#c11119";
 export const COLOR_PRIMARY_HOVER = "#a10e16";
 export const COLOR_PRIMARY_ACTIVE = "#7e0c12";
+export const COLOR_BACKGROUND_HOME = "#141414"
 
 export const COLOR_PRIMARY_RGB = "193, 17, 25";
 
@@ -175,6 +176,7 @@ export default {
 			primary: COLOR_PRIMARY,
 			primaryHover: COLOR_PRIMARY_HOVER,
 			primaryActive: COLOR_PRIMARY_ACTIVE,
+			backgroundHome: COLOR_BACKGROUND_HOME,
 		}),
 		columns: {
 			auto: "auto",

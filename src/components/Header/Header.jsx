@@ -82,7 +82,7 @@ function Header() {
 
 	return (
 		<>
-			<div className={`headerScroll absolute w-1/2 top-0 h-header bg-transparent -z-10`}></div>
+			<div className={`headerScroll  w-1/2 top-0 h-header bg-red-500 z-10`}></div>
 			<header className={`${style.header} z-20`}>
 				<div className={`${containerHeader()} h-full`}>
 					<div className="h-full flex items-center">
