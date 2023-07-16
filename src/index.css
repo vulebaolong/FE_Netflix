@@ -50,14 +50,31 @@
 /* SCROLLBAR - end */
 
 .container-home {
-	/* Các tính năng của container trong Tailwind CSS */
-	max-width: 100%;
 	width: 100%;
-	padding-right: 4%;
-	padding-left: 4%;
-	margin-right: auto;
-	margin-left: auto;
-
-	/* Các tính năng tùy chỉnh của bạn */
-	/* ... */
+	@apply px-[4%] 2xl:px-[60px];
 }
+/* @media (min-width: 640px) {
+	.container-home {
+
+	}
+}
+@media (min-width: 768px) {
+	.container-home {
+	
+	}
+}
+@media (min-width: 1024px) {
+	.container-home {
+	
+	}
+}
+@media (min-width: 1280px) {
+	.container-home {
+		
+	}
+}
+@media (min-width: 1536px) {
+	.container-home {
+		
+	}
+} */

@@ -5,19 +5,22 @@ function Button(props) {
 	let classNameSize = "";
 	switch (type) {
 		case "primary":
-			classNameType = `dark:bg-primary dark:hover:bg-primaryHover dark:active:bg-primaryActive`;
+			classNameType = `rounded-lg dark:bg-primary dark:hover:bg-primaryHover dark:active:bg-primaryActive`;
 			break;
 
 		case "secondary":
-			classNameType = `dark:bg-white dark:text-black dark:hover:bg-white/75 dark:active:bg-white/50 dark:active:text-black/70 `;
+			classNameType = `rounded-lg dark:bg-white dark:text-black dark:hover:bg-white/75 dark:active:bg-white/50 dark:active:text-black/70 `;
 			break;
 
 		case "tertiary":
-			classNameType = `dark:bg-[#6d6d6e]/70 dark:text-white dark:hover:bg-[#6d6d6e]/40 dark:active:bg-[#6d6d6e]/70 dark:active:text-white/70 `;
+			classNameType = `rounded-lg dark:bg-[#6d6d6e]/70 dark:text-white dark:hover:bg-[#6d6d6e]/40 dark:active:bg-[#6d6d6e]/70 dark:active:text-white/70 `;
+			break;
+
+		case "circle":
+			classNameType = `bg-transparent hover:bg-white/10 active:bg-white/70 border border-solid border-white/70 text-white  rounded-full transition`;
 			break;
 
 		default:
-			classNameType = `dark:bg-blue-400 dark:hover:bg-blue-500 dark:active:bg-blue-600`;
 			break;
 	}
 
@@ -35,11 +38,11 @@ function Button(props) {
 			break;
 
 		default:
-			classNameSize = "py-3 px-6";
+			classNameSize = size
 			break;
 	}
 	return (
-		<button type={htmlFor} {...rest} className={`${className} ${classNameType} ${classNameSize} rounded-lg transition cursor-pointer`}>
+		<button type={htmlFor} {...rest} className={`${className} ${classNameType} ${classNameSize} transition cursor-pointer`}>
 			{children}
 		</button>
 	);
