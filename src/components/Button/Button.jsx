@@ -17,7 +17,7 @@ function Button(props) {
 			break;
 
 		case "circle":
-			classNameType = `bg-transparent hover:bg-white/10 active:bg-white/70 border border-solid border-white/70 text-white  rounded-full transition`;
+			classNameType = `bg-transparent hover:bg-white/10 active:bg-white/70 border border-solid border-white/70 text-white rounded-full transition`;
 			break;
 
 		default:

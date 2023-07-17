@@ -202,16 +202,15 @@ function Banner({ listMovie }) {
                             "
 						>
 							<Button
-								className="flex items-center"
-								type="secondary"
-								size="
-                                py-0 px-2 gap-1
+								className="flex items-center
+								py-0 px-2 gap-1
                                 sm:py-1 sm:px-2 sm:gap-3
                                 md:py-2 md:px-3
                                 lg:py-2 lg:px-4
                                 xl:py-3 xl:px-5
                                 2xl:py-3 2xl:px-6
-                                "
+								"
+								type="secondary"
 							>
 								<IconPlay
 									className="
@@ -243,7 +242,6 @@ function Banner({ listMovie }) {
                                 2xl:py-3 2xl:px-6
                                 "
 								type="tertiary"
-								size="big"
 							>
 								<IconInfo width={35} height={35} />
 								<span className="text-2xl font-semibold ">Thông tin khác</span>

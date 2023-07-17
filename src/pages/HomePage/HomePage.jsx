@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { userApi } from "../../api/userApi";
 import Banner from "./Banner.jsx/Banner";
+import ListMovie from "./ListMovie.jsx/ListMovie";
 
 function HomePage() {
 	const [listMovie, setListMovie] = useState([]);
@@ -19,14 +20,15 @@ function HomePage() {
 	return (
 		<main className="bg-backgroundHome">
 			<Banner listMovie={listMovie} />
+			<ListMovie />
 
-			<section className="bg-backgroundHome w-full relative h-96 z-[1]">
-				<Button className="relative z-0" type="primary" size="big">
+			<section className="bg-backgroundHome w-full relative h-96 ">
+				<Button type="primary" size="big">
 					play
 				</Button>
 			</section>
 			<section className="bg-blue-400/50 w-full relative h-96">
-				<Button className="relative z-0" type="primary" size="big">
+				<Button  type="primary" size="big">
 					play
 				</Button>
 			</section>

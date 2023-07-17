@@ -126,13 +126,13 @@ function StartWithMail() {
 						<label
 							htmlFor={`floating_filled${randomUUID}`}
 							className="
-						text-sm top-[0.9rem] peer-focus:-translate-y-[0.7rem] -translate-y-[0.7rem] 
-						sm:text-base sm:top-[0.9rem] sm:peer-focus:-translate-y-[0.8rem] sm:-translate-y-[0.8rem]
-						md:peer-focus:-translate-y-[0.8rem] md:-translate-y-[0.8rem]
-						lg:text-xl lg:font-semibold lg:top-[1rem] lg:peer-focus:-translate-y-[1rem] lg:-translate-y-[1rem]
-						xl:top-[0.9rem] xl:peer-focus:-translate-y-[0.9rem] xl:-translate-y-[0.9rem]
-						left-4
-						font-semibold absolute text-gray-500 dark:text-gray-400 duration-300 transform scale-75 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 cursor-text"
+							text-sm top-[0.9rem] peer-focus:-translate-y-[0.7rem] -translate-y-[0.7rem] 
+							sm:text-base sm:top-[0.9rem] sm:peer-focus:-translate-y-[0.8rem] sm:-translate-y-[0.8rem]
+							md:peer-focus:-translate-y-[0.8rem] md:-translate-y-[0.8rem]
+							lg:text-xl lg:font-semibold lg:top-[1rem] lg:peer-focus:-translate-y-[1rem] lg:-translate-y-[1rem]
+							xl:top-[0.9rem] xl:peer-focus:-translate-y-[0.9rem] xl:-translate-y-[0.9rem]
+							left-4
+							font-semibold absolute text-gray-500 dark:text-gray-400 duration-300 transform scale-75 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 cursor-text"
 						>
 							Địa chỉ email
 						</label>
