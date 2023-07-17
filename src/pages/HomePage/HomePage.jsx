@@ -1,19 +1,16 @@
 import Button from "./../../components/Button/Button";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { userApi } from "../../api/userApi";
+import { useEffect } from "react";
 import Banner from "./Banner.jsx/Banner";
 import ListMovie from "./ListMovie.jsx/ListMovie";
+import { useDispatch, useSelector } from "react-redux";
+import { getListMovieMID } from "../../redux/slices/movieSlice";
 
 function HomePage() {
-	const [listMovie, setListMovie] = useState([]);
-
+	const dispatch = useDispatch()
+	const { listMovie } = useSelector(state => state.movieSlice)
 
 	useEffect(() => {
-		axios.get(userApi.getListMoive).then((result) => {
-			const { data } = result;
-			setListMovie(data.content);
-		});
+		dispatch(getListMovieMID())
 	}, []);
 
 

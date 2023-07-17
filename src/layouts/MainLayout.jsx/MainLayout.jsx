@@ -19,7 +19,7 @@ function MainLayout() {
 	};
 
 	return (
-		<div className="relative">
+		<div className="relative overflow-hidden">
 			{isBackgroundAuth() && <BackgroundAuth />}
 			<Header />
 			<Outlet />

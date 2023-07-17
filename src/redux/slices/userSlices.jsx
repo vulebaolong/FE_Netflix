@@ -23,6 +23,8 @@ export const { loginREDU, openMesREDU } = userSlices.actions;
 
 export default userSlices.reducer;
 
+// =========================MIDLEWARE============================
+
 //loginMID
 export const loginMID = (requestData) => {
 	return async (dispatch) => {
@@ -30,12 +32,12 @@ export const loginMID = (requestData) => {
 			const { data, status } = await axios.post(userApi.login, requestData);
 			console.log("loginMID", { data, status });
 			dispatch(loginREDU(data.content));
-			dispatch(openMess({type: "success", mes:"Đăng nhập thành công"}));
-			await wait(1000)
-			navigate("/home")
+			dispatch(openMess({ type: "success", mes: "Đăng nhập thành công" }));
+			await wait(1000);
+			navigate("/home");
 		} catch (error) {
 			console.log(error);
-			dispatch(openMess({type: "error", mes:"Đăng nhập không thành công"}));
+			dispatch(openMess({ type: "error", mes: "Đăng nhập không thành công" }));
 		}
 	};
 };

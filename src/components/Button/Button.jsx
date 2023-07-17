@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
-function Button(props) {
+import { forwardRef } from "react";
+
+const Button = forwardRef((props, ref) => {
 	const { children, type, className, size, htmlFor, ...rest } = props;
 	let classNameType = "";
 	let classNameSize = "";
@@ -17,7 +19,11 @@ function Button(props) {
 			break;
 
 		case "circle":
-			classNameType = `bg-transparent hover:bg-white/10 active:bg-white/70 border border-solid border-white/70 text-white rounded-full transition`;
+			classNameType = `bg-transparent hover:bg-white/10 active:bg-white/70 border border-solid border-white/70 text-white rounded-full`;
+			break;
+
+		case "navigattion":
+			classNameType = ` `;
 			break;
 
 		default:
@@ -38,16 +44,16 @@ function Button(props) {
 			break;
 
 		default:
-			classNameSize = size
+			classNameSize = size;
 			break;
 	}
 	return (
-		<button type={htmlFor} {...rest} className={`${className} ${classNameType} ${classNameSize} transition cursor-pointer`}>
+		<button ref={ref} type={htmlFor} {...rest} className={`${className} ${classNameType} ${classNameSize} transition cursor-pointer`}>
 			{children}
 		</button>
 	);
-}
-
+});
+Button.displayName = "Button";
 Button.propTypes = {
 	// ⛔️ incorrect prop type
 	children: PropTypes.any,

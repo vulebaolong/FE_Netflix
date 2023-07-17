@@ -30,19 +30,23 @@
 }
 
 .swiper {
-	width: 100%;
+	margin-left: calc(4% + 8px);
+    margin-right: calc(4% + 8px);
 	height: 100%;
+	overflow-y: clip;
+	overflow: unset;
+	@apply 2xl:mx-[68px]
 }
 
 .swiper-slide {
 	text-align: center;
 	font-size: 18px;
-	background: #fff;
-
-	/* Center slide text vertically */
+	overflow: hidden;
+	border-radius: 0.2vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@apply bg-backgroundHome   
 }
 
 .swiper-slide img {
@@ -60,9 +64,7 @@
     background-color: red;
 }
 
-.swiper-slide:hover {
-	scale: 1.2;
-}
+
 
 /*! SCROLLBAR - start */
 /* Firefox */

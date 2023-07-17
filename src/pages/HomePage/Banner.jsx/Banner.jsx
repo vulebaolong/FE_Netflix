@@ -53,7 +53,7 @@ function Banner({ listMovie }) {
 		// console.log("playedSeconds", playedSeconds);
 		// console.log("timePause", timePause);
 		// console.log(playedSeconds > timePause);
-		if (playedSeconds > 5) {
+		if (playedSeconds > timePause) {
 			imgHeroRef.current.classList.add(style.showImg);
 			setPlaying(false);
 		}
@@ -105,7 +105,7 @@ function Banner({ listMovie }) {
 		}
 	};
 	return (
-		<section className="h-[56.25vw] w-full relative -mb-[48px] ">
+		<section className="banner h-[56.25vw] w-full relative -mb-[260px]">
 			{/* VIDEO */}
 			<div className="absolute w-full h-full -top-[3.2vw]">
 				<ReactPlayer
@@ -145,17 +145,10 @@ function Banner({ listMovie }) {
 
 			{/* VIGNETTE */}
 			<div
+				className="h-[18vw] absolute w-full bottom-0"
 				style={{
-					height: "14.7vw",
-					position: "absolute",
-					width: "100%",
-					opacity: "1",
-					backgroundPosition: "0 top",
-					backgroundRepeat: "repeat-x",
-					backgroundSize: "100% 100%",
-					bottom: "0",
-					backgroundColor: "transparent",
-					backgroundImage: "linear-gradient(180deg,hsla(0,0%,8%,0) 0,hsla(0,0%,8%,.15) 15%,hsla(0,0%,8%,.35) 29%,hsla(0,0%,8%,.58) 44%,#141414 68%,#141414)",
+					background:
+						"linear-gradient(180deg, rgba(20,20,20,0) 0%, rgba(20,20,20,0.15) 15%, rgba(20,20,20,0.35) 27%, rgba(20,20,20,0.64) 40%, rgba(20,20,20,1) 60%, rgba(20,20,20,1) 100%)",
 				}}
 			></div>
 
