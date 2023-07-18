@@ -30,12 +30,10 @@
 }
 
 .swiper {
-	margin-left: calc(4% + 8px);
-    margin-right: calc(4% + 8px);
 	height: 100%;
 	overflow-y: clip;
 	overflow: unset;
-	@apply 2xl:mx-[68px]
+	@apply mx-[calc(4%+2px)] sm:mx-[calc(4%+3px)] md:mx-[calc(4%+4px)] lg:mx-[calc(4%+5px)] xl:mx-[calc(4%+5px)] 2xl:mx-[68px] 
 }
 
 .swiper-slide {
@@ -63,6 +61,23 @@
 .swiper-button-prev {
     background-color: red;
 }
+.swiper-pagination {
+	text-align: end ;
+	top: unset !important;
+	bottom: 103% !important;
+	right: 0;
+	left: unset !important;
+	width: 50% !important;
+}
+
+.swiper-pagination-bullet {
+	width: 2%;
+    height: 2px;
+    background-color: gray;
+	border-radius: unset ;
+	@apply w-[10px] mx-[2px] md:w-[20px] md:mx-[3px] xl:w-[30px] xl:mx-[4px] 2xl:w-[2.5vw] 2xl:mx-[0.5vw] 2xl:h-[0.2vw] !important;
+}
+
 
 
 

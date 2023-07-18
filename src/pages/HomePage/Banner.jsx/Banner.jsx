@@ -105,7 +105,16 @@ function Banner({ listMovie }) {
 		}
 	};
 	return (
-		<section className="banner h-[56.25vw] w-full relative -mb-[260px]">
+		<section
+			className="banner h-[56.25vw] w-full relative 
+			-mb-[50px]
+			sm:-mb-[90px]
+			md:-mb-[110px]
+			lg:-mb-[140px]
+			xl:-mb-[170px]
+			2xl:-mb-[250px]
+			"
+		>
 			{/* VIDEO */}
 			<div className="absolute w-full h-full -top-[3.2vw]">
 				<ReactPlayer

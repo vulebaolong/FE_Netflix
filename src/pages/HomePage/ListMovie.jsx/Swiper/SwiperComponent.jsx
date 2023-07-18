@@ -7,48 +7,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { useRef} from "react";
+import { useRef } from "react";
 import Button from "./../../../../components/Button/Button";
 import { useSelector } from "react-redux";
-
-// const list = [
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// 	{
-// 		img: "https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABb8ZRAxlGflLZCiv839mZr2gzMOnoss3FvIey7Qmrmu32aJTLKlPMO3H1N4vjfp8mPU2sXnMICujoMweiBvgVM7hgqNbzhd36ms9YPYV66enpQQEcGfoow66O2KkR8k_863t.jpg?r=283",
-// 	},
-// ];
 
 function SwiperComponent() {
 	const { listMovie } = useSelector((state) => state.movieSlice);
@@ -62,12 +23,12 @@ function SwiperComponent() {
 		swiperRef.current?.slidePrev();
 	};
 	const handleClickNext = () => {
-		const btnPrevEl = btnPrevRef.current
+		const btnPrevEl = btnPrevRef.current;
 
 		if (btnPrevEl.classList.contains("hidden")) {
-			btnPrevEl.classList.remove("hidden")
-			btnPrevEl.classList.add("flex")
-		} 
+			btnPrevEl.classList.remove("hidden");
+			btnPrevEl.classList.add("flex");
+		}
 		swiperRef.current?.slideNext();
 	};
 	const renderSwiper = () => {
@@ -76,8 +37,9 @@ function SwiperComponent() {
 				<Swiper
 					effect="slide" // Sử dụng hiệu ứng trượt
 					speed={1100}
-					slidesPerView={6}
-					spaceBetween={8}
+					slidesPerView={2}
+					spaceBetween={2}
+					slidesPerGroup={2}
 					zoom={true}
 					modules={[Navigation, Pagination, A11y]}
 					navigation={{
@@ -85,16 +47,44 @@ function SwiperComponent() {
 						nextEl: navigationNextRef.current,
 					}}
 					pagination={{ clickable: true }}
-					slidesPerGroup={6}
 					loop={true}
 					className="mySwiper"
 					onSwiper={(swiper) => {
 						swiperRef.current = swiper;
 					}}
+					breakpoints={{
+						640: {
+							slidesPerView: 3,
+							spaceBetween: 3,
+							slidesPerGroup: 3,
+						},
+						768: {
+							slidesPerView: 4,
+							spaceBetween: 4,
+						},
+						1024: {
+							slidesPerView: 5,
+							spaceBetween: 5,
+						},
+						1280: {
+							slidesPerView: 5,
+							spaceBetween: 5,
+						},
+						1536: {
+							slidesPerView: 6,
+							spaceBetween: 8,
+						},
+					}}
 				>
 					{listMovie.map((movie, i) => {
 						return (
-							<SwiperSlide key={i} className="h-[8.645vw]">
+							<SwiperSlide
+								key={i}
+								className="
+								aspect-[341/192]
+								"
+								// h-[8.645vw]
+							>
 								{<img src={movie.hinhAnh} />}
 							</SwiperSlide>
 						);
@@ -112,7 +102,16 @@ function SwiperComponent() {
 				onClick={handleClickPrev}
 				ref={btnPrevRef}
 			>
-				<FaAngleLeft className="text-4xl" />
+				<FaAngleLeft
+					className="
+					text-[10px]
+					sm:text-sm
+					md:text-xl
+					lg:text-3xl
+					xl:text-4xl
+					"
+					// text-4xl
+				/>
 			</Button>
 			{renderSwiper()}
 			<Button
@@ -120,7 +119,16 @@ function SwiperComponent() {
 				type="navigattion"
 				onClick={handleClickNext}
 			>
-				<FaAngleRight className="text-4xl" />
+				<FaAngleRight
+					className="
+					text-[10px]
+					sm:text-sm
+					md:text-xl
+					lg:text-3xl
+					xl:text-4xl
+					"
+					// text-4xl
+				/>
 			</Button>
 		</div>
 	);
