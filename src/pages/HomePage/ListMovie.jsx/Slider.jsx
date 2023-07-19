@@ -1,18 +1,19 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-// Core modules imports are same as usual
 import { Navigation, Pagination, A11y } from "swiper/modules";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useRef } from "react";
 import Button from "../../../components/Button/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { playAgain, setModalMovieActive, setPlayingModalMovie } from "../../../redux/slices/modalMovieSlice";
 
-function SwiperComponent() {
+function Slider() {
 	const { listMovie } = useSelector((state) => state.movieSlice);
+
+	const dispatch = useDispatch();
 
 	const swiperRef = useRef();
 	const navigationPrevRef = useRef(null);
@@ -22,6 +23,7 @@ function SwiperComponent() {
 	const handleClickPrev = () => {
 		swiperRef.current?.slidePrev();
 	};
+
 	const handleClickNext = () => {
 		const btnPrevEl = btnPrevRef.current;
 
@@ -32,49 +34,94 @@ function SwiperComponent() {
 		swiperRef.current?.slideNext();
 	};
 
-	const handleMouseEnter = (e) => {
+	const locationViewModalMovie = (e) => {
+		// modalMovieEl là modal sở popup khi hover
+		// movieEl là từng movie nằm trong slide
 		const modalMovieEl = document.querySelector(".modalMovie");
 		const movieEl = e.target;
+		modalMovieEl.style.display = "block";
+
+		// viewport tới đỉnh của trang web
 		const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-		if (modalMovieEl.classList.contains("hidden")) {
-			modalMovieEl.classList.remove("hidden");
-			modalMovieEl.classList.add("block");
-		}
 
-		const widthModalMovieEl = modalMovieEl.clientWidth;
-		const widthMovieEl = movieEl.clientWidth;
-
-
+		// VIEW PORT
 		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+		// const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-		const rect = e.target.getBoundingClientRect();
-		const top = rect.top;
-		const left = rect.left;
-		const right = rect.right;
+		// MOVIE
+		const rectMovie = movieEl.getBoundingClientRect();
+		const top = rectMovie.top;
+		const left = rectMovie.left;
+		const right = rectMovie.right;
+		const widthMovieEl = rectMovie.width;
+		// const heightMovieEl = rectMovie.height;
 
-		const topPercentage = (rect.top / viewportHeight) * 100;
-		const leftPercentage = Math.round((rect.left / viewportWidth) * 100);
+		// SET CHIEEUF CAO CHO MODAL MOVIE
+		modalMovieEl.style.width = `${widthMovieEl}px`;
 
+		// MODAL MOVIE
+		const rectModalMovie = modalMovieEl.getBoundingClientRect();
+		const widthModalMovieEl = rectModalMovie.width;
+		// const heightModalMovieEl = rectModalMovie.height;
+
+		// TÍNH RA PHẦN TRĂM
+		// const topPercentage = (top / viewportHeight) * 100;
+		const leftPercentage = Math.round((left / viewportWidth) * 100);
+
+		// await wait(500);
+		// Hiện modal movie
+		modalMovieEl.style.transform = "scale(1.5)";
+
+		// PHẢI
 		if (leftPercentage > 75) {
+			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
 			modalMovieEl.style.top = `${top + scrollTop}px`;
 			modalMovieEl.style.left = `${right - widthModalMovieEl}px`;
-			console.log("phải");
+			modalMovieEl.style.width = `${widthMovieEl}px`;
+			modalMovieEl.style.transformOrigin = "center right";
 		}
 
+		// TRÁI
 		if (leftPercentage < 10) {
+			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
 			modalMovieEl.style.top = `${top + scrollTop}px`;
 			modalMovieEl.style.left = `${left}px`;
-			console.log("trái");
+			modalMovieEl.style.width = `${widthMovieEl}px`;
+			modalMovieEl.style.transformOrigin = "center left";
 		}
 
+		// GIỮA
 		if (!(leftPercentage < 10) && !(leftPercentage > 75)) {
+			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
 			modalMovieEl.style.top = `${top + scrollTop}px`;
-			modalMovieEl.style.left = `${(left + (widthMovieEl /2)) - (widthModalMovieEl/2)}px`;
-			console.log("giữa");
+			modalMovieEl.style.left = `${left + widthMovieEl / 2 - widthModalMovieEl / 2}px`;
+			modalMovieEl.style.transformOrigin = "center center";
+			console.log("top", top);
+			console.log("left", left);
+			console.log("widthModalMovieEl", widthModalMovieEl);
+			console.log("widthMovieEl", widthMovieEl);
 		}
-		// console.log("top", topPercentage, "%");
-		console.log("left", leftPercentage, "%");
+	};
+
+	let hoverTimeout;
+
+	const handleMouseEnter = (e, movie) => {
+		clearTimeout(hoverTimeout);
+
+		hoverTimeout = setTimeout(() => {
+			dispatch(playAgain());
+			dispatch(setPlayingModalMovie(true));
+			dispatch(setModalMovieActive(movie));
+			locationViewModalMovie(e);
+
+			const imgHeroEl = document.querySelector(".imgHero");
+			imgHeroEl.style.transition = "opacity 0s";
+			imgHeroEl.style.opacity = 1;
+		}, 500);
+	};
+
+	const handleMouseLeave = () => {
+		clearTimeout(hoverTimeout);
 	};
 
 	const renderSwiper = () => {
@@ -136,7 +183,13 @@ function SwiperComponent() {
 								"
 							>
 								{
-									<div className="w-full h-full relative group/SwiperSlide" onMouseEnter={handleMouseEnter}>
+									<div
+										className="movie w-full h-full relative group/SwiperSlide cursor-pointer"
+										onMouseEnter={(e) => {
+											handleMouseEnter(e, movie);
+										}}
+										onMouseLeave={handleMouseLeave}
+									>
 										<div className="absolute w-full h-full overflow-hidden rounded-[0.2vw]">
 											<img src={movie.hinhAnh} />
 										</div>
@@ -189,4 +242,4 @@ function SwiperComponent() {
 		</div>
 	);
 }
-export default SwiperComponent;
+export default Slider;

@@ -1,4 +1,4 @@
-import SwiperComponent from "./SwiperComponent";
+import Slider from "./Slider";
 import Title from "./Title";
 
 function ListMovie() {
@@ -8,19 +8,19 @@ function ListMovie() {
 				{/* TITLE */}
 				<Title>Chương trình truyền hình Âu - Mỹ</Title>
 				{/* SWIPER */}
-				<SwiperComponent />
+				<Slider />
 			</div>
 			<div className="item">
 				{/* TITLE */}
 				<Title>Chương trình truyền hình Âu - Mỹ</Title>
 				{/* SWIPER */}
-				<SwiperComponent />
+				<Slider />
 			</div>
 			<div className="item">
 				{/* TITLE */}
 				<Title>Chương trình truyền hình Âu - Mỹ</Title>
 				{/* SWIPER */}
-				<SwiperComponent />
+				<Slider />
 			</div>
 		</section>
 	);

@@ -1,103 +1,110 @@
-import React, { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
-import style from "./ListMovie.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlayingModalMovie } from "../../../redux/slices/modalMovieSlice";
+import { wait } from "../../../helpers/awaitHelper";
 
 const ModalMovie = () => {
-	const baseUrl = "https://www.youtube.com/embed/";
-	const id2 = "OaDdVqW5CeE";
-	const [isMuted, setIsMuted] = useState(true);
-	const [playing, setPlaying] = useState(false);
 	const playerRef = useRef(null);
-	const imgHeroRef = useRef(null);
-	const onPause = () => {
-		console.log("onPause");
-	};
+	const dispatch = useDispatch();
+	const { modalMovieActive, playingModalMovie, playAgain } = useSelector((state) => state.modalMovieSlice);
+	// const baseUrl = "https://www.youtube.com/embed/";
+	// const id2 = "OaDdVqW5CeE";\
+	// const [isMuted, setIsMuted] = useState(true);
+
+	useEffect(() => {
+		const player = playerRef?.current.getInternalPlayer();
+		player?.seekTo(0);
+	}, [playAgain]);
+
+	const onPause = () => {};
+
+	const onEnded = () => {};
+
 	const onPlay = () => {
-		console.log("onPlay");
-	};
-	const onEnded = () => {
-		console.log("onEnded");
+		const imgHeroEl = document.querySelector(".imgHero");
+		imgHeroEl.style.transition = "opacity .6s cubic-bezier(.665,.235,.265,.8) 0s";
+		imgHeroEl.style.opacity = 0;
 	};
 
 	const onProgress = (e) => {
 		const duration = playerRef.current.getDuration();
 		const timePause = duration - 15;
 		const playedSeconds = e.playedSeconds;
-		// console.log("playedSeconds", playedSeconds);
-		// console.log("timePause", timePause);
-		// console.log(playedSeconds > timePause);
-		if (playedSeconds > timePause) {
-			imgHeroRef.current.classList.add(style.showImg);
-			setPlaying(false);
+		if (playedSeconds > 5) {
+			dispatch(setPlayingModalMovie(false));
 		}
 	};
 
-    const handleMouseLeave = () => {
-		// imgHeroRef.current.classList.remove(style.showImg);
-		// setPlaying(false);
+	const handleMouseLeave = async () => {
 		const modalMovieEl = document.querySelector(".modalMovie");
-		console.log("handleMouseLeave");
-		if (!modalMovieEl.classList.contains("hidden")) {
-			modalMovieEl.classList.add("hidden");
-			modalMovieEl.classList.remove("block");
-		}
+		const imgHeroEl = document.querySelector(".imgHero");
+
+		imgHeroEl.style.transition = "opacity 0.2s";
+		imgHeroEl.style.opacity = 1;
+		modalMovieEl.style.transform = "scale(1)";
+
+		await wait(300);
+
+		modalMovieEl.style.display = "none";
+
+		dispatch(setPlayingModalMovie(false));
 	};
 
 	return (
 		<div
-			className="modalMovie hidden absolute whitespace-normal w-[22.5vw] h-[500px]  bg-red-400/50
-            group-hover/SwiperSlide:w-[22.5vw]
-            group-hover/SwiperSlide:h-[500px]
-            group-hover/SwiperSlide:block
-            group-hover/SwiperSlide:bg-red-400
-            group-hover/SwiperSlide:z-[200]
-            overflow-hidden rounded-[0.2vw]
-            z-10
+			className="modalMovie absolute whitespace-normal   
+            z-10 cursor-pointer
             shadow-[0px_3px_10px_0px_rgba(0,0,0,0.75)]
-            transition
             "
+			style={{ transition: "transform 0.3s", transform: "scale(1)", top: "0", left: "0" }}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="absolute w-full h-full -top-[1vw]">
+			<div className="absolute w-full aspect-[341/192] overflow-hidden rounded-t-[0.2vw] cursor-pointer">
 				{/* VIDEO */}
-				<div className="absolute w-full h-1/2">
-					{playing && (
-						<ReactPlayer
-							onPause={onPause}
-							onPlay={onPlay}
-							onEnded={onEnded}
-							onProgress={onProgress}
-							ref={playerRef}
-							playing={playing}
-							muted={isMuted}
-							url={`${baseUrl}${id2}`}
-							width="100%"
-							height="100%"
-							config={{
-								youtube: {
-									playerVars: {
-										origin: "https://localhost:5173/home",
+				<div className="absolute w-full aspect-[341/192] z-[1] overflow-hidden cursor-pointer">
+					{
+						<div className="absolute w-[114%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 aspect-[341/192] cursor-pointer">
+							<ReactPlayer
+								onPause={onPause}
+								onPlay={onPlay}
+								onEnded={onEnded}
+								onProgress={onProgress}
+								ref={playerRef}
+								playing={playingModalMovie}
+								muted={true}
+								// url={`${baseUrl}${id2}`}
+								url={`${modalMovieActive.trailer}`}
+								width="100%"
+								height="100%"
+								config={{
+									youtube: {
+										playerVars: {
+											origin: "https://localhost:5173/home",
+										},
 									},
-								},
-							}}
-						/>
-					)}
+								}}
+							/>
+						</div>
+					}
 				</div>
 
 				{/* IMG */}
-				<div className="absolute w-full h-1/2">
+				<div className="absolute aspect-[341/192] z-[2] cursor-pointer">
 					<img
-						ref={imgHeroRef}
 						style={{
+							opacity: 1,
 							width: "100%",
 							height: "100%",
-							transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
+							// transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
 						}}
-						className="opacity-0"
-						src="https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABf0h1TM99wLzqVvQdS-zBidBhCVOTiOcUpUcT40mufnP2HTSSTejscx5niL4HaZirkx0X0u01Eg-yyCTxLgDD4f3t_a3LxAKIf55.webp?r=4e2"
+						className="imgHero object-cover cursor-pointer"
+						src={modalMovieActive.hinhAnh}
 					/>
 				</div>
 			</div>
+			<div className="w-full aspect-[341/192] cursor-pointer"></div>
+			<div className="bg-red-400/50 h-[100px] cursor-pointer"></div>
 		</div>
 	);
 };
