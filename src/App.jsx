@@ -10,28 +10,30 @@ export let navigate = null;
 function App() {
 	navigate = useNavigate();
 	return (
-		<Routes>
-			{/* LANDING LAYOUT */}
-			<Route element={<MainLayout />}>
-				<Route index element={<LandingPage />} />
-				<Route path="signup" element={<AuthenticationPage />}>
-					<Route index element={<Signup />} />
+		<>
+			<Routes>
+				{/* LANDING LAYOUT */}
+				<Route element={<MainLayout />}>
+					<Route index element={<LandingPage />} />
+					<Route path="signup" element={<AuthenticationPage />}>
+						<Route index element={<Signup />} />
+					</Route>
+					<Route path="login" element={<AuthenticationPage />}>
+						<Route index element={<Login />} />
+					</Route>
+					<Route path="home" element={<HomePage />} />
 				</Route>
-				<Route path="login" element={<AuthenticationPage />}>
-					<Route index element={<Login />} />
-				</Route>
-				<Route path="home" element={<HomePage />}/>
-			</Route>
 
-			{/* USER LAYOUT */}
-			{/* <Route element={<UserLayout />}>
+				{/* USER LAYOUT */}
+				{/* <Route element={<UserLayout />}>
 				<Route path="login" element={<Login />} />
 				<Route path="signin" element={<SignIn />} />
 			</Route> */}
 
-			{/* OTHER */}
-			<Route path="*" element={<Navigate to={"/"} />} />
-		</Routes>
+				{/* OTHER */}
+				<Route path="*" element={<Navigate to={"/"} />} />
+			</Routes>
+		</>
 	);
 }
 export default App;

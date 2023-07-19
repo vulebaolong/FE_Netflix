@@ -31,6 +31,52 @@ function SwiperComponent() {
 		}
 		swiperRef.current?.slideNext();
 	};
+
+	const handleMouseEnter = (e) => {
+		const modalMovieEl = document.querySelector(".modalMovie");
+		const movieEl = e.target;
+		const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+		if (modalMovieEl.classList.contains("hidden")) {
+			modalMovieEl.classList.remove("hidden");
+			modalMovieEl.classList.add("block");
+		}
+
+		const widthModalMovieEl = modalMovieEl.clientWidth;
+		const widthMovieEl = movieEl.clientWidth;
+
+
+		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+		const rect = e.target.getBoundingClientRect();
+		const top = rect.top;
+		const left = rect.left;
+		const right = rect.right;
+
+		const topPercentage = (rect.top / viewportHeight) * 100;
+		const leftPercentage = Math.round((rect.left / viewportWidth) * 100);
+
+		if (leftPercentage > 75) {
+			modalMovieEl.style.top = `${top + scrollTop}px`;
+			modalMovieEl.style.left = `${right - widthModalMovieEl}px`;
+			console.log("phải");
+		}
+
+		if (leftPercentage < 10) {
+			modalMovieEl.style.top = `${top + scrollTop}px`;
+			modalMovieEl.style.left = `${left}px`;
+			console.log("trái");
+		}
+
+		if (!(leftPercentage < 10) && !(leftPercentage > 75)) {
+			modalMovieEl.style.top = `${top + scrollTop}px`;
+			modalMovieEl.style.left = `${(left + (widthMovieEl /2)) - (widthModalMovieEl/2)}px`;
+			console.log("giữa");
+		}
+		// console.log("top", topPercentage, "%");
+		console.log("left", leftPercentage, "%");
+	};
+
 	const renderSwiper = () => {
 		if (listMovie.length > 0) {
 			return (
@@ -86,10 +132,16 @@ function SwiperComponent() {
 								key={i}
 								className="
 								aspect-[341/192]
+								relative
 								"
-								// h-[8.645vw]
 							>
-								{<img src={movie.hinhAnh} />}
+								{
+									<div className="w-full h-full relative group/SwiperSlide" onMouseEnter={handleMouseEnter}>
+										<div className="absolute w-full h-full overflow-hidden rounded-[0.2vw]">
+											<img src={movie.hinhAnh} />
+										</div>
+									</div>
+								}
 							</SwiperSlide>
 						);
 					})}

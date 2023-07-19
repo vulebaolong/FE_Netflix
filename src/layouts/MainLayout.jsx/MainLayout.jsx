@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import BackgroundAuth from "./../../pages/AuthenticationPage/BackgroundAuth/BackgroundAuth";
-
+import ModalMovie from "../../pages/HomePage/ListMovie.jsx/ModalMovie";
 
 function MainLayout() {
 	const { pathname } = useLocation();
@@ -14,8 +14,8 @@ function MainLayout() {
 	}, [pathname]);
 
 	const isBackgroundAuth = () => {
-		if (pathname === "/login" || pathname === "/signup") return true
-		return  false;
+		if (pathname === "/login" || pathname === "/signup") return true;
+		return false;
 	};
 
 	return (
@@ -24,6 +24,9 @@ function MainLayout() {
 			<Header />
 			<Outlet />
 			<Footer />
+			<div className="modal absolute top-0 left-0 z-50">
+				<ModalMovie />
+			</div>
 		</div>
 	);
 }
