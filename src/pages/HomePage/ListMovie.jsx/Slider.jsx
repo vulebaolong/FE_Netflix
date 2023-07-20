@@ -7,13 +7,14 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useRef } from "react";
 import Button from "../../../components/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { playAgain, setModalMovieActive, setPlayingModalMovie } from "../../../redux/slices/modalMovieSlice";
 import { showImgModalMovie } from "../../../helpers/modalMovieHelper";
 import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
+import PropTypes from "prop-types";
 
-function Slider() {
-	const { listMovie } = useSelector((state) => state.movieSlice);
+
+function Slider({ listMovie }) {
 
 	const dispatch = useDispatch();
 
@@ -243,4 +244,9 @@ function Slider() {
 		</div>
 	);
 }
+
+Slider.propTypes = {
+	listMovie: PropTypes.any,
+};
+
 export default Slider;

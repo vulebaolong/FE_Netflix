@@ -18,6 +18,10 @@ const Button = forwardRef((props, ref) => {
 			classNameType = `rounded-lg dark:bg-[#6d6d6e]/70 dark:text-white dark:hover:bg-[#6d6d6e]/40 dark:active:bg-[#6d6d6e]/70 dark:active:text-white/70 `;
 			break;
 
+		case "tertiary-blue":
+			classNameType = `rounded-lg dark:bg-[#0080ff] dark:text-white dark:hover:bg-[#0080ff]/70 dark:active:bg-[#0080ff]/40 `;
+			break;
+
 		case "circle":
 			classNameType = `bg-transparent hover:bg-white/10 active:bg-white/70 border border-solid border-white/70 text-white rounded-full`;
 			break;

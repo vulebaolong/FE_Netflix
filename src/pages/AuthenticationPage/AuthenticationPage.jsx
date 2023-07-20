@@ -2,20 +2,14 @@ import { Outlet } from "react-router-dom";
 
 function AuthenticationPage() {
 	return (
-		<section className="py-16">
-			<div className="container flex justify-center overflow-hidde pt-height-header">
-				<div
-					className=" bg-black/70 max-w-md w-full rounded-2xl
-					p-9
-					sm:p-12
-					lg:p-14
-					2xl:p-16
-					"
-				>
+		<>
+			<div className="pt-height-header"></div>
+			<section className=" py-16">
+				<div className={`container flex justify-center overflow-hidde`}>
 					<Outlet />
 				</div>
-			</div>
-		</section>
+			</section>
+		</>
 	);
 }
 export default AuthenticationPage;

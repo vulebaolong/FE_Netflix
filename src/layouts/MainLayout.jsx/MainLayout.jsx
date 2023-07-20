@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import BackgroundAuth from "./../../pages/AuthenticationPage/BackgroundAuth/BackgroundAuth";
 import ModalMovie from "../../pages/HomePage/ListMovie.jsx/ModalMovie";
+import BackgroundLogout from "../../pages/AuthenticationPage/BackgroundLogout/BackgroundLogout";
 
 function MainLayout() {
 	const { pathname } = useLocation();
@@ -18,9 +19,14 @@ function MainLayout() {
 		return false;
 	};
 
+	const renderBackgroundAuth = () => {
+		if (pathname === "/login" || pathname === "/signup") return <BackgroundAuth />;
+		if (pathname === "/logout") return <BackgroundLogout />;
+	};
+
 	return (
 		<div className="relative overflow-hidden">
-			{isBackgroundAuth() && <BackgroundAuth />}
+			{renderBackgroundAuth()}
 			<Header />
 			<Outlet />
 			<Footer />

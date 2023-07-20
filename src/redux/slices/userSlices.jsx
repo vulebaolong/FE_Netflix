@@ -4,9 +4,11 @@ import { userApi } from "../../api/userApi";
 import { openMess } from "./notiSlices";
 import { navigate } from "../../App";
 import { wait } from "../../helpers/awaitHelper";
+import { lcStorage } from "../../helpers/localStorage";
+import { USER_LOGIN } from "../../contants/userContants";
 
 const initialState = {
-	userLogin: null,
+	userLogin: lcStorage.get(USER_LOGIN),
 };
 
 const userSlices = createSlice({
@@ -35,6 +37,7 @@ export const loginMID = (requestData) => {
 			dispatch(openMess({ type: "success", mes: "Đăng nhập thành công" }));
 			await wait(1000);
 			navigate("/home");
+			lcStorage.set(USER_LOGIN,data.content)
 		} catch (error) {
 			console.log(error);
 			dispatch(openMess({ type: "error", mes: "Đăng nhập không thành công" }));

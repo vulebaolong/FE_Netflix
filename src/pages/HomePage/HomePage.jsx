@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListMovieMID } from "../../redux/slices/movieSlice";
 import Cinema from "./Cinema/Cinema";
 import Devices from "./Devices/Devices";
+import Divide from "../../components/Divide/Divide";
+import { setPlayingBannerREDU } from "../../redux/slices/bannerHomeSlice";
 
 function HomePage() {
 	const dispatch = useDispatch();
@@ -12,13 +14,16 @@ function HomePage() {
 
 	useEffect(() => {
 		dispatch(getListMovieMID());
+		dispatch(setPlayingBannerREDU(true));
 	}, []);
 
 	return (
 		<main className="bg-backgroundHome">
 			<Banner listMovie={listMovie} />
 			<ListMovie />
+			<Divide />
 			<Cinema />
+			<Divide />
 			<Devices />
 		</main>
 	);

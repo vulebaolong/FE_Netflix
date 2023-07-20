@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-	/* box-sizing: border-box; */
-}
-
 .heading-1 {
 	@apply text-2xl font-black 
 	sm:text-3xl 
@@ -105,6 +101,9 @@
 }
 #rc-tabs-0-panel-0{
 	padding-left: 0;
+}
+.ant-popover {
+	z-index: 99999999;
 }
 
 .container-home {

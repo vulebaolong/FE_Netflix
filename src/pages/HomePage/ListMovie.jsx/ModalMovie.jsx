@@ -99,6 +99,8 @@ const ModalMovie = () => {
 
 		showImgModalMovie("opacity 0.2s");
 
+		hideBtnMuteModalMovie()
+
 		modalMovieEl.style.transform = "scale(1)";
 
 		await wait(300);
@@ -152,7 +154,7 @@ const ModalMovie = () => {
 				<Button
 					onClick={toggleMute}
 					type="circle"
-					className="btnMuteModalMovie absolute z-[4] scale-[0.7] bottom-0 right-0"
+					className="btnMuteModalMovie absolute z-[2] scale-[0.7] bottom-0 right-0"
 					size="
 						p-[0.2rem]
 						sm:p-[0.4rem]

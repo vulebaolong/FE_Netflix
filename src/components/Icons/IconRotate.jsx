@@ -1,9 +1,16 @@
-import PropTypes from "prop-types";
-
 function IconRotate({ ...rest }) {
 	return (
 		<div {...rest}>
-			<svg width={"100%"} height={"100%"} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ltr-0 e1mhci4z1" data-name="Refresh" aria-hidden="true">
+			<svg
+				width={"100%"}
+				height={"100%"}
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				className="ltr-0 e1mhci4z1"
+				data-name="Refresh"
+				aria-hidden="true"
+			>
 				<path
 					fillRule="evenodd"
 					clipRule="evenodd"
@@ -14,10 +21,5 @@ function IconRotate({ ...rest }) {
 		</div>
 	);
 }
-
-IconRotate.propTypes = {
-	width: PropTypes.any,
-	height: PropTypes.any,
-};
 
 export default IconRotate;

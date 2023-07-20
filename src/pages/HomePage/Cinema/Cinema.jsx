@@ -148,7 +148,7 @@ function Cinema() {
 				>
 					Rạp chiếu phim
 				</h2>
-				<div className="rounded-lg border border-slate-700">
+				<div className="rounded-lg border border-slate-700 py-2">
 					<Tabs tabPosition="left" items={renderCinema()} style={{ height: "465px" }} />
 				</div>
 			</div>

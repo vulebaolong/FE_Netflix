@@ -5,11 +5,11 @@ import style from "./Footer.module.css";
 
 function Footer() {
 	const { pathname } = useLocation();
-
+	// 
 	const backgroundColor = () => {
 		let backgroundColor = "bg-black";
 
-		if (pathname === "/login" || pathname === "/signup") {
+		if (pathname === "/login" || pathname === "/signup" || pathname === "/logout") {
 			backgroundColor = "bg-black/50";
 		}
 
@@ -19,9 +19,9 @@ function Footer() {
 	const containerFooter = () => {
 		let container = "container";
 
-		if (pathname === "/home") {
-			container = "px-[4%] 2xl:px-[60px]";
-		}
+		// if (pathname === "/home") {
+		// 	container = "px-[4%] 2xl:px-[60px]";
+		// }
 
 		return container;
 	};
@@ -31,7 +31,7 @@ function Footer() {
 			<div className={`${containerFooter()}`}>
 				<div className="md:flex md:justify-between">
 					<div className="">
-						<Logo />
+						<Logo className="w-[9.25rem] h-[2.5rem]" />
 					</div>
 					<div
 						className="grid 
