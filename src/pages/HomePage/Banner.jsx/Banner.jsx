@@ -9,31 +9,34 @@ import IconUnMute from "../../../components/Icons/IconUnMute";
 import IconRotate from "../../../components/Icons/IconRotate";
 import PropTypes from "prop-types";
 import { Typography } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
 const { Paragraph } = Typography;
 
 function Banner({ listMovie }) {
-	console.log(listMovie.length);
+	const dispatch = useDispatch();
+	const { playingBanner } = useSelector(state => state.bannerHomeSlice)
 	const randomIndex = useMemo(() => Math.floor(Math.random() * listMovie.length), []);
+
 	const baseUrl = "https://www.youtube.com/embed/";
-	// const id1 = "8byLfSZjLNo";
 	const id2 = "OaDdVqW5CeE";
-	// const id3 = "xY-qRGC6Yu0";
-	// const id4 = "SxnY2E_uMtY";
+
 	const [isMuted, setIsMuted] = useState(true);
-	const [playing, setPlaying] = useState(true);
+
 	const playerRef = useRef(null);
 	const imgHeroRef = useRef(null);
+
 	const handlePlayAgain = () => {
 		const player = playerRef.current.getInternalPlayer();
 		player.seekTo(0);
-		setPlaying(true);
+		dispatch(setPlayingBannerREDU(true));
 		imgHeroRef.current.classList.remove(style.showImg);
 	};
 	const toggleMute = () => {
-		if (playing) {
+		if (playingBanner) {
 			setIsMuted(!isMuted);
 		}
-		if (!playing) {
+		if (!playingBanner) {
 			handlePlayAgain();
 		}
 	};
@@ -55,11 +58,11 @@ function Banner({ listMovie }) {
 		// console.log(playedSeconds > timePause);
 		if (playedSeconds > timePause) {
 			imgHeroRef.current.classList.add(style.showImg);
-			setPlaying(false);
+			dispatch(setPlayingBannerREDU(false));
 		}
 	};
 	const renderIconVideo = () => {
-		if (playing) {
+		if (playingBanner) {
 			if (isMuted) {
 				return (
 					<IconMute
@@ -89,7 +92,7 @@ function Banner({ listMovie }) {
 				);
 			}
 		}
-		if (!playing) {
+		if (!playingBanner) {
 			return (
 				<IconRotate
 					className="
@@ -123,7 +126,7 @@ function Banner({ listMovie }) {
 					onEnded={onEnded}
 					onProgress={onProgress}
 					ref={playerRef}
-					playing={playing}
+					playing={playingBanner}
 					muted={isMuted}
 					url={`${baseUrl}${id2}`}
 					width="100%"

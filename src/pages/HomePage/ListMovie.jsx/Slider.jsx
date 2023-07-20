@@ -9,6 +9,8 @@ import { useRef } from "react";
 import Button from "../../../components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { playAgain, setModalMovieActive, setPlayingModalMovie } from "../../../redux/slices/modalMovieSlice";
+import { showImgModalMovie } from "../../../helpers/modalMovieHelper";
+import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
 
 function Slider() {
 	const { listMovie } = useSelector((state) => state.movieSlice);
@@ -109,14 +111,13 @@ function Slider() {
 		clearTimeout(hoverTimeout);
 
 		hoverTimeout = setTimeout(() => {
+			showImgModalMovie("opacity 0s")
+
+			dispatch(setModalMovieActive(movie));
 			dispatch(playAgain());
 			dispatch(setPlayingModalMovie(true));
-			dispatch(setModalMovieActive(movie));
+			dispatch(setPlayingBannerREDU(false));
 			locationViewModalMovie(e);
-
-			const imgHeroEl = document.querySelector(".imgHero");
-			imgHeroEl.style.transition = "opacity 0s";
-			imgHeroEl.style.opacity = 1;
 		}, 500);
 	};
 

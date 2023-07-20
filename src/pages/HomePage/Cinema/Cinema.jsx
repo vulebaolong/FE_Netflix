@@ -138,7 +138,19 @@ function Cinema() {
 			"
 		>
 			<div className="container">
-				<Tabs tabPosition="left" items={renderCinema()} style={{ height: "465px" }} />
+				<h2
+					className="font-black  leading-none
+                            text-base text-center mb-16
+                            sm:text-2xl 
+                            md:text-3xl
+                            lg:text-4xl
+                            "
+				>
+					Rạp chiếu phim
+				</h2>
+				<div className="rounded-lg border border-slate-700">
+					<Tabs tabPosition="left" items={renderCinema()} style={{ height: "465px" }} />
+				</div>
 			</div>
 		</section>
 	);

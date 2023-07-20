@@ -22,6 +22,10 @@ const Button = forwardRef((props, ref) => {
 			classNameType = `bg-transparent hover:bg-white/10 active:bg-white/70 border border-solid border-white/70 text-white rounded-full`;
 			break;
 
+		case "circle-white":
+			classNameType = `bg-white hover:bg-white/80 active:bg-white/60 border border-solid border-white/70 text-white rounded-full`;
+			break;
+
 		case "navigattion":
 			classNameType = ` `;
 			break;
