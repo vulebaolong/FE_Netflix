@@ -10,16 +10,18 @@ import IconRotate from "../../../components/Icons/IconRotate";
 import PropTypes from "prop-types";
 import { Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
+import { setEndedBannerREDU, setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
 const { Paragraph } = Typography;
 
 function Banner({ listMovie }) {
 	const dispatch = useDispatch();
 	const { playingBanner } = useSelector(state => state.bannerHomeSlice)
-	const randomIndex = useMemo(() => Math.floor(Math.random() * listMovie.length), []);
+	const randomIndex = useMemo(() => Math.floor(Math.random() * listMovie.length), [listMovie]);
+	const movie = listMovie[randomIndex]
+	const url = movie?.trailer
 
-	const baseUrl = "https://www.youtube.com/embed/";
-	const id2 = "OaDdVqW5CeE";
+	// const baseUrl = "https://www.youtube.com/embed/";
+	// const id2 = "OaDdVqW5CeE";
 
 	const [isMuted, setIsMuted] = useState(true);
 
@@ -30,6 +32,7 @@ function Banner({ listMovie }) {
 		const player = playerRef.current.getInternalPlayer();
 		player.seekTo(0);
 		dispatch(setPlayingBannerREDU(true));
+		dispatch(setEndedBannerREDU(false));
 		imgHeroRef.current.classList.remove(style.showImg);
 	};
 	const toggleMute = () => {
@@ -53,12 +56,13 @@ function Banner({ listMovie }) {
 		const duration = playerRef.current.getDuration();
 		const timePause = duration - 15;
 		const playedSeconds = e.playedSeconds;
-		// console.log("playedSeconds", playedSeconds);
-		// console.log("timePause", timePause);
-		// console.log(playedSeconds > timePause);
-		if (playedSeconds > timePause) {
+		console.log("playedSeconds", playedSeconds);
+		console.log("timePause", timePause);
+		console.log(playedSeconds > timePause);
+		if (playedSeconds > 5) {
 			imgHeroRef.current.classList.add(style.showImg);
 			dispatch(setPlayingBannerREDU(false));
+			dispatch(setEndedBannerREDU(true));
 		}
 	};
 	const renderIconVideo = () => {
@@ -128,7 +132,8 @@ function Banner({ listMovie }) {
 					ref={playerRef}
 					playing={playingBanner}
 					muted={isMuted}
-					url={`${baseUrl}${id2}`}
+					// url={`${baseUrl}${id2}`}
+					url={`${url}`}
 					width="100%"
 					height="100%"
 					config={{
@@ -151,7 +156,7 @@ function Banner({ listMovie }) {
 						transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
 					}}
 					className="opacity-0"
-					src="https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABf0h1TM99wLzqVvQdS-zBidBhCVOTiOcUpUcT40mufnP2HTSSTejscx5niL4HaZirkx0X0u01Eg-yyCTxLgDD4f3t_a3LxAKIf55.webp?r=4e2"
+					src={movie?.hinhAnh}
 				/>
 			</div>
 
@@ -187,7 +192,7 @@ function Banner({ listMovie }) {
                             xl:text-start
                             "
 						>
-							{listMovie[randomIndex]?.tenPhim}
+							{movie?.tenPhim}
 						</h1>
 						<Paragraph
 							ellipsis={{
@@ -198,7 +203,7 @@ function Banner({ listMovie }) {
                             xl:[display:-webkit-box]
                             "
 						>
-							{listMovie[randomIndex]?.moTa}
+							{movie?.moTa}
 						</Paragraph>
 						<div
 							className="flex gap-3

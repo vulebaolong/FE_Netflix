@@ -20,6 +20,7 @@ const ModalMovie = () => {
 	const playerRef = useRef(null);
 	const dispatch = useDispatch();
 	const { modalMovieActive, playingModalMovie, playAgain } = useSelector((state) => state.modalMovieSlice);
+	const { endedBanner } = useSelector((state) => state.bannerHomeSlice);
 	// const baseUrl = "https://www.youtube.com/embed/";
 	// const id2 = "OaDdVqW5CeE";\
 	const [isMuted, setIsMuted] = useState(true);
@@ -89,7 +90,7 @@ const ModalMovie = () => {
 		const duration = playerRef.current.getDuration();
 		const timePause = duration - 15;
 		const playedSeconds = e.playedSeconds;
-		if (playedSeconds > 10) {
+		if (playedSeconds > timePause) {
 			dispatch(setPlayingModalMovie(false));
 		}
 	};
@@ -109,23 +110,25 @@ const ModalMovie = () => {
 
 		dispatch(setPlayingModalMovie(false));
 
-		dispatch(setPlayingBannerREDU(true));
+		if (!endedBanner) {
+			dispatch(setPlayingBannerREDU(true));
+		}
 	};
 
 	return (
 		<div
 			className="modalMovie absolute whitespace-normal 
-            z-10 cursor-pointer hidden
+            z-10 hidden
             shadow-[0px_3px_10px_0px_rgba(0,0,0,0.75)]
             "
 			style={{ transition: "transform 0.3s", transform: "scale(1)", top: "0", left: "0" }}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="absolute w-full aspect-[341/192] overflow-hidden rounded-t-[0.2vw] cursor-pointer">
+			<div className="absolute w-full aspect-[341/192] overflow-hidden rounded-t-[0.2vw] ">
 				{/* VIDEO */}
-				<div className="absolute w-full aspect-[341/192] z-[1] overflow-hidden cursor-pointer">
+				<div className="absolute w-full aspect-[341/192] z-[1] overflow-hidden ">
 					{
-						<div className="absolute w-[114%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 aspect-[341/192] cursor-pointer">
+						<div className="absolute w-[114%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 aspect-[341/192] ">
 							<ReactPlayer
 								onPause={onPause}
 								onPlay={onPlay}
@@ -166,7 +169,7 @@ const ModalMovie = () => {
 				</Button>
 
 				{/* IMG */}
-				<div className="absolute aspect-[341/192] z-[3] cursor-pointer">
+				<div className="absolute aspect-[341/192] z-[3] ">
 					<img
 						style={{
 							opacity: 1,
@@ -174,13 +177,13 @@ const ModalMovie = () => {
 							height: "100%",
 							// transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
 						}}
-						className="imgModalMovie object-cover cursor-pointer"
+						className="imgModalMovie object-cover "
 						src={modalMovieActive.hinhAnh}
 					/>
 				</div>
 			</div>
-			<div className="w-full aspect-[341/192] cursor-pointer"></div>
-			<div className="cursor-pointer bg-[#181818] overflow-hidden rounded-b-[0.2vw]">
+			<div className="w-full aspect-[341/192] "></div>
+			<div className=" bg-[#181818] overflow-hidden rounded-b-[0.2vw]">
 				{/* BUTTON */}
 				<div className="flex justify-between items-center py-2">
 					<div className="-space-x-2">

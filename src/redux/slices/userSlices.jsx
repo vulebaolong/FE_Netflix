@@ -18,10 +18,14 @@ const userSlices = createSlice({
 		loginREDU: (state, { payload }) => {
 			state.userLogin = payload;
 		},
+		resetUserREDU: () => {
+			return initialState;
+			// state.userLogin = null
+		},
 	},
 });
 
-export const { loginREDU, openMesREDU } = userSlices.actions;
+export const { loginREDU, openMesREDU, resetUserREDU } = userSlices.actions;
 
 export default userSlices.reducer;
 
@@ -32,12 +36,18 @@ export const loginMID = (requestData) => {
 	return async (dispatch) => {
 		try {
 			const { data, status } = await axios.post(userApi.login, requestData);
+
 			console.log("loginMID", { data, status });
+
 			dispatch(loginREDU(data.content));
+
 			dispatch(openMess({ type: "success", mes: "Đăng nhập thành công" }));
+
 			await wait(1000);
+
 			navigate("/home");
-			lcStorage.set(USER_LOGIN,data.content)
+
+			lcStorage.set(USER_LOGIN, data.content);
 		} catch (error) {
 			console.log(error);
 			dispatch(openMess({ type: "error", mes: "Đăng nhập không thành công" }));

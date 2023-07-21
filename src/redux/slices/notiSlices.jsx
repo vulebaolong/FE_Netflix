@@ -15,9 +15,12 @@ const notiSlices = createSlice({
 			state.mes = payload.mes;
 			state.isOpen = !state.isOpen;
 		},
+		resetNotiREDU: () => {
+			return initialState;
+		},
 	},
 });
 
-export const { openMess } = notiSlices.actions;
+export const { openMess, resetNotiREDU } = notiSlices.actions;
 
 export default notiSlices.reducer;

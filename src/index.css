@@ -103,7 +103,7 @@
 	padding-left: 0;
 }
 .ant-popover {
-	z-index: 99999999;
+	z-index: 1001;
 }
 
 .container-home {

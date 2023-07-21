@@ -6,7 +6,12 @@ export const COLOR_BACKGROUND_HOME = "#141414";
 
 export const COLOR_PRIMARY_RGB = "193, 17, 25";
 
-export const HEIGHT_HEADER = "86px";
+export const HEIGHT_HEADER = "50px";
+export const HEIGHT_HEADER_SM = "50px";
+export const HEIGHT_HEADER_MD = "60px";
+export const HEIGHT_HEADER_LG = "70px";
+export const HEIGHT_HEADER_XL = "80px";
+export const HEIGHT_HEADER_2XL = "86px";
 
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -17,8 +22,21 @@ export default {
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],
 			},
-			display: {
-				"webkit": "none",
+			height: () => ({
+				header: HEIGHT_HEADER,
+				header_sm: HEIGHT_HEADER_SM,
+				header_md: HEIGHT_HEADER_MD,
+				header_lg: HEIGHT_HEADER_LG,
+				header_xl: HEIGHT_HEADER_XL,
+				header_2xl: HEIGHT_HEADER_2XL,
+			}),
+			padding: {
+				header: HEIGHT_HEADER,
+				header_sm: HEIGHT_HEADER_SM,
+				header_md: HEIGHT_HEADER_MD,
+				header_lg: HEIGHT_HEADER_LG,
+				header_xl: HEIGHT_HEADER_XL,
+				header_2xl: HEIGHT_HEADER_2XL,
 			},
 		},
 		accentColor: ({ theme }) => ({
@@ -543,7 +561,6 @@ export default {
 			min: "min-content",
 			max: "max-content",
 			fit: "fit-content",
-			header: HEIGHT_HEADER,
 		}),
 		hueRotate: {
 			0: "0deg",
@@ -829,7 +846,6 @@ export default {
 			...theme("spacing"),
 		}),
 		spacing: {
-			"height-header": HEIGHT_HEADER,
 			px: "1px",
 			0: "0px",
 			0.5: "0.125rem",

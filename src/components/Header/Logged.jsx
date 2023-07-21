@@ -1,18 +1,22 @@
 import { Avatar, Popover, Tag } from "antd";
-import { useSelector } from "react-redux";
-import Button from "../Button/Button";
+import { useDispatch, useSelector } from "react-redux";
 import { IoMdLogOut, IoIosInformationCircleOutline, IoIosHelpCircleOutline } from "react-icons/io";
 import { COLOR_PRIMARY } from "../../../tailwind.config";
 import { lcStorage } from "../../helpers/localStorage";
 import { USER_LOGIN } from "../../contants/userContants";
 import { navigate } from "../../App";
+import { resetUserREDU } from "../../redux/slices/userSlices";
+import { resetNotiREDU } from "../../redux/slices/notiSlices";
 
 const numRandom = Math.floor(Math.random() * 70) + 1;
 
 function Logged() {
+	const dispatch = useDispatch()
 	const { userLogin } = useSelector((state) => state.userSlices);
 	const handleLogout = () => {
 		lcStorage.remove(USER_LOGIN);
+		dispatch(resetUserREDU())
+		dispatch(resetNotiREDU())
         navigate('/logout')
 	};
 	const content = (
