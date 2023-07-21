@@ -59,7 +59,7 @@ function Banner({ listMovie }) {
 		console.log("playedSeconds", playedSeconds);
 		console.log("timePause", timePause);
 		console.log(playedSeconds > timePause);
-		if (playedSeconds > 5) {
+		if (playedSeconds > timePause) {
 			imgHeroRef.current.classList.add(style.showImg);
 			dispatch(setPlayingBannerREDU(false));
 			dispatch(setEndedBannerREDU(true));
@@ -123,7 +123,7 @@ function Banner({ listMovie }) {
 			"
 		>
 			{/* VIDEO */}
-			<div className="absolute w-full h-full -top-[3.2vw]">
+			<div className="VIDEO absolute w-full h-full -top-[3.2vw]">
 				<ReactPlayer
 					onPause={onPause}
 					onPlay={onPlay}
@@ -147,7 +147,7 @@ function Banner({ listMovie }) {
 			</div>
 
 			{/* IMG */}
-			<div className="absolute w-full h-full">
+			<div className="IMG absolute w-full h-full">
 				<img
 					ref={imgHeroRef}
 					style={{
@@ -155,14 +155,14 @@ function Banner({ listMovie }) {
 						height: "100%",
 						transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
 					}}
-					className="opacity-0"
+					className="opacity-0 object-cover"
 					src={movie?.hinhAnh}
 				/>
 			</div>
 
 			{/* VIGNETTE */}
 			<div
-				className="h-[18vw] absolute w-full bottom-0"
+				className="VIGNETTE h-[18vw] absolute w-full bottom-0"
 				style={{
 					background:
 						"linear-gradient(180deg, rgba(20,20,20,0) 0%, rgba(20,20,20,0.15) 15%, rgba(20,20,20,0.35) 27%, rgba(20,20,20,0.64) 40%, rgba(20,20,20,1) 60%, rgba(20,20,20,1) 100%)",
@@ -170,7 +170,7 @@ function Banner({ listMovie }) {
 			></div>
 
 			{/* TEXT AND SOUND*/}
-			<div className="absolute w-full h-full flex">
+			<div className="TEXTANDSOUND absolute w-full h-full flex">
 				{/* TEXT */}
 				<div
 					className="container-home flex items-end h-full
