@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import Signup from "./pages/AuthenticationPage/Signup/Signup";
 import Login from "./pages/AuthenticationPage/Login/Login";
 import Logout from "./pages/AuthenticationPage/Logout/Logout";
+import DetailPage from "./pages/DetailPage/DetailPage";
 export let navigate = null;
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 				{/* LANDING LAYOUT */}
 				<Route element={<MainLayout />}>
 					<Route index element={<LandingPage />} />
+					<Route path="detail/:id" element={<DetailPage />} />
 
 					<Route path="signup" element={<AuthenticationPage />}>
 						<Route index element={<Signup />} />

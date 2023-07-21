@@ -2,10 +2,11 @@ import { FaFacebookF, FaGithub, FaInstagram, FaGoogle } from "react-icons/fa6";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import style from "./Footer.module.css";
+import { navigate } from "../../App";
 
 function Footer() {
 	const { pathname } = useLocation();
-	// 
+	//
 	const backgroundColor = () => {
 		let backgroundColor = "bg-black";
 
@@ -31,7 +32,12 @@ function Footer() {
 			<div className={`${containerFooter()}`}>
 				<div className="md:flex md:justify-between">
 					<div className="">
-						<Logo className="w-[9.25rem] h-[2.5rem]" />
+						<Logo
+							onClick={() => {
+								navigate("/");
+							}}
+							className="w-[9.25rem] h-[2.5rem]"
+						/>
 					</div>
 					<div
 						className="grid 

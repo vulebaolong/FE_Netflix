@@ -21,7 +21,7 @@ function Download() {
 						<img className="w-full" src={imgMobile} alt="" />
 						<div
 							className="absolute flex bg-black justify-between gap-5 overflow-hidden left-1/2 -translate-x-1/2 rounded-xl border-2 border-solid border-[#808080b3] 
-							w-[85%] -bottom-[10%] px-1 py-2
+							w-[70%] bottom-[6%] px-1 py-2
 							sm:w-[60%] sm:bottom-[6%] sm:px-2 sm:py-3
 							md:w-[58%]
 							lg:w-[60%]

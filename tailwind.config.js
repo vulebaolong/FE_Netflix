@@ -6,8 +6,8 @@ export const COLOR_BACKGROUND_HOME = "#141414";
 
 export const COLOR_PRIMARY_RGB = "193, 17, 25";
 
-export const HEIGHT_HEADER = "50px";
-export const HEIGHT_HEADER_SM = "50px";
+export const HEIGHT_HEADER = "60px";
+export const HEIGHT_HEADER_SM = "60px";
 export const HEIGHT_HEADER_MD = "60px";
 export const HEIGHT_HEADER_LG = "70px";
 export const HEIGHT_HEADER_XL = "80px";

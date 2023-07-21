@@ -11,14 +11,15 @@ import PropTypes from "prop-types";
 import { Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { setEndedBannerREDU, setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
+import { navigate } from "../../../App";
 const { Paragraph } = Typography;
 
 function Banner({ listMovie }) {
 	const dispatch = useDispatch();
-	const { playingBanner } = useSelector(state => state.bannerHomeSlice)
+	const { playingBanner } = useSelector((state) => state.bannerHomeSlice);
 	const randomIndex = useMemo(() => Math.floor(Math.random() * listMovie.length), [listMovie]);
-	const movie = listMovie[randomIndex]
-	const url = movie?.trailer
+	const movie = listMovie[randomIndex];
+	const url = movie?.trailer;
 
 	// const baseUrl = "https://www.youtube.com/embed/";
 	// const id2 = "OaDdVqW5CeE";
@@ -56,9 +57,9 @@ function Banner({ listMovie }) {
 		const duration = playerRef.current.getDuration();
 		const timePause = duration - 15;
 		const playedSeconds = e.playedSeconds;
-		console.log("playedSeconds", playedSeconds);
-		console.log("timePause", timePause);
-		console.log(playedSeconds > timePause);
+		// console.log("playedSeconds", playedSeconds);
+		// console.log("timePause", timePause);
+		// console.log(playedSeconds > timePause);
 		if (playedSeconds > timePause) {
 			imgHeroRef.current.classList.add(style.showImg);
 			dispatch(setPlayingBannerREDU(false));
@@ -111,9 +112,14 @@ function Banner({ listMovie }) {
 			);
 		}
 	};
+
+	const handleBuyMovie = (movie) => {
+		console.log(movie);
+		navigate(`/detail/${movie.maPhim}`)
+	};
 	return (
 		<section
-			className="banner h-[56.25vw] w-full relative 
+			className="banner aspect-[1920/1080] w-full relative 
 			-mb-[50px]
 			sm:-mb-[90px]
 			md:-mb-[110px]
@@ -122,28 +128,30 @@ function Banner({ listMovie }) {
 			2xl:-mb-[250px]
 			"
 		>
-			{/* VIDEO */}
-			<div className="VIDEO absolute w-full h-full -top-[3.2vw]">
-				<ReactPlayer
-					onPause={onPause}
-					onPlay={onPlay}
-					onEnded={onEnded}
-					onProgress={onProgress}
-					ref={playerRef}
-					playing={playingBanner}
-					muted={isMuted}
-					// url={`${baseUrl}${id2}`}
-					url={`${url}`}
-					width="100%"
-					height="100%"
-					config={{
-						youtube: {
-							playerVars: {
-								origin: "https://localhost:5173/home",
+			{/* VIDEO -top-[3.2vw]*/}
+			<div className="VIDEO absolute w-full aspect-[1920/1080] overflow-hidden">
+				<div className="absolute w-[114%] aspect-[1920/1080] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+					<ReactPlayer
+						onPause={onPause}
+						onPlay={onPlay}
+						onEnded={onEnded}
+						onProgress={onProgress}
+						ref={playerRef}
+						playing={playingBanner}
+						muted={isMuted}
+						// url={`${baseUrl}${id2}`}
+						url={`${url}`}
+						width="100%"
+						height="100%"
+						config={{
+							youtube: {
+								playerVars: {
+									origin: "https://localhost:5173/home",
+								},
 							},
-						},
-					}}
-				/>
+						}}
+					/>
+				</div>
 			</div>
 
 			{/* IMG */}
@@ -162,10 +170,9 @@ function Banner({ listMovie }) {
 
 			{/* VIGNETTE */}
 			<div
-				className="VIGNETTE h-[18vw] absolute w-full bottom-0"
+				className="VIGNETTE w-full h-full absolute top-0 left-0"
 				style={{
-					background:
-						"linear-gradient(180deg, rgba(20,20,20,0) 0%, rgba(20,20,20,0.15) 15%, rgba(20,20,20,0.35) 27%, rgba(20,20,20,0.64) 40%, rgba(20,20,20,1) 60%, rgba(20,20,20,1) 100%)",
+					background: "linear-gradient(180deg, rgba(20,20,20,0) 0%, rgba(20,20,20,0) 51%, rgba(20,20,20,0.8) 80%, rgba(20,20,20,1) 100%)",
 				}}
 			></div>
 
@@ -212,6 +219,9 @@ function Banner({ listMovie }) {
                             "
 						>
 							<Button
+								onClick={() => {
+									handleBuyMovie(movie);
+								}}
 								className="flex items-center
 								py-0 px-2 gap-1
                                 sm:py-1 sm:px-2 sm:gap-3

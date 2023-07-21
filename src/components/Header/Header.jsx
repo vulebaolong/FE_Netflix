@@ -1,16 +1,9 @@
-import Logo from "../Logo/Logo";
 import style from "./Header.module.css";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import NotLogged from "./NotLogged";
-import { lcStorage } from "../../helpers/localStorage";
-import { USER_LOGIN } from "../../contants/userContants";
-import Logged from "./Logged";
-import HeaderMobile from "./HeaderMobile";
-import HeaderDesktop from "./headerDesktop";
+import HeaderDesktop from "./Desktop/HeaderDesktop";
+import HeaderMobile from "./Mobile/HeaderMobile";
 
 function Header() {
-
 	useEffect(() => {
 		// Chọn phần tử header
 		const headerScroll = document.querySelector(".headerScroll");
@@ -41,8 +34,6 @@ function Header() {
 		if (headerScroll) observer.observe(headerScroll);
 	}, []);
 
-
-
 	return (
 		<>
 			<div
@@ -55,12 +46,23 @@ function Header() {
 				2xl:h-header_2xl
 				`}
 			></div>
-			<div className="hidden lg:block">
-				<HeaderDesktop />
-			</div>
-			<div className="block lg:hidden">
-				<HeaderMobile />
-			</div>
+			<header
+				className={`${style.header} z-[1000]
+				h-header
+				sm:h-header_sm
+				md:h-header_md
+				lg:h-header_lg
+				xl:h-header_xl
+				2xl:h-header_2xl
+				`}
+			>
+				<div className="hidden lg:block h-full">
+					<HeaderDesktop />
+				</div>
+				<div className="block lg:hidden h-full">
+					<HeaderMobile />
+				</div>
+			</header>
 		</>
 	);
 }

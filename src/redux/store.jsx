@@ -5,6 +5,15 @@ import movieSlice from "./slices/movieSlice";
 import cinemaSlice from "./slices/cinemaSlice";
 import modalMovieSlice from "./slices/modalMovieSlice";
 import bannerHomeSlice from "./slices/bannerHomeSlice";
+import drawerSlice from "./slices/drawerSlice";
 export const store = configureStore({
-	reducer: { userSlices, notiSlices, movieSlice, cinemaSlice, modalMovieSlice, bannerHomeSlice },
+	reducer: {
+		userSlices,
+		notiSlices,
+		movieSlice,
+		cinemaSlice,
+		modalMovieSlice,
+		bannerHomeSlice,
+		drawerSlice
+	},
 });

@@ -1,8 +1,8 @@
 import { MdLanguage } from "react-icons/md";
-import Button from "../Button/Button";
-import { navigate } from "../../App";
+import Button from "../../Button/Button";
+import { navigate } from "../../../App";
 
-function NotLogged() {
+function NotLoggedDesktop() {
 	const handleButton = () => {
 		navigate("/login");
 	};
@@ -24,4 +24,4 @@ function NotLogged() {
 		</div>
 	);
 }
-export default NotLogged;
+export default NotLoggedDesktop;
