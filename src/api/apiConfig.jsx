@@ -10,7 +10,7 @@ axios.interceptors.request.use(
 		// Do something before request is sent
 		console.log(config);
 		// Kết hợp URL cơ sở và phần đường dẫn cụ thể
-		config.url = `${axios.defaults.baseURL}${config.url}?maNhom=${MANHOM}`;
+		config.url = `${axios.defaults.baseURL}${config.url}`;
 		config.headers.TokenCybersoft = TOKEN_CYBERSOFT;
 
 		return config;

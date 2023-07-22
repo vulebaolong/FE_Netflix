@@ -25,7 +25,7 @@ export default movieSlice.reducer;
 export const getListMovieMID = () => {
 	return async (dispatch) => {
 		try {
-			const { data, status } = await axios.get(userApi.getListMoive);
+			const { data, status } = await userApi.getListMoive();
 			console.log("getListMovieMID", { data, status });
 			dispatch(getListMovieREDU(data.content));
 		} catch (error) {

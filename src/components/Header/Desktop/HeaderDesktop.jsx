@@ -22,7 +22,7 @@ function HeaderDesktop() {
 	const containerHeader = () => {
 		let container = "container";
 
-		if (pathname === "/home") {
+		if (pathname === "/home" || pathname.split("/")[1] === "detail") {
 			container = "px-[4%] 2xl:px-[60px]";
 		}
 

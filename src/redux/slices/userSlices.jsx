@@ -35,7 +35,7 @@ export default userSlices.reducer;
 export const loginMID = (requestData) => {
 	return async (dispatch) => {
 		try {
-			const { data, status } = await axios.post(userApi.login, requestData);
+			const { data, status } = await userApi.login(requestData);
 
 			console.log("loginMID", { data, status });
 
