@@ -22,12 +22,15 @@ function DetailBanner() {
 	// const id2 = "OaDdVqW5CeE";
 	const onPause = () => {
 		console.log("onPause");
+		imgBackgroundBannerRef.current.style.opacity = 1;
 	};
 	const onPlay = () => {
 		console.log("onPlay");
+		imgBackgroundBannerRef.current.style.opacity = 0;
 	};
 	const onEnded = () => {
 		console.log("onEnded");
+		imgBackgroundBannerRef.current.style.opacity = 1;
 	};
 	const onProgress = (e) => {
 		const duration = playerRef.current.getDuration();
@@ -37,7 +40,6 @@ function DetailBanner() {
 		// console.log("timePause", timePause);
 		// console.log(playedSeconds > timePause);
 		if (playedSeconds > 5) {
-			imgBackgroundBannerRef.current.style.opacity = 1;
 			setPlaying(false);
 			// dispatch(setEndedBannerREDU(true));
 		}
@@ -46,7 +48,7 @@ function DetailBanner() {
 		const player = playerRef.current.getInternalPlayer();
 		player.seekTo(0);
 		setPlaying(true);
-		imgBackgroundBannerRef.current.style.opacity = 0;
+		// imgBackgroundBannerRef.current.style.opacity = 0;
 		// dispatch(setPlayingBannerREDU(true));
 		// dispatch(setEndedBannerREDU(false));
 		// imgBackgroundBannerRef.current.classList.remove(style.showImg);
@@ -132,7 +134,7 @@ function DetailBanner() {
 
 			{/* IMG */}
 			<div
-				className="IMG absolute w-full h-full opacity-0"
+				className="IMG absolute w-full h-full opacity-1"
 				ref={imgBackgroundBannerRef}
 				style={{
 					transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
@@ -141,17 +143,7 @@ function DetailBanner() {
 				<img
 					className=" object-cover w-full h-full"
 					src={movieShowtime?.hinhAnh}
-					// src="https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWOGQnCjGyUCJL7s_b4ZV-dlsvhwFiGXO3qRqpmCxP1aP-2F8QOaEE_qkrdt4Wb3vxSEdUc5YMzjKPhz-yU6HWqfR2zygGZijpYp.webp?r=bcc"
 				/>
-				<div
-					className="FILTER absolute w-full h-full top-0 left-0"
-					style={{
-						background:
-							"linear-gradient( 0deg, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.9) 10%, rgba(15, 23, 42, 0.8) 20%, rgba(15, 23, 42, 0.7) 30%, rgba(15, 23, 42, 0.6) 40%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0) 100% )",
-						backdropFilter: "blur(10px)",
-						WebkitBackdropFilter: "blur(10px)",
-					}}
-				></div>
 			</div>
 
 			{/* VIGNETTE */}
@@ -165,49 +157,51 @@ function DetailBanner() {
 			{/* TEXT AND SOUND*/}
 			<div className="TEXTANDSOUND absolute w-full h-full flex items-center">
 				{/* TEXT, HÌNH ẢNH, ĐÁNH GIÁ*/}
-				<div
-					className="container-home flex items-center gap-7
-                    justify-center
-                    xl:justify-start
-                    "
-				>
-					{/* HÌNH ẢNH */}
-					<div className="w-[18%] flex-shrink-0">
-						<img src={movieShowtime.hinhAnh} className="w-full" alt="" />
-					</div>
+				<div className="container-home">
+					<div
+						className="p-10 rounded-3xl flex items-center gap-7
+						bg-[rgb(20,20,20)]/50 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-[5px] border-[1px] border-[rgba(255,255,255,0.3)]
+						justify-center
+						xl:justify-start
+						"
+					>
+						{/* HÌNH ẢNH */}
+						<div className="w-[18%] flex-shrink-0">
+							<img src={movieShowtime.hinhAnh} className="w-full rounded-2xl" alt="" />
+						</div>
 
-					{/* TEXT AND BUTTON */}
-					<div className=" flex-1">
-						<h1
-							className="font-black truncate leading-none
+						{/* TEXT AND BUTTON */}
+						<div className=" flex-grow overflow-hidden">
+							<h1
+								className="font-black truncate leading-none
                             text-base text-center mb-2
                             sm:text-2xl sm:mb-4
                             lg:text-4xl
                             xl:text-start
                             "
-						>
-							{movieShowtime?.tenPhim}
-						</h1>
-						<Paragraph
-							ellipsis={{ rows: 3 }}
-							className="font-medium text-[1.2vw] text-white
+							>
+								{movieShowtime?.tenPhim}
+							</h1>
+							<Paragraph
+								ellipsis={{ rows: 3 }}
+								className="font-medium text-[1.2vw] text-white
                             hidden
                             xl:[display:-webkit-box]
                             "
-						>
-							{movieShowtime?.moTa}
-						</Paragraph>
-						<div
-							className="flex gap-3
+							>
+								{movieShowtime?.moTa}
+							</Paragraph>
+							<div
+								className="flex gap-3
                             mt-3 justify-center
                             xl:mt-0 xl:justify-start
                             "
-						>
-							<Button
-								onClick={() => {
-									handleBuyMovie();
-								}}
-								className="flex items-center
+							>
+								<Button
+									onClick={() => {
+										handleBuyMovie();
+									}}
+									className="flex items-center
 								py-0 px-2 gap-1
                                 sm:py-1 sm:px-2 sm:gap-3
                                 md:py-2 md:px-3
@@ -215,10 +209,10 @@ function DetailBanner() {
                                 xl:py-3 xl:px-5
                                 2xl:py-3 2xl:px-6
 								"
-								type="secondary"
-							>
-								<IconPlay
-									className="
+									type="secondary"
+								>
+									<IconPlay
+										className="
                                     w-2 h-2
                                     sm:w-3 sm:h-3
                                     md:w-4 md:h-4
@@ -226,9 +220,9 @@ function DetailBanner() {
                                     xl:w-5 xl:h-5
                                     2xl:w-6 2xl:h-6
                                     "
-								/>
-								<span
-									className=" font-semibold
+									/>
+									<span
+										className=" font-semibold
                                     text-[10px]
                                     sm:text-sm
                                     md:text-sm
@@ -236,33 +230,34 @@ function DetailBanner() {
                                     xl:text-2xl
                                     2xl:text-2xl
                                     "
-								>
-									Mua vé
-								</span>
-							</Button>
-							<Button
-								className=" gap-3 items-center
+									>
+										Mua vé
+									</span>
+								</Button>
+								<Button
+									className=" gap-3 items-center
                                 hidden
                                 xl:flex xl:py-3 xl:px-5
                                 2xl:py-3 2xl:px-6
                                 "
-								type="tertiary"
-							>
-								<IconInfo width={35} height={35} />
-								<span className="text-2xl font-semibold ">Thông tin khác</span>
-							</Button>
+									type="tertiary"
+								>
+									<IconInfo width={35} height={35} />
+									<span className="text-2xl font-semibold ">Thông tin khác</span>
+								</Button>
+							</div>
 						</div>
-					</div>
 
-					{/* ĐÁNH GIÁ */}
-					<div className="space-y-3 w-[18%] flex items-center flex-col flex-shrink-0">
-						<Progress strokeColor={"#7ed321"} type="circle" percent={(+movieShowtime.danhGia / 5) * 100} />
-						<Rate allowHalf value={+movieShowtime.danhGia} />
+						{/* ĐÁNH GIÁ */}
+						<div className="space-y-3 w-[18%] flex items-center flex-col flex-shrink-0">
+							<Progress strokeColor={"#7ed321"} type="circle" percent={(+movieShowtime.danhGia / 5) * 100} />
+							<Rate allowHalf value={+movieShowtime.danhGia} />
+						</div>
 					</div>
 				</div>
 
 				{/* SOUND */}
-				<div className="absolute bottom-[20%] right-0 ">
+				<div className="absolute bottom-[18%] right-0 ">
 					<div
 						className="flex items-center
                         gap-2

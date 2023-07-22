@@ -100,7 +100,7 @@ const ModalMovie = () => {
 
 		showImgModalMovie("opacity 0.2s");
 
-		hideBtnMuteModalMovie()
+		hideBtnMuteModalMovie();
 
 		modalMovieEl.style.transform = "scale(1)";
 

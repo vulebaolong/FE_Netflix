@@ -99,8 +99,8 @@
 	border-radius: 0.5rem;
 	overflow: hidden;
 }
-#rc-tabs-0-panel-0{
-	padding-left: 0;
+.ant-tabs-tabpane{
+	padding-left: 0 !important;
 }
 .ant-popover {
 	z-index: 1001;

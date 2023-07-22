@@ -34,7 +34,6 @@ function Banner({ listMovie }) {
 		player.seekTo(0);
 		dispatch(setPlayingBannerREDU(true));
 		dispatch(setEndedBannerREDU(false));
-		imgHeroRef.current.classList.remove(style.showImg);
 	};
 	const toggleMute = () => {
 		if (playingBanner) {
@@ -46,9 +45,11 @@ function Banner({ listMovie }) {
 	};
 	const onPause = () => {
 		console.log("onPause");
+		imgHeroRef.current.style.opacity = 1;
 	};
 	const onPlay = () => {
 		console.log("onPlay");
+		imgHeroRef.current.style.opacity = 0;
 	};
 	const onEnded = () => {
 		console.log("onEnded");
@@ -60,8 +61,7 @@ function Banner({ listMovie }) {
 		// console.log("playedSeconds", playedSeconds);
 		// console.log("timePause", timePause);
 		// console.log(playedSeconds > timePause);
-		if (playedSeconds > timePause) {
-			imgHeroRef.current.classList.add(style.showImg);
+		if (playedSeconds > 5) {
 			dispatch(setPlayingBannerREDU(false));
 			dispatch(setEndedBannerREDU(true));
 		}
@@ -115,7 +115,7 @@ function Banner({ listMovie }) {
 
 	const handleBuyMovie = (movie) => {
 		console.log(movie);
-		navigate(`/detail/${movie.maPhim}`)
+		navigate(`/detail/${movie.maPhim}`);
 	};
 	return (
 		<section
@@ -155,17 +155,14 @@ function Banner({ listMovie }) {
 			</div>
 
 			{/* IMG */}
-			<div className="IMG absolute w-full h-full">
-				<img
-					ref={imgHeroRef}
-					style={{
-						width: "100%",
-						height: "100%",
-						transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
-					}}
-					className="opacity-0 object-cover"
-					src={movie?.hinhAnh}
-				/>
+			<div
+				className="IMG absolute w-full h-full opacity-1"
+				ref={imgHeroRef}
+				style={{
+					transition: "opacity .4s cubic-bezier(.665,.235,.265,.8) 0s",
+				}}
+			>
+				<img className="object-cover w-full h-full" src={movie?.hinhAnh} />
 			</div>
 
 			{/* VIGNETTE */}

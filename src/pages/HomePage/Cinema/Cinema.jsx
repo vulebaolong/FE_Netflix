@@ -28,7 +28,7 @@ function Cinema() {
 		const contentPhim = () =>
 			danhSachPhim.map((phim, index) => {
 				return (
-					<div className="py-5" key={index}>
+					<div className="p-5" key={index}>
 						<div className="space-y-3">
 							<div className="flex gap-2 items-center">
 								<div
