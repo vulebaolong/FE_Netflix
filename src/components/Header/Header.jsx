@@ -37,7 +37,7 @@ function Header() {
 	return (
 		<>
 			<div
-				className={`headerScroll w-1/2 top-0 left-10 bg-red-500/50 z-30 absolute
+				className={`headerScroll w-1/2 top-0 left-10 bg-red-500/0 z-30 absolute
 				h-header
 				sm:h-header_sm
 				md:h-header_md

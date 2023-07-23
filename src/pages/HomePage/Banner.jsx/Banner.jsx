@@ -216,9 +216,6 @@ function Banner({ listMovie }) {
                             "
 						>
 							<Button
-								onClick={() => {
-									handleBuyMovie(movie);
-								}}
 								className="flex items-center
 								py-0 px-2 gap-1
                                 sm:py-1 sm:px-2 sm:gap-3
@@ -249,7 +246,7 @@ function Banner({ listMovie }) {
                                     2xl:text-2xl
                                     "
 								>
-									Mua vé
+									Đặt vé
 								</span>
 							</Button>
 							<Button
@@ -259,6 +256,9 @@ function Banner({ listMovie }) {
                                 2xl:py-3 2xl:px-6
                                 "
 								type="tertiary"
+								onClick={() => {
+									handleBuyMovie(movie);
+								}}
 							>
 								<IconInfo width={35} height={35} />
 								<span className="text-2xl font-semibold ">Thông tin khác</span>

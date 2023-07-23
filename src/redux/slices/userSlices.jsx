@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { userApi } from "../../api/userApi";
 import { openMess } from "./notiSlices";
 import { navigate } from "../../App";

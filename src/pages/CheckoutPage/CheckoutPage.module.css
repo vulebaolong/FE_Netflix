@@ -1,0 +1,43 @@
+.screen {
+	border-radius: 52% 48% 48% 52%/100% 100% 0 0;
+	-webkit-filter: drop-shadow(4px 20px 20px rgba(109, 119, 132, 0.5));
+	filter: drop-shadow(4px 20px 20px rgba(109, 119, 132, 0.5));
+	height: 20px;
+}
+
+/* Ghế Thường */
+.ghe {
+	@apply w-9 h-9 rounded-md flex flex-col justify-between items-center p-1;
+}
+
+.ghe > div:first-child {
+	@apply flex-1 flex justify-center items-center;
+}
+
+.ghe > div:last-child {
+	@apply w-10/12 h-1/6 bg-slate-200 rounded-sm;
+}
+
+.gheThuong {
+	@apply bg-slate-600 cursor-pointer;
+}
+
+.gheVip {
+	@apply bg-yellow-500 cursor-pointer;
+}
+
+.gheDangChon {
+	@apply bg-green-500 cursor-pointer;
+}
+
+.gheDuocMua,
+.gheDaMua {
+	@apply bg-cyan-500 cursor-not-allowed;
+}
+
+.gheDaMua {
+}
+
+.gheDuocMua i {
+	@apply text-slate-200;
+}

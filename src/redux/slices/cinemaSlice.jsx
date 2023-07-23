@@ -4,7 +4,6 @@ import { cinemaApi } from "../../api/cinemaApi";
 
 const initialState = {
 	cinemaSystem: [],
-	movieShowtime: {},
 };
 
 const cinemaSlice = createSlice({
@@ -14,13 +13,10 @@ const cinemaSlice = createSlice({
 		getCinemaSystemREDU: (state, { payload }) => {
 			state.cinemaSystem = payload;
 		},
-		getMovieShowtimeREDU: (state, { payload }) => {
-			state.movieShowtime = payload;
-		},
 	},
 });
 
-export const { getCinemaSystemREDU, getMovieShowtimeREDU } = cinemaSlice.actions;
+export const { getCinemaSystemREDU } = cinemaSlice.actions;
 
 export default cinemaSlice.reducer;
 
@@ -38,15 +34,3 @@ export const getCinemaSystemMID = () => {
 	};
 };
 
-//getMovieShowtimeMID
-export const getMovieShowtimeMID = (requestData) => {
-	return async (dispatch) => {
-		try {
-			const { data, status } = await cinemaApi.getMovieShowtime(requestData);
-			console.log("getMovieShowtimeMID", { data, status });
-			dispatch(getMovieShowtimeREDU(data.content));
-		} catch (error) {
-			console.log(error);
-		}
-	};
-};

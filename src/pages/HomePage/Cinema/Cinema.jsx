@@ -14,6 +14,7 @@ function Cinema() {
 
 	const renderListMovie = (danhSachPhim, diaChi) => {
 		const contentLichChieu = (movie) => {
+			console.log("movie",movie);
 			return movie.lstLichChieuTheoPhim.map((item, index) => {
 				const time = moment(item.ngayChieuGioChieu).format("hh:MM A");
 				return (
@@ -117,7 +118,7 @@ function Cinema() {
 				children: renderListMovie(cumRap.danhSachPhim, cumRap.diaChi),
 			};
 		});
-		return <Tabs tabPosition="left" items={items} style={{ height: "465px" }} />;
+		return <Tabs tabPosition="left" items={items} className="max-h-[465px]" />;
 	};
 
 	const renderCinema = () => {

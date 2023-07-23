@@ -31,13 +31,80 @@ function Footer() {
 		<footer className={`${style.content_footer} ${backgroundColor()} pt-24 w-full`}>
 			<div className={`${containerFooter()}`}>
 				<div className="md:flex md:justify-between">
-					<div className="">
-						<Logo
-							onClick={() => {
-								navigate("/");
-							}}
-							className="w-[9.25rem] h-[2.5rem]"
-						/>
+					<div
+						className="flex flex-col lg:justify-between overflow-hidden 
+						space-y-10
+						lg:space-y-0
+						"
+					>
+						<Logo onClick={() => navigate("/")} className="w-[9.25rem] h-[2.5rem]" />
+
+						{/* INFO */}
+						<ul className="text-gray-500 dark:text-gray-500 font-medium space-y-2">
+							<li>
+								<p className="truncate">
+									<strong>Address</strong>
+									<span className={`dark:hover:text-gray-200 ${style.footer_item}`}> : Việt Nam</span>
+								</p>
+							</li>
+							<li>
+								<p className="truncate">
+									<strong>Phone</strong> :
+									<a className={`dark:hover:text-gray-200 ${style.footer_item}`} href="tel:+(12)234-11-24">
+										+(12)234-11-24
+									</a>
+								</p>
+							</li>
+							<li>
+								<p className="truncate">
+									<strong>Email</strong> :
+									<a className={`dark:hover:text-gray-200 ${style.footer_item}`} href="mailto:example@mail.com">
+										example@mail.com
+									</a>
+								</p>
+							</li>
+						</ul>
+
+						{/* SOCIAL */}
+						<div
+							className="flex space-x-5 
+							 mt-3
+							sm:mt-0 
+							"
+						>
+							<a
+								target="_blank"
+								rel="noreferrer"
+								href="https://www.facebook.com/profile.php?id=100073114167973"
+								className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
+							>
+								<FaFacebookF size={20} />
+							</a>
+							<a
+								target="_blank"
+								rel="noreferrer"
+								href="https://github.com/vulebaolong"
+								className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
+							>
+								<FaGithub size={20} />
+							</a>
+							<a
+								target="_blank"
+								rel="noreferrer"
+								href="https://www.instagram.com/vulebaolong/"
+								className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
+							>
+								<FaInstagram size={20} />
+							</a>
+							<a
+								target="_blank"
+								rel="noreferrer"
+								href="mailto:vulebaolong@gmail.com"
+								className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
+							>
+								<FaGoogle size={20} />
+							</a>
+						</div>
 					</div>
 					<div
 						className="grid 
@@ -152,7 +219,7 @@ function Footer() {
 				</div>
 			</div>
 			<hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-			<div className={`${containerFooter()} sm:flex sm:items-center sm:justify-between pb-6`}>
+			<div className={`${containerFooter()} sm:flex sm:items-center justify-center pb-6`}>
 				<p
 					className="text-sm text-gray-500 sm:text-center dark:text-gray-400
 					text-center
@@ -164,45 +231,6 @@ function Footer() {
 					</a>
 					<span>. All Rights Reserved.</span>
 				</p>
-				<div
-					className="flex space-x-5 
-					justify-center mt-3
-					sm:mt-0 sm:justify-center 
-					"
-				>
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="https://www.facebook.com/profile.php?id=100073114167973"
-						className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
-					>
-						<FaFacebookF size={20} />
-					</a>
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="https://github.com/vulebaolong"
-						className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
-					>
-						<FaGithub size={20} />
-					</a>
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="https://www.instagram.com/vulebaolong/"
-						className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
-					>
-						<FaInstagram size={20} />
-					</a>
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="mailto:vulebaolong@gmail.com"
-						className={`text-gray-500 hover:text-gray-900 dark:hover:text-white transition ${style.footer_item}`}
-					>
-						<FaGoogle size={20} />
-					</a>
-				</div>
 			</div>
 		</footer>
 	);
