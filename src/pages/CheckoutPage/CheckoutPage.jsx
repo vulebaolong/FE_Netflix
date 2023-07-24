@@ -1,4 +1,6 @@
 import Left from "./Left/Left";
+import Right from "./Right/Right";
+import Step from "./Step/Step";
 
 function CheckoutPage() {
 	return (
@@ -10,7 +12,13 @@ function CheckoutPage() {
 			xl:pt-header_xl
 			2xl:pt-header_2xl"
 		>
-			<Left />
+			<Step />
+			<div className="container">
+				<div className="flex flex-col lg:flex-row w-full justify-between items-center gap-2">
+					<Left />
+					<Right />
+				</div>
+			</div>
 		</section>
 	);
 }

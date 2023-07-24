@@ -21,3 +21,4 @@ export const store = configureStore({
 		ticketSlice
 	},
 });
+

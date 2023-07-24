@@ -7,7 +7,7 @@
 
 /* Ghế Thường */
 .ghe {
-	@apply w-9 h-9 rounded-md flex flex-col justify-between items-center p-1;
+	@apply w-7 h-7 xl:w-8 xl:h-8 2xl:w-9 2xl:h-9 rounded-md flex flex-col justify-between items-center p-1;
 }
 
 .ghe > div:first-child {

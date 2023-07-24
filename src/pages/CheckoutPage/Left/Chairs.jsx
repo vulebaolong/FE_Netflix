@@ -57,7 +57,7 @@ function Chairs() {
 
 			if (indexGheBanChon !== -1) {
 				const element = (
-					<span className="text-slate-200 text-xs">
+					<span className="text-slate-200 text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
 						<strong>{data.tenGhe}</strong>
 					</span>
 				);
@@ -79,15 +79,15 @@ function Chairs() {
 		return list.map((hang, index) => {
 			const letter = String.fromCharCode("A".charCodeAt(0) + index);
 			return (
-				<div className="flex gap-3" key={index}>
-					<div className="w-9 h-9 flex items-center justify-center">
+				<div className="flex gap-2 xl:gap-3" key={index}>
+					<div className=" w-7 flex items-center justify-center">
 						<strong>{letter}</strong>
 					</div>
-					<div className="flex gap-2">{renderGhe(hang, letter)}</div>
+					<div className="flex gap-1 xl:gap-2">{renderGhe(hang, letter)}</div>
 				</div>
 			);
 		});
 	};
-	return <div className="space-y-3">{renderHang()}</div>;
+	return <div className="flex flex-col items-center space-y-1 xl:space-y-3">{renderHang()}</div>;
 }
 export default Chairs;

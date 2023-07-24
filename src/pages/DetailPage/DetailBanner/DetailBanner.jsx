@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import IconUnMute from "../../../components/Icons/IconUnMute";
 import IconRotate from "../../../components/Icons/IconRotate";
 import IconMute from "../../../components/Icons/IconMute";
+import { Link } from "react-scroll";
 const { Paragraph } = Typography;
 
 function DetailBanner() {
@@ -107,24 +108,27 @@ function DetailBanner() {
 	};
 	const handleBuyMovie = () => {};
 	return (
-		<div className="pb-40 pt-32 relative">
+		<section className="pb-40 pt-32 relative">
+			{/* IMG BLUR */}
 			<div className="absolute w-full h-full top-0 left-0 overflow-hidden ">
-				<img style={{ filter: "blur(20px)" }} className="object-cover w-full h-full" src={movieDetail?.hinhAnh} />
+				<img style={{ filter: "blur(25px)" }} className="object-cover w-full h-full" src={movieDetail?.hinhAnh} />
 			</div>
+
 			{/* VIGNETTE */}
 			<div
 				className="VIGNETTE w-full h-full absolute top-0 left-0"
 				style={{
-					background: "linear-gradient(180deg, rgba(20,20,20,0) 0%, rgba(20,20,20,0) 80%, rgba(20,20,20,0.1) 90%, rgba(20,20,20,1) 100%)",
+					background: "linear-gradient(180deg, rgba(20,20,20,0) 0%, rgba(20,20,20,0) 80%, rgba(20,20,20,0.1) 85%, rgba(20,20,20,1) 100%)",
 				}}
 			></div>
+
+			{/* TAG */}
 			<div className="container">
-				<section
+				<div
 					className="banner  aspect-[1920/1080] w-full relative bg-backgroundHome 
 				rounded-3xl border-[1px] border-[rgba(255,255,255,0.3)] overflow-hidden
 				shadow-[rgba(0,0,0,0.25)_0px_54px_55px,rgba(0,0,0,0.12)_0px_-12px_30px,rgba(0,0,0,0.12)_0px_4px_6px,rgba(0,0,0,0.17)_0px_12px_13px,rgba(0,0,0,0.09)_0px_-3px_5px]
-            "
-					// shadow-[0px_5px_15px_rgba(0,0,0,0.35)]
+            	"
 				>
 					{/* VIDEO -top-[3.2vw]*/}
 					<div className="VIDEO absolute w-full aspect-[1920/1080] overflow-hidden">
@@ -162,80 +166,73 @@ function DetailBanner() {
 						<div className="container-home">
 							<div
 								className="p-10 rounded-3xl flex items-center gap-7
-						
-						justify-center
-						xl:justify-start
-						"
+								justify-center
+								xl:justify-start
+								"
 							>
-								{/* HÌNH ẢNH */}
-								{/* <div className="w-[18%] flex-shrink-0">
-								<img src={movieDetail.hinhAnh} className="w-full rounded-2xl" alt="" />
-							</div> */}
-
 								{/* TEXT AND BUTTON */}
 								<div className=" flex-grow overflow-hidden">
 									<h1
 										className="font-black truncate leading-none
-									text-base text-center mb-2
-									sm:text-2xl sm:mb-4
-									lg:text-4xl
-									xl:text-start
-									"
+										text-base text-center mb-2
+										sm:text-2xl sm:mb-4
+										lg:text-4xl
+										xl:text-start
+										"
 									>
 										{movieDetail?.tenPhim}
 									</h1>
 									<Paragraph
 										ellipsis={{ rows: 3 }}
 										className="font-medium text-[1.2vw] text-white
-									hidden
-									xl:[display:-webkit-box]
-									"
+										hidden
+										xl:[display:-webkit-box]
+										"
 									>
 										{movieDetail?.moTa}
 									</Paragraph>
 									<div
 										className="flex gap-3
-									mt-3 justify-center
-									xl:mt-0 xl:justify-start
-									"
-									>
-										<Button
-											onClick={() => {
-												handleBuyMovie();
-											}}
-											className="flex items-center
-										py-0 px-2 gap-1
-										sm:py-1 sm:px-2 sm:gap-3
-										md:py-2 md:px-3
-										lg:py-2 lg:px-4
-										xl:py-3 xl:px-5
-										2xl:py-3 2xl:px-6
+										mt-3 justify-center
+										xl:mt-0 xl:justify-start
 										"
-											type="secondary"
-										>
-											<IconPlay
-												className="
-											w-2 h-2
-											sm:w-3 sm:h-3
-											md:w-4 md:h-4
-											lg:w-4 lg:h-4
-											xl:w-5 xl:h-5
-											2xl:w-6 2xl:h-6
+									>
+										<Link to="detailTab" smooth={true} duration={500}>
+											<Button
+												className="flex items-center
+											py-0 px-2 gap-1
+											sm:py-1 sm:px-2 sm:gap-3
+											md:py-2 md:px-3
+											lg:py-2 lg:px-4
+											xl:py-3 xl:px-5
+											2xl:py-3 2xl:px-6
 											"
-											/>
-											<span
-												className=" font-semibold
-											text-[10px]
-											sm:text-sm
-											md:text-sm
-											lg:text-base
-											xl:text-2xl
-											2xl:text-2xl
-											"
+												type="secondary"
 											>
-												Mua vé
-											</span>
-										</Button>
+												<IconPlay
+													className="
+												w-2 h-2
+												sm:w-3 sm:h-3
+												md:w-4 md:h-4
+												lg:w-4 lg:h-4
+												xl:w-5 xl:h-5
+												2xl:w-6 2xl:h-6
+												"
+												/>
+												<span
+													className=" font-semibold
+												text-[10px]
+												sm:text-sm
+												md:text-sm
+												lg:text-base
+												xl:text-2xl
+												2xl:text-2xl
+												"
+												>
+													Mua vé
+												</span>
+											</Button>
+										</Link>
 									</div>
 								</div>
 
@@ -291,9 +288,9 @@ function DetailBanner() {
 							</div>
 						</div>
 					</div>
-				</section>
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 }
 export default DetailBanner;
