@@ -26,7 +26,7 @@ function LoginPage() {
 								rules={[
 									{
 										required: true,
-										message: "Please input your Username!",
+										message: "Xin vui lòng nhập tên của bạn!",
 									},
 								]}
 							>
@@ -46,7 +46,7 @@ function LoginPage() {
 
 							<Form.Item>
 								<Button type="primary" size="big" htmlType="submit" className="login-form-button">
-									Log in
+									Log in 
 								</Button>
 								Or <a href="">register now!</a>
 							</Form.Item>
