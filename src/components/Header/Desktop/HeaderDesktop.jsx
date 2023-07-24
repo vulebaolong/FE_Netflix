@@ -14,7 +14,7 @@ function HeaderDesktop() {
 
 		if (lcStorage.get(USER_LOGIN)) jsx = <LoggedDesktop />;
 
-		if (pathname === "/login" || pathname === "/signup") jsx = <></>;
+		if (pathname === "/login" || pathname === "/register") jsx = <></>;
 
 		return jsx;
 	};

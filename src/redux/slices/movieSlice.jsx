@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { userApi } from "../../api/userApi";
-import axios from "axios";
+import { movieApi } from "../../api/movieApi";
 
 const initialState = {
 	listMovie: [],
@@ -25,7 +24,7 @@ export default movieSlice.reducer;
 export const getListMovieMID = () => {
 	return async (dispatch) => {
 		try {
-			const { data, status } = await userApi.getListMoive();
+			const { data, status } = await movieApi.getListMoive();
 			console.log("getListMovieMID", { data, status });
 			dispatch(getListMovieREDU(data.content));
 		} catch (error) {

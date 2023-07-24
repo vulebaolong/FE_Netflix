@@ -17,7 +17,6 @@ function DetailPage() {
 		<div className="bg-backgroundHome">
 			<DetailBanner />
 			<DetailTab />
-			<Divide />
 			<Comment />
 		</div>
 	);

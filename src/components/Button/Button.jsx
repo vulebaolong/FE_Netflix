@@ -44,7 +44,7 @@ const Button = forwardRef((props, ref) => {
 			break;
 
 		case "medium":
-			classNameSize = "py-2 px-6";
+			classNameSize = "py-2 px-5";
 			break;
 
 		case "small":

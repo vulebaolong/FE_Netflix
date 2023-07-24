@@ -5,7 +5,10 @@ export const userApi = {
 	login: (data) => {
 		return axios.post(`/QuanLyNguoiDung/DangNhap?maNhom=${MANHOM}`, data);
 	},
-	getListMoive: () => {
-		return axios.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=${MANHOM}`);
+	register: (data) => {
+		return axios.post(`/QuanLyNguoiDung/DangKy?maNhom=${MANHOM}`, data);
+	},
+	getInfoAccount: () => {
+		return axios.post(`/QuanLyNguoiDung/ThongTinTaiKhoan?maNhom=${MANHOM}`);
 	},
 };

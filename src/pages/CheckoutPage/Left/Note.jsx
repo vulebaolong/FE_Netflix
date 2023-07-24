@@ -1,7 +1,10 @@
 import { Avatar } from "antd";
 import Ghe from "./Ghe";
+import { useSelector } from "react-redux";
 
 function Note() {
+	const {  numAvatar } = useSelector((state) => state.userSlices);
+
     return (
         <div className="grid grid-cols-6 gap-2 mx-auto" style={{ width: "100%" }}>
             {/* Ghế thường */}
@@ -43,7 +46,7 @@ function Note() {
             <Ghe
                 type="gheDaMua"
                 note="Ghế bạn mua"
-                element={<Avatar src={`https://picsum.photos/200`} size={20} />}
+                element={<Avatar src={`https://i.pravatar.cc/150?img=${numAvatar}`} size={20} />}
             />
         </div>
     );

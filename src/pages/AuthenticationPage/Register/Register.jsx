@@ -1,19 +1,20 @@
-import { KeyOutlined, MailOutlined, PhoneOutlined, UserOutlined } from "@ant-design/icons";
+import { KeyOutlined, ContactsOutlined, MailOutlined, PhoneOutlined, UserOutlined } from "@ant-design/icons";
 import { Form, Input } from "antd";
 import { NavLink } from "react-router-dom";
 import Button from "../../../components/Button/Button";
+import { useDispatch } from "react-redux";
+import { registerMID } from "../../../redux/slices/userSlices";
 
-function Signup() {
+function Register() {
+	const dispatch = useDispatch();
 	const onFinish = (values) => {
 		console.log("Success:", values);
+		dispatch(registerMID(values));
 	};
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
 	};
 
-	const handleButton = () => {
-		// errorRef.current.classList.add(style.openError);
-	};
 	return (
 		<>
 			<div
@@ -43,7 +44,7 @@ function Signup() {
 						]}
 						hasFeedback
 					>
-						<Input size="large" prefix={<UserOutlined />} placeholder="Họ và tên" autoComplete="off" />
+						<Input size="large" prefix={<ContactsOutlined />} placeholder="Họ và tên" autoComplete="off" />
 					</Form.Item>
 
 					{/* TÀI KHOẢN */}
@@ -119,7 +120,7 @@ function Signup() {
 					</Form.Item>
 
 					<Form.Item className="mt-5">
-						<Button htmlFor={"submit"} type={"primary"} size={"big"} onClick={handleButton} className="w-full mt-1">
+						<Button htmlFor={"submit"} type={"primary"} size={"big"} className="w-full mt-1">
 							<span className="text-xl font-semibold text-white">Đăng ký</span>
 						</Button>
 
@@ -135,4 +136,4 @@ function Signup() {
 		</>
 	);
 }
-export default Signup;
+export default Register;

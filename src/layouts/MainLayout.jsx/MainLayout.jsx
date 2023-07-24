@@ -15,12 +15,12 @@ function MainLayout() {
 	}, [pathname]);
 
 	const isBackgroundAuth = () => {
-		if (pathname === "/login" || pathname === "/signup") return true;
+		if (pathname === "/login" || pathname === "/register") return true;
 		return false;
 	};
 
 	const renderBackgroundAuth = () => {
-		if (pathname === "/login" || pathname === "/signup") return <BackgroundAuth />;
+		if (pathname === "/login" || pathname === "/register") return <BackgroundAuth />;
 		if (pathname === "/logout") return <BackgroundLogout />;
 	};
 

@@ -10,6 +10,7 @@ function Login() {
 	const [messageApi, contextHolder] = message.useMessage();
 	const dispatch = useDispatch();
 	const { type, mes, isOpen } = useSelector((state) => state.notiSlices);
+	const { infoAfterRegister } = useSelector((state) => state.userSlices);
 	const onFinish = (values) => {
 		dispatch(loginMID(values));
 	};
@@ -41,7 +42,7 @@ function Login() {
 				<h1 className="text-3xl font-medium mb-10">Đăng nhập</h1>
 
 				{/* Form */}
-				<Form name="basic" layout={"vertical"} initialValues={{ remember: true }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+				<Form name="basic" layout={"vertical"} initialValues={infoAfterRegister} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
 					<Form.Item
 						name="taiKhoan"
 						rules={[
@@ -101,7 +102,7 @@ function Login() {
 					</div>
 					<p className="text-sm py-4 font-medium text-center sm:px-6 dark:text-gray-300">
 						<span>Bạn mới tham gia Netflix? </span>
-						<NavLink to={"/signup"} className="underline dark:text-gray-100">
+						<NavLink to={"/register"} className="underline dark:text-gray-100">
 							Đăng ký ngay.
 						</NavLink>
 					</p>

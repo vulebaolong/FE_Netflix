@@ -1,5 +1,7 @@
 import axios from "axios";
-import { BASE_URL, MANHOM, TOKEN_CYBERSOFT } from "../contants/apiContants";
+import { BASE_URL, TOKEN_CYBERSOFT } from "../contants/apiContants";
+import { lcStorage } from "./../helpers/localStorage";
+import { USER_LOGIN } from "./../contants/userContants";
 
 // Thiết lập URL cơ sở
 axios.defaults.baseURL = BASE_URL;
@@ -12,6 +14,8 @@ axios.interceptors.request.use(
 		// Kết hợp URL cơ sở và phần đường dẫn cụ thể
 		config.url = `${axios.defaults.baseURL}${config.url}`;
 		config.headers.TokenCybersoft = TOKEN_CYBERSOFT;
+		config.headers.Authorization = `Bearer ${lcStorage.get(USER_LOGIN)?.accessToken}`;
+		
 
 		return config;
 	},

@@ -7,28 +7,36 @@ import { USER_LOGIN } from "../../../contants/userContants";
 import { navigate } from "../../../App";
 import { resetUserREDU } from "../../../redux/slices/userSlices";
 import { resetNotiREDU } from "../../../redux/slices/notiSlices";
-
-const numRandom = Math.floor(Math.random() * 70) + 1;
+import { useState } from "react";
 
 function LoggedDesktop() {
-	const dispatch = useDispatch()
-	const { userLogin } = useSelector((state) => state.userSlices);
+	const [open, setOpen] = useState(false);
+	const dispatch = useDispatch();
+	const { userLogin, numAvatar } = useSelector((state) => state.userSlices);
 	const handleLogout = () => {
 		lcStorage.remove(USER_LOGIN);
-		dispatch(resetUserREDU())
-		dispatch(resetNotiREDU())
-        navigate('/logout')
+		dispatch(resetUserREDU());
+		dispatch(resetNotiREDU());
+		navigate("/logout");
+	};
+	const handleThongTinDatVe = () => {
+		navigate("/history");
+		setOpen(false);
+	};
+	const handleOpenChange = (newOpen) => {
+		setOpen(newOpen);
 	};
 	const content = (
 		<div className=" w-72 whitespace-normal text-[#e4e6eb]">
 			<div className="flex gap-3 items-center px-3 py-1 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer rounded-md">
-				<Avatar className="flex-shrink-0" src={<img src={`https://i.pravatar.cc/150?img=${numRandom}`} alt="avatar" />} size="large" />
+				<Avatar className="flex-shrink-0" src={<img src={`https://i.pravatar.cc/150?img=${numAvatar}`} alt="avatar" />} size="large" />
 				<p className="text-base font-bold truncate ">{userLogin.hoTen}</p>
 				{userLogin.maLoaiNguoiDung === "KhachHang" ? <Tag color="green">khách hàng</Tag> : <Tag color={COLOR_PRIMARY}>admin</Tag>}
 			</div>
+
 			<hr className="border-gray-600 my-3" />
 
-			<div className="flex items-center gap-3 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer py-1 px-3 rounded-md">
+			<div onClick={handleThongTinDatVe} className="flex items-center gap-3 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer py-1 px-3 rounded-md">
 				<div className="rounded-full shadow-md bg-white/10 p-[6px]">
 					<IoIosInformationCircleOutline className="text-3xl" />
 				</div>
@@ -52,8 +60,14 @@ function LoggedDesktop() {
 	);
 	return (
 		<div>
-			<Popover content={content} trigger="hover" placement="bottomRight">
-				<Avatar src={<img src={`https://i.pravatar.cc/150?img=${numRandom}`} alt="avatar" />} size={50} />
+			<Popover onOpenChange={handleOpenChange} open={open} className="cursor-pointer" content={content} trigger="click" placement="bottomRight">
+				<Avatar
+					onClick={() => {
+						setOpen(true);
+					}}
+					src={<img src={`https://i.pravatar.cc/150?img=${numAvatar}`} alt="avatar" />}
+					size={50}
+				/>
 			</Popover>
 		</div>
 	);

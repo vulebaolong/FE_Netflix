@@ -4,6 +4,7 @@ import { ticketApi } from "./../../api/ticketApi";
 const initialState = {
 	thongTinPhim: {},
 	danhSachGhe: {},
+    danhSachPhongVe: {},
     danhSachGheDangChon: [],
 	danhSachGheNguoiKhacChon: [{ maGhe: 69962 }, { maGhe: 69963 }],
 	thanhToan: "0",
@@ -34,10 +35,16 @@ const ticketSlice = createSlice({
                 state.danhSachGheDangChon.push(ghe);
             }
         },
+		selectedThanhToanREDU: (state, { payload }) => {
+            state.thanhToan = payload;
+        },
+		setDatVeREDU: (state, { payload }) => {
+            state.isDatVe = payload;
+        },
 	},
 });
 
-export const { layDanhSachPhongVeREDU, gheDangChonREDU } = ticketSlice.actions;
+export const {setDatVeREDU, layDanhSachPhongVeREDU, gheDangChonREDU, selectedThanhToanREDU } = ticketSlice.actions;
 
 export default ticketSlice.reducer;
 
@@ -56,3 +63,21 @@ export const layDanhSachPhongVeMID = (requestData) => {
 		}
 	};
 };
+
+// datVeMID
+export const datVeMID = (requestData) => {
+    return async (dispatch) => {
+        try {
+            console.log(requestData);
+            const { data, status } = await ticketApi.datVe(requestData);
+            console.log("datVeMID", { data, status });
+
+            await dispatch(layDanhSachPhongVeMID(requestData.maLichChieu));
+            // await dispatch(setDatVeREDU(true));
+            // dispatch(showHideModalDatVeREDU("show"));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+

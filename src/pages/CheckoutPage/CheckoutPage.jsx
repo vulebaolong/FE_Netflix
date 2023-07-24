@@ -14,7 +14,7 @@ function CheckoutPage() {
 		>
 			<Step />
 			<div className="container">
-				<div className="flex flex-col lg:flex-row w-full justify-between items-center gap-2">
+				<div className="flex flex-col lg:flex-row w-full justify-between items-center gap-5">
 					<Left />
 					<Right />
 				</div>

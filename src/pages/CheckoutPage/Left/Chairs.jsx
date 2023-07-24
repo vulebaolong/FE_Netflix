@@ -15,7 +15,7 @@ function Chairs() {
 		dispatch(layDanhSachPhongVeMID(id));
 	}, []);
 	const { danhSachGhe, danhSachGheNguoiKhacChon, danhSachGheDangChon } = useSelector((state) => state.ticketSlice);
-	const { userLogin } = useSelector((state) => state.userSlices);
+	const { userLogin, numAvatar } = useSelector((state) => state.userSlices);
 	// Chia mảng gốc thành các mảng con có 16 phần tử và chỉ lấy 10 phần tử đầu tiên
 	const list = _.chunk(danhSachGhe, 16).slice(0, 10);
 	const renderGhe = (hang, letter) => {
@@ -26,7 +26,7 @@ function Chairs() {
 
 			// GHẾ BẠN MUA
 			if (ghe.taiKhoanNguoiDat === userLogin.taiKhoan) {
-				const element = <Avatar src={`https://picsum.photos/200`} size={20} />;
+				const element = <Avatar src={`https://i.pravatar.cc/150?img=${numAvatar}`} size={20} />;
 				return <Ghe type={"gheDaMua"} key={index} element={element} />;
 			}
 

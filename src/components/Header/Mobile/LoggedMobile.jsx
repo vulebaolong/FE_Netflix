@@ -8,11 +8,10 @@ import { resetUserREDU } from "../../../redux/slices/userSlices";
 import { resetNotiREDU } from "../../../redux/slices/notiSlices";
 import { navigate } from "../../../App";
 import { setOpenHeaderMobile } from "../../../redux/slices/drawerSlice";
-const numRandom = Math.floor(Math.random() * 70) + 1;
 
 function LoggedMobile() {
 	const dispatch = useDispatch();
-	const { userLogin } = useSelector((state) => state.userSlices);
+	const { userLogin, numAvatar } = useSelector((state) => state.userSlices);
 	const handleLogout = () => {
 		lcStorage.remove(USER_LOGIN);
 		navigate("/logout");
@@ -23,7 +22,7 @@ function LoggedMobile() {
 	return (
 		<div className=" whitespace-normal text-[#e4e6eb]">
 			<div className="shadow-lg flex gap-3 items-center px-3 py-5 border border-white/10 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer rounded-md">
-				<Avatar className="flex-shrink-0" src={<img src={`https://i.pravatar.cc/150?img=${numRandom}`} alt="avatar" />} size="large" />
+				<Avatar className="flex-shrink-0" src={<img src={`https://i.pravatar.cc/150?img=${numAvatar}`} alt="avatar" />} size="large" />
 				<p className="text-base font-bold truncate ">{userLogin.hoTen}</p>
 				{userLogin.maLoaiNguoiDung === "KhachHang" ? <Tag color="green">khách hàng</Tag> : <Tag color={COLOR_PRIMARY}>admin</Tag>}
 			</div>

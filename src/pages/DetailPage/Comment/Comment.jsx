@@ -1,15 +1,20 @@
 import Button from "../../../components/Button/Button";
+import backgroundBanner from "../../../assets/landingPage/banner/banner.jpg";
+import BackgroundImg from "../../../components/BackgroundImg/BackgroundImg";
+
 
 function Comment() {
 	return (
-		<section className="py-24 ">
-			<div className="container">
+		<section className="py-24 relative">
+			{/* BACKGROUND IMG */}
+			<BackgroundImg />
+			<div className="container relative">
 				<div className=" mx-auto px-4 py-5 ">
-                    {/* TITLE */}
+					{/* TITLE */}
 					<div className="flex justify-start items-center mb-6">
 						<h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Bình luận (20)</h2>
 					</div>
-                    {/* LIST COMMENT */}
+					{/* LIST COMMENT */}
 					<div className="space-y-6 max-h-[500px] pr-2 overflow-y-auto ">
 						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
@@ -30,7 +35,7 @@ function Comment() {
 								design tools are as important as the creation of the design strategy.
 							</p>
 						</article>
-                        <article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
+						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
 								<div className="flex items-center">
 									<p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -49,7 +54,7 @@ function Comment() {
 								design tools are as important as the creation of the design strategy.
 							</p>
 						</article>
-                        <article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
+						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
 								<div className="flex items-center">
 									<p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -68,7 +73,7 @@ function Comment() {
 								design tools are as important as the creation of the design strategy.
 							</p>
 						</article>
-                        <article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
+						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
 								<div className="flex items-center">
 									<p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -87,7 +92,7 @@ function Comment() {
 								design tools are as important as the creation of the design strategy.
 							</p>
 						</article>
-                        <article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
+						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
 								<div className="flex items-center">
 									<p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -106,7 +111,7 @@ function Comment() {
 								design tools are as important as the creation of the design strategy.
 							</p>
 						</article>
-                        <article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
+						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
 								<div className="flex items-center">
 									<p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -125,7 +130,7 @@ function Comment() {
 								design tools are as important as the creation of the design strategy.
 							</p>
 						</article>
-                        <article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
+						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
 								<div className="flex items-center">
 									<p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -144,7 +149,7 @@ function Comment() {
 								design tools are as important as the creation of the design strategy.
 							</p>
 						</article>
-                        <article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
+						<article className="p-6 text-base bg-white rounded-lg dark:bg-[rgb(55,65,81)]">
 							<footer className="flex justify-between items-center mb-2">
 								<div className="flex items-center">
 									<p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -167,7 +172,7 @@ function Comment() {
 
 					<hr className="my-6 border-gray-700" />
 
-                    {/* POST COMMENT */}
+					{/* POST COMMENT */}
 					<form className="">
 						<div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
 							<label htmlFor="comment" className="sr-only">
