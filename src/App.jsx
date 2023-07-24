@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
 	return (
@@ -9,6 +10,7 @@ function App() {
 				<Routes>
 					<Route element={<MainLayout />}>
 						<Route index element={<LandingPage />} />
+						<Route path="login" element={<LoginPage />} />
 					</Route>
 
 					{/* <Route element={<UserLayout />}>

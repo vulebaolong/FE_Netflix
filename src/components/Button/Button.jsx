@@ -1,7 +1,7 @@
 import React from "react";
 
 function Button(props) {
-	const { type, size, children } = props;
+	const { htmlType, type, size, children } = props;
 	let classType = "";
 	let classSize = "";
 
@@ -19,7 +19,7 @@ function Button(props) {
 		classSize = "py-1 px-4";
 	}
 
-	return <button className={`${classType} ${classSize}  rounded-lg transition bg-`}>{children}</button>;
+	return <button type={htmlType} className={`${classType} ${classSize}  rounded-lg transition bg-`}>{children}</button>;
 }
 
 export default Button;

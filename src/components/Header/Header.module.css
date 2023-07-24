@@ -1,0 +1,18 @@
+.header {
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
+	transition: background-color 0.4s;
+	background-color: transparent;
+	position: fixed;
+	top: 0;
+	width: 100%;
+    @apply h-header
+}
+
+.header_fake{
+    height: 100px;
+}
+
+.header.sticky {
+	background: rgb(20, 20, 20);
+}
+
