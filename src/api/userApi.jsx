@@ -11,4 +11,9 @@ export const userApi = {
 	getInfoAccount: () => {
 		return axios.post(`/QuanLyNguoiDung/ThongTinTaiKhoan?maNhom=${MANHOM}`);
 	},
+	updateAccount: (data) => {
+		return axios.put(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, data);
+	},
 };
+
+

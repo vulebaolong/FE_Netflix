@@ -1,0 +1,10 @@
+.input input {
+	@apply bg-transparent;
+}
+.input {
+	box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 10px;
+}
+
+.form {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

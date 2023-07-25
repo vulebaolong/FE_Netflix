@@ -14,7 +14,6 @@ function Cinema() {
 
 	const renderListMovie = (danhSachPhim, diaChi) => {
 		const contentLichChieu = (movie) => {
-			console.log("movie",movie);
 			return movie.lstLichChieuTheoPhim.map((item, index) => {
 				const time = moment(item.ngayChieuGioChieu).format("hh:MM A");
 				return (

@@ -94,6 +94,17 @@
 }
 /* SCROLLBAR - end */
 
+:where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-ink-bar {
+	@apply bg-primary
+}
+:where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-tab:hover,
+:where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-tab-btn:focus:not(:focus-visible) {
+	@apply text-white
+}
+:where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+	@apply text-white/90
+}
+
 .ant-tabs-tab-btn {
 	width: 100%;
 	border-radius: 0.5rem;

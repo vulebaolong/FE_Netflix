@@ -10,6 +10,7 @@ const initialState = {
 	userLogin: lcStorage.get(USER_LOGIN),
 	numAvatar: Math.floor(Math.random() * 70) + 1,
 	infoTicket: [],
+	infoAccount: {},
 	infoAfterRegister: {
 		taiKhoan: "",
 		matKhau: "",
@@ -29,6 +30,9 @@ const userSlices = createSlice({
 		setInfoTicket: (state, { payload }) => {
 			state.infoTicket = payload;
 		},
+		setInfoAccount: (state, { payload }) => {
+			state.infoAccount = payload;
+		},
 		setInfoAfterRegister: (state, { payload }) => {
 			state.infoAfterRegister.taiKhoan = payload.taiKhoan;
 			state.infoAfterRegister.matKhau = payload.matKhau;
@@ -36,7 +40,7 @@ const userSlices = createSlice({
 	},
 });
 
-export const {setInfoAfterRegister, setInfoTicket, loginREDU, openMesREDU, resetUserREDU } = userSlices.actions;
+export const { setInfoAccount, setInfoAfterRegister, setInfoTicket, loginREDU, openMesREDU, resetUserREDU } = userSlices.actions;
 
 export default userSlices.reducer;
 
@@ -50,15 +54,19 @@ export const loginMID = (requestData) => {
 
 			console.log("loginMID", { data, status });
 
+			//lưu userLogin
 			dispatch(loginREDU(data.content));
+
+			//lưu localStorage
+			lcStorage.set(USER_LOGIN, data.content);
+
+			dispatch(setInfoAfterRegister({ taiKhoan: "", matKhau: "" }));
 
 			dispatch(openMess({ type: "success", mes: "Đăng nhập thành công" }));
 
 			await wait(1000);
 
 			navigate("/home");
-
-			lcStorage.set(USER_LOGIN, data.content);
 		} catch (error) {
 			console.log(error);
 			dispatch(openMess({ type: "error", mes: "Đăng nhập không thành công" }));
@@ -76,7 +84,7 @@ export const registerMID = (requestData) => {
 
 			navigate("/login");
 
-			dispatch(setInfoAfterRegister(data.content))
+			dispatch(setInfoAfterRegister(data.content));
 		} catch (error) {
 			console.log(error);
 		}
@@ -84,12 +92,29 @@ export const registerMID = (requestData) => {
 };
 
 //getInfoAccountMID
-export const getInfoAccountMID = (requestData) => {
+export const getInfoAccountMID = () => {
 	return async (dispatch) => {
 		try {
-			const { data, status } = await userApi.getInfoAccount(requestData);
+			const { data, status } = await userApi.getInfoAccount();
 			console.log("getInfoAccountMID", { data, status });
 			dispatch(setInfoTicket(data.content.thongTinDatVe));
+			dispatch(setInfoAccount(data.content));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+//updateAccountMID
+export const updateAccountMID = (requestData) => {
+	return async (dispatch) => {
+		try {
+			const { data, status } = await userApi.updateAccount(requestData);
+			console.log("updateAccountMID", { data, status });
+			if (data.content.maLoaiNguoiDung === "Khách hàng") {
+				data.content.maLoaiNguoiDung = "KhachHang";
+			}
+			dispatch(setInfoAccount(data.content));
 		} catch (error) {
 			console.log(error);
 		}

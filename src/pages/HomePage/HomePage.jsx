@@ -7,6 +7,7 @@ import Cinema from "./Cinema/Cinema";
 import Devices from "./Devices/Devices";
 import Divide from "../../components/Divide/Divide";
 import { setPlayingBannerREDU } from "../../redux/slices/bannerHomeSlice";
+import Media from "./Media/Media";
 
 function HomePage() {
 	const dispatch = useDispatch();
@@ -25,6 +26,8 @@ function HomePage() {
 			<Cinema />
 			<Divide />
 			<Devices />
+			<Divide />
+			<Media />
 		</main>
 	);
 }

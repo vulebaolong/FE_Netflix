@@ -42,7 +42,7 @@ function Login() {
 				<h1 className="text-3xl font-medium mb-10">Đăng nhập</h1>
 
 				{/* Form */}
-				<Form name="basic" layout={"vertical"} initialValues={infoAfterRegister} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+				<Form layout={"vertical"} initialValues={infoAfterRegister} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
 					<Form.Item
 						name="taiKhoan"
 						rules={[

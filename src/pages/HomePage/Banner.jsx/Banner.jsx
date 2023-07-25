@@ -1,6 +1,5 @@
 import { useMemo, useRef, useState } from "react";
 import ReactPlayer from "react-player/youtube";
-import style from "./Banner.module.css";
 import Button from "../../../components/Button/Button";
 import IconPlay from "../../../components/Icons/IconPlay";
 import IconInfo from "../../../components/Icons/IconInfo";
@@ -12,6 +11,7 @@ import { Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { setEndedBannerREDU, setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
 import { navigate } from "../../../App";
+import { Link } from "react-scroll";
 const { Paragraph } = Typography;
 
 function Banner({ listMovie }) {
@@ -113,9 +113,11 @@ function Banner({ listMovie }) {
 		}
 	};
 
-	const handleBuyMovie = (movie) => {
-		console.log(movie);
+	const handleDetailMovie = (movie) => {
 		navigate(`/detail/${movie.maPhim}`);
+	};
+	const handleBuyMovie = (movie) => {
+		navigate(`/detail/${movie.maPhim}#detailTab`);
 	};
 	return (
 		<section
@@ -215,8 +217,12 @@ function Banner({ listMovie }) {
                             xl:mt-0 xl:justify-start
                             "
 						>
-							<Button
-								className="flex items-center
+							<Link to="detailTab" smooth={true} duration={500} delay={1000}>
+								<Button
+									onClick={() => {
+										handleBuyMovie(movie);
+									}}
+									className="flex items-center
 								py-0 px-2 gap-1
                                 sm:py-1 sm:px-2 sm:gap-3
                                 md:py-2 md:px-3
@@ -224,10 +230,10 @@ function Banner({ listMovie }) {
                                 xl:py-3 xl:px-5
                                 2xl:py-3 2xl:px-6
 								"
-								type="secondary"
-							>
-								<IconPlay
-									className="
+									type="secondary"
+								>
+									<IconPlay
+										className="
                                     w-2 h-2
                                     sm:w-3 sm:h-3
                                     md:w-4 md:h-4
@@ -235,9 +241,9 @@ function Banner({ listMovie }) {
                                     xl:w-5 xl:h-5
                                     2xl:w-6 2xl:h-6
                                     "
-								/>
-								<span
-									className=" font-semibold
+									/>
+									<span
+										className=" font-semibold
                                     text-[10px]
                                     sm:text-sm
                                     md:text-sm
@@ -245,10 +251,11 @@ function Banner({ listMovie }) {
                                     xl:text-2xl
                                     2xl:text-2xl
                                     "
-								>
-									Đặt vé
-								</span>
-							</Button>
+									>
+										Đặt vé
+									</span>
+								</Button>
+							</Link>
 							<Button
 								className=" gap-3 items-center
                                 hidden
@@ -257,7 +264,7 @@ function Banner({ listMovie }) {
                                 "
 								type="tertiary"
 								onClick={() => {
-									handleBuyMovie(movie);
+									handleDetailMovie(movie);
 								}}
 							>
 								<IconInfo width={35} height={35} />

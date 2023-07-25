@@ -1,5 +1,6 @@
 import BackgroundImg from "../../../components/BackgroundImg/BackgroundImg";
 import StartWithMail from "../../../components/StartWithMail/StartWithMail";
+import imgBackground from "../../../assets/imgBackground/VN_vi_website_large.jpg"
 
 
 function Banner() {
@@ -7,7 +8,7 @@ function Banner() {
 		<section className="banner">
 			<div className="relative overflow-hidden" style={{ height: "700px" }}>
 				{/* BACKGROUND IMG */}
-				<BackgroundImg />
+				<BackgroundImg img={imgBackground} filter/>
 				<div className="container relative h-full 
 					pt-header
 					sm:pt-header_sm

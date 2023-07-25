@@ -3,35 +3,40 @@ import Header from "./../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import BackgroundAuth from "./../../pages/AuthenticationPage/BackgroundAuth/BackgroundAuth";
 import ModalMovie from "../../pages/HomePage/ListMovie.jsx/ModalMovie";
-import BackgroundLogout from "../../pages/AuthenticationPage/BackgroundLogout/BackgroundLogout";
+import BackgroundImg from "../../components/BackgroundImg/BackgroundImg";
+import imgLogout from "../../assets/imgBackground/logout_1500x1000.jpg"
+import imgLogin from "../../assets/imgBackground/VN_vi_website_large.jpg"
+import imgAccount from "../../assets/imgBackground/netflix_4.jpg"
+import imgHistory from "../../assets/imgBackground/netflix_3.jpg"
+import imgCheckout from "../../assets/imgBackground/background-texture.jpg"
 
 function MainLayout() {
 	const { pathname } = useLocation();
-	console.log(pathname);
+	const path = pathname.split('/')[1]
+	console.log(pathname.split('/')[1]);
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, [pathname]);
 
-	const isBackgroundAuth = () => {
-		if (pathname === "/login" || pathname === "/register") return true;
-		return false;
-	};
-
 	const renderBackgroundAuth = () => {
-		if (pathname === "/login" || pathname === "/register") return <BackgroundAuth />;
-		if (pathname === "/logout") return <BackgroundLogout />;
+		if (path === "login" || path === "register") return <BackgroundImg img={imgLogin} filter/>;
+		if (path === "logout") return <BackgroundImg img={imgLogout} />;
+		if (path === "account-settings") return <BackgroundImg img={imgAccount} filter/>;
+		if (path === "history") return <BackgroundImg img={imgHistory}  filter/>;
+		if (path === "checkout") return <BackgroundImg img={imgCheckout}  />;
 	};
 
 	return (
 		<div className="relative overflow-hidden">
 			{renderBackgroundAuth()}
-			<Header />
-			<Outlet />
-			<Footer />
-			<div className="modal absolute top-0 left-0 z-50">
-				<ModalMovie />
+			<div className="relative">
+				<Header />
+				<Outlet />
+				<Footer />
+				<div className="modal absolute top-0 left-0 z-50">
+					<ModalMovie />
+				</div>
 			</div>
 		</div>
 	);

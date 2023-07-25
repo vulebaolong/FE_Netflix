@@ -23,12 +23,16 @@ function LoggedDesktop() {
 		navigate("/history");
 		setOpen(false);
 	};
+	const handleAccountSetting = () => {
+		navigate("/account-settings");
+		setOpen(false);
+	};
 	const handleOpenChange = (newOpen) => {
 		setOpen(newOpen);
 	};
 	const content = (
 		<div className=" w-72 whitespace-normal text-[#e4e6eb]">
-			<div className="flex gap-3 items-center px-3 py-1 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer rounded-md">
+			<div onClick={handleAccountSetting} className="flex gap-3 items-center px-3 py-1 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer rounded-md">
 				<Avatar className="flex-shrink-0" src={<img src={`https://i.pravatar.cc/150?img=${numAvatar}`} alt="avatar" />} size="large" />
 				<p className="text-base font-bold truncate ">{userLogin.hoTen}</p>
 				{userLogin.maLoaiNguoiDung === "KhachHang" ? <Tag color="green">khách hàng</Tag> : <Tag color={COLOR_PRIMARY}>admin</Tag>}

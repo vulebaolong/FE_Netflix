@@ -9,6 +9,7 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import Register from "./pages/AuthenticationPage/Register/Register";
+import AccountSettingsPage from "./pages/AccountSettingsPage/AccountSettingsPage";
 export let navigate = null;
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
 					<Route path="checkout/:id" element={<CheckoutPage />} />
 
 					<Route path="history" element={<HistoryPage />} />
+
+					<Route path="account-settings" element={<AccountSettingsPage />} />
 
 					<Route path="register" element={<AuthenticationPage />}>
 						<Route index element={<Register />} />

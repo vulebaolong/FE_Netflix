@@ -1,5 +1,5 @@
 import Button from "../../../components/Button/Button";
-import backgroundBanner from "../../../assets/landingPage/banner/banner.jpg";
+import backgroundBanner from "../../../assets/imgBackground/VN_vi_website_large.jpg";
 import BackgroundImg from "../../../components/BackgroundImg/BackgroundImg";
 
 
@@ -7,7 +7,7 @@ function Comment() {
 	return (
 		<section className="py-24 relative">
 			{/* BACKGROUND IMG */}
-			<BackgroundImg />
+			<BackgroundImg img={backgroundBanner} filter/>
 			<div className="container relative">
 				<div className=" mx-auto px-4 py-5 ">
 					{/* TITLE */}

@@ -1,15 +1,29 @@
-import { Tabs, Tag } from "antd";
+import { Tabs } from "antd";
 import moment from "moment";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { Typography } from "antd";
 const { Title } = Typography;
-import style from "./DetailTab.module.css";
 import _ from "lodash";
 import { navigate } from "../../../App";
+import { useEffect } from "react";
+import { scroller } from "react-scroll";
+import { useLocation } from "react-router-dom";
 
 function DetailTab() {
+	const location = useLocation();
 	const { movieDetail } = useSelector((state) => state.detailSlice);
+
+	// Cuộn xuống "detailTab" chỉ khi trang có "hash" là "detailTab"
+	useEffect(() => {
+		console.log(location.hash);
+		if (location.hash === "#detailTab") {
+			scroller.scrollTo("detailTab", {
+				smooth: true,
+				duration: 500,
+			});
+		}
+	}, [location]);
+
 	// Định nghĩa các ngày trong tuần bằng tiếng Việt
 	moment.updateLocale("vi", {
 		weekdays: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"],
@@ -37,7 +51,7 @@ function DetailTab() {
 							className="space-y-2 hover:bg-[#2f2f2f5c] active:bg-[#2f2f2fb5] transition cursor-pointer rounded-lg px-5 py-3"
 							key={index}
 							onClick={() => {
-								navigate(`/checkout/${cumRap.maLichChieu}`)
+								navigate(`/checkout/${cumRap.maLichChieu}`);
 							}}
 						>
 							<div className="flex gap-2 rounded-lg items-center  ">
@@ -192,17 +206,17 @@ function DetailTab() {
 			if (index === 0) content = renderTabLichChieu();
 			if (index === 1) content = renderThongTinPhim();
 			return {
-				label: <p className="text-red-400">{item}</p>,
+				label: <p className="text-xl font-bold">{item}</p>,
 				key: index,
 				children: content,
 			};
 		});
 	};
 	return (
-		<section className="py-24" name="detailTab">
+		<section className="py-24" id="detailTab">
 			<div className="container">
 				<div className="flex justify-center items-center ">
-					<Tabs type="card" size="large" tabPosition="top" items={renderTabContainer()} className={`${style.tabs}  w-full rounded-2xl border border-white/20 p-2`} />
+					<Tabs centered type="card" size="large" tabPosition="top" items={renderTabContainer()} className={`w-full rounded-2xl border border-white/20 p-2`} />
 				</div>
 			</div>
 		</section>

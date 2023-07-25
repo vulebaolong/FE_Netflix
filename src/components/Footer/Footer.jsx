@@ -6,13 +6,15 @@ import { navigate } from "../../App";
 
 function Footer() {
 	const { pathname } = useLocation();
+	const path = pathname.split("/")[1];
 	//
 	const backgroundColor = () => {
 		let backgroundColor = "bg-black";
 
-		if (pathname === "/login" || pathname === "/signup" || pathname === "/logout") {
+		if (path === "login" || path === "signup" || path === "logout" || path === "account-settings" || path === "history" || path === "checkout") {
 			backgroundColor = "bg-black/50";
 		}
+		
 
 		return backgroundColor;
 	};

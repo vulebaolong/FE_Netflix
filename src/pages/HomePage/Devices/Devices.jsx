@@ -2,7 +2,7 @@ import imgDevices from "../../../assets/homePage/Devices.jpg";
 
 function Devices() {
 	return (
-		<section className="devices pt-24 pb-48 bg-backgroundHome">
+		<section className="devices py-24 bg-backgroundHome">
 			<div className="container">
 				<div
 					className="grid gap-5

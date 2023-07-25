@@ -56,8 +56,12 @@ function Register() {
 								message: "Vui lòng nhập tài khoản",
 							},
 							{
-								pattern: /^[a-zA-ZÀ-ỹ]+$/,
-								message: "Tài khoản chỉ bao gồm chữ",
+								pattern: /^\S+$/,
+								message: "Không chứa khoảng trắng",
+							},
+							{
+								pattern: /^[a-zA-Z0-9\s]+$/,
+								message: "Chỉ gồm chữ hoặc số",
 							},
 						]}
 						hasFeedback

@@ -8,6 +8,7 @@ import Highlighter from "react-highlight-words";
 import moment from "moment";
 import Ghe from "../CheckoutPage/Left/Ghe";
 import ButtonMe from "../../components/Button/Button";
+import imgBackground from "../../assets/imgBackground/VN_vi_website_large.jpg"
 
 function HistoryPage() {
 	const dispatch = useDispatch();
@@ -195,7 +196,7 @@ function HistoryPage() {
 	];
 	return (
 		<section
-			className="bg-backgroundHome pt-header relative
+			className=" pt-header relative
             sm:pt-header_sm
             md:pt-header_md
             lg:pt-header_lg
@@ -204,7 +205,7 @@ function HistoryPage() {
 			"
 		>
 			{/* BACKGROUND IMG */}
-			<BackgroundImg />
+			{/* <BackgroundImg img={imgBackground} filter/> */}
 			<div className="container relative py-24">
 				<h1 className="text-center heading-1 mb-14">Thông tin đặt vé</h1>
 				<Table

@@ -5,7 +5,7 @@ import Step from "./Step/Step";
 function CheckoutPage() {
 	return (
 		<section
-			className="pt-header bg-backgroundHome
+			className="pt-header 
 			sm:pt-header_sm
 			md:pt-header_md
 			lg:pt-header_lg
