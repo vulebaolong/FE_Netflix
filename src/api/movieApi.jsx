@@ -5,4 +5,10 @@ export const movieApi = {
 	getListMoive: () => {
 		return axios.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=${MANHOM}`);
 	},
+	getOneMovie: (data) => {
+		return axios.get(`/QuanLyPhim/LayThongTinPhim?MaPhim=${data}`);
+	},
+	deleteMovie: (data) => {
+		return axios.delete(`/QuanLyPhim/XoaPhim?MaPhim=${data}`);
+	},
 };

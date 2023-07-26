@@ -10,6 +10,9 @@ import imgLogin from "../../assets/imgBackground/VN_vi_website_large.jpg"
 import imgAccount from "../../assets/imgBackground/netflix_4.jpg"
 import imgHistory from "../../assets/imgBackground/netflix_3.jpg"
 import imgCheckout from "../../assets/imgBackground/background-texture.jpg"
+import imgListMovie from "../../assets/imgBackground/netflix_1.jpg"
+import imgAddMovie from "../../assets/imgBackground/netflix_2.jpg"
+import imgEditMovie from "../../assets/imgBackground/netflix_5.jpg"
 
 function MainLayout() {
 	const { pathname } = useLocation();
@@ -25,6 +28,9 @@ function MainLayout() {
 		if (path === "account-settings") return <BackgroundImg img={imgAccount} filter/>;
 		if (path === "history") return <BackgroundImg img={imgHistory}  filter/>;
 		if (path === "checkout") return <BackgroundImg img={imgCheckout}  />;
+		if (path === "list-movie") return <BackgroundImg img={imgListMovie} filter />;
+		if (path === "add-movie") return <BackgroundImg img={imgAddMovie} filter />;
+		if (path === "edit-movie") return <BackgroundImg img={imgEditMovie} filter />;
 	};
 
 	return (

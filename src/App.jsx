@@ -11,6 +11,9 @@ import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import Register from "./pages/AuthenticationPage/Register/Register";
 import AccountSettingsPage from "./pages/AccountSettingsPage/AccountSettingsPage";
 import { message } from "antd";
+import AddMovieAdminPage from "./pages/AddMovieAdminPage/AddMovieAdminPage";
+import ListMovieAdminPage from "./pages/ListMovieAdminPage/ListMovieAdminPage";
+import EditMovieAdminPage from "./pages/EditMovieAdminPage/EditMovieAdminPage";
 export let navigate = null;
 export let success = null;
 export let error = null;
@@ -64,6 +67,13 @@ function App() {
 					<Route path="logout" element={<AuthenticationPage />}>
 						<Route index element={<Logout />} />
 					</Route>
+
+					{/* ADMIN */}
+					<Route path="list-movie" element={<ListMovieAdminPage />} />
+
+					<Route path="add-movie" element={<AddMovieAdminPage />} />
+
+					<Route path="edit-movie/:id" element={<EditMovieAdminPage />} />
 
 					<Route path="home" element={<HomePage />} />
 				</Route>

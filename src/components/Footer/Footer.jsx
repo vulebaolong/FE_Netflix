@@ -11,10 +11,18 @@ function Footer() {
 	const backgroundColor = () => {
 		let backgroundColor = "bg-black";
 
-		if (path === "login" || path === "signup" || path === "logout" || path === "account-settings" || path === "history" || path === "checkout") {
+		if (
+			path === "login" ||
+			path === "signup" ||
+			path === "logout" ||
+			path === "account-settings" ||
+			path === "history" ||
+			path === "checkout" ||
+			path === "list-movie" ||
+			path === "add-movie"
+		) {
 			backgroundColor = "bg-black/50";
 		}
-		
 
 		return backgroundColor;
 	};
