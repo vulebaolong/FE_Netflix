@@ -17,7 +17,7 @@ const { Paragraph } = Typography;
 function Banner({ listMovie }) {
 	const dispatch = useDispatch();
 	const { playingBanner } = useSelector((state) => state.bannerHomeSlice);
-	const randomIndex = useMemo(() => Math.floor(Math.random() * listMovie.length), [listMovie]);
+	const randomIndex = useMemo(() => Math.floor(Math.random() * listMovie.length), []);
 	const movie = listMovie[randomIndex];
 	const url = movie?.trailer;
 

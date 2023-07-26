@@ -11,4 +11,9 @@ export const movieApi = {
 	deleteMovie: (data) => {
 		return axios.delete(`/QuanLyPhim/XoaPhim?MaPhim=${data}`);
 	},
+	updateMovie: (data) => {
+		return axios.post(`/QuanLyPhim/CapNhatPhimUpload`, data);
+	},
 };
+
+// edit movie: không thay đổi hình ảnh thì để null, còn thay đổi để: File (originFileObj) ThemPhimUploadHinh

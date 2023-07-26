@@ -19,7 +19,8 @@ function Footer() {
 			path === "history" ||
 			path === "checkout" ||
 			path === "list-movie" ||
-			path === "add-movie"
+			path === "add-movie" ||
+			path === "edit-movie"
 		) {
 			backgroundColor = "bg-black/50";
 		}

@@ -14,6 +14,7 @@ import IconChevronDown from "./../../../components/Icons/IconChevronDown";
 import { Tag, Typography, Tooltip } from "antd";
 import { COLOR_PRIMARY } from "./../../../../tailwind.config";
 import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
+import { navigate } from "../../../App";
 const { Paragraph } = Typography;
 
 const ModalMovie = () => {
@@ -115,6 +116,15 @@ const ModalMovie = () => {
 		}
 	};
 
+	const handleMuaVe = () => {
+		navigate(`/detail/${modalMovieActive.maPhim}#detailTab`);
+		handleMouseLeave()
+	};
+	const handleThongTinChiTiet = () => {
+		navigate(`/detail/${modalMovieActive.maPhim}`);
+		handleMouseLeave()
+	};
+
 	return (
 		<div
 			className="modalMovie absolute whitespace-normal 
@@ -192,11 +202,12 @@ const ModalMovie = () => {
 								type="circle-white"
 								className="bg-white scale-[0.7]"
 								size="
-						p-[0.2rem]
-						sm:p-[0.4rem]
-						md:p-[0.5rem]
-						lg:p-[0.7rem]
-						"
+								p-[0.2rem]
+								sm:p-[0.4rem]
+								md:p-[0.5rem]
+								lg:p-[0.7rem]
+								"
+								onClick={handleMuaVe}
 							>
 								{
 									<IconPlay
@@ -268,11 +279,12 @@ const ModalMovie = () => {
 							type="circle"
 							className="scale-[0.7]"
 							size="
-						p-[0.2rem]
-						sm:p-[0.4rem]
-						md:p-[0.5rem]
-						lg:p-[0.7rem]
-						"
+							p-[0.2rem]
+							sm:p-[0.4rem]
+							md:p-[0.5rem]
+							lg:p-[0.7rem]
+							"
+							onClick={handleThongTinChiTiet}
 						>
 							{
 								<IconChevronDown

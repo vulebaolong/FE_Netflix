@@ -116,6 +116,10 @@
 .ant-popover {
 	z-index: 1001;
 }
+.ant-table-cell {
+    word-break: break-all;
+}
+
 
 
 .container-home {
