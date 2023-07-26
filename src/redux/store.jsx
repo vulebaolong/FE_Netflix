@@ -7,6 +7,7 @@ import bannerHomeSlice from "./slices/bannerHomeSlice";
 import drawerSlice from "./slices/drawerSlice";
 import detailSlice from "./slices/detailSlice";
 import ticketSlice from "./slices/ticketSlice";
+import commentSlice from "./slices/commentSlice";
 export const store = configureStore({
 	reducer: {
 		userSlices,
@@ -16,7 +17,8 @@ export const store = configureStore({
 		bannerHomeSlice,
 		drawerSlice,
 		detailSlice,
-		ticketSlice
+		ticketSlice,
+		commentSlice,
 	},
 });
 
