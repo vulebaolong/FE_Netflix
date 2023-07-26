@@ -5,7 +5,6 @@ import { IoIosHelpCircleOutline, IoIosInformationCircleOutline, IoMdLogOut } fro
 import { lcStorage } from "../../../helpers/localStorage";
 import { USER_LOGIN } from "../../../contants/userContants";
 import { resetUserREDU } from "../../../redux/slices/userSlices";
-import { resetNotiREDU } from "../../../redux/slices/notiSlices";
 import { navigate } from "../../../App";
 import { setOpenHeaderMobile } from "../../../redux/slices/drawerSlice";
 
@@ -16,7 +15,6 @@ function LoggedMobile() {
 		lcStorage.remove(USER_LOGIN);
 		navigate("/logout");
 		dispatch(resetUserREDU());
-		dispatch(resetNotiREDU());
 		dispatch(setOpenHeaderMobile(false));
 	};
 	return (

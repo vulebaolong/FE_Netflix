@@ -6,7 +6,6 @@ import { lcStorage } from "../../../helpers/localStorage";
 import { USER_LOGIN } from "../../../contants/userContants";
 import { navigate } from "../../../App";
 import { resetUserREDU } from "../../../redux/slices/userSlices";
-import { resetNotiREDU } from "../../../redux/slices/notiSlices";
 import { useState } from "react";
 
 function LoggedDesktop() {
@@ -16,7 +15,6 @@ function LoggedDesktop() {
 	const handleLogout = () => {
 		lcStorage.remove(USER_LOGIN);
 		dispatch(resetUserREDU());
-		dispatch(resetNotiREDU());
 		navigate("/logout");
 	};
 	const handleThongTinDatVe = () => {

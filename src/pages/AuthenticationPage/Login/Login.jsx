@@ -1,24 +1,19 @@
-import { Form, Input, message } from "antd";
+import { Form, Input } from "antd";
 import Button from "../../../components/Button/Button";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginMID } from "../../../redux/slices/userSlices";
-import { useEffect } from "react";
 
 function Login() {
-	const [messageApi, contextHolder] = message.useMessage();
 	const dispatch = useDispatch();
-	const { type, mes, isOpen } = useSelector((state) => state.notiSlices);
 	const { infoAfterRegister } = useSelector((state) => state.userSlices);
-	const onFinish = (values) => {
-		dispatch(loginMID(values));
-	};
 
-	useEffect(() => {
-		if (mes === "") return;
-		messageApi.open({ type: type, content: mes });
-	}, [isOpen, messageApi, type, mes]);
+	const onFinish = (values) => {
+		dispatch(loginMID(values)).then((result) => {
+			if (result?.mes) result?.type(result?.mes);
+		});
+	};
 
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
@@ -30,7 +25,7 @@ function Login() {
 
 	return (
 		<>
-			{contextHolder}
+			{/* {contextHolder} */}
 			<div
 				className=" bg-black/70 max-w-md w-full rounded-2xl
 					p-9

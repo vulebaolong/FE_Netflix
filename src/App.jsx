@@ -10,12 +10,36 @@ import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import Register from "./pages/AuthenticationPage/Register/Register";
 import AccountSettingsPage from "./pages/AccountSettingsPage/AccountSettingsPage";
+import { message } from "antd";
 export let navigate = null;
+export let success = null;
+export let error = null;
+export let warning = null;
 
 function App() {
 	navigate = useNavigate();
+	const [messageApi, contextHolder] = message.useMessage();
+	success = (content) => {
+		messageApi.open({
+			type: "success",
+			content,
+		});
+	};
+	error = (content) => {
+		messageApi.open({
+			type: "error",
+			content,
+		});
+	};
+	warning = (content) => {
+		messageApi.open({
+			type: "warning",
+			content,
+		});
+	};
 	return (
 		<>
+			{contextHolder}
 			<Routes>
 				{/* LANDING LAYOUT */}
 				<Route element={<MainLayout />}>

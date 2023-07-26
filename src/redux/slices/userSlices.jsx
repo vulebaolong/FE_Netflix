@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userApi } from "../../api/userApi";
-import { openMess } from "./notiSlices";
-import { navigate } from "../../App";
+import { error, navigate, success } from "../../App";
 import { wait } from "../../helpers/awaitHelper";
 import { lcStorage } from "../../helpers/localStorage";
 import { USER_LOGIN } from "../../contants/userContants";
@@ -62,14 +61,21 @@ export const loginMID = (requestData) => {
 
 			dispatch(setInfoAfterRegister({ taiKhoan: "", matKhau: "" }));
 
-			dispatch(openMess({ type: "success", mes: "Đăng nhập thành công" }));
 
 			await wait(1000);
 
 			navigate("/home");
-		} catch (error) {
-			console.log(error);
-			dispatch(openMess({ type: "error", mes: "Đăng nhập không thành công" }));
+
+			return {
+				type: success, // import success
+				mes: "Đăng nhập thành công",
+			};
+		} catch (err) {
+
+			return {
+				type: error, // import error
+				mes: "Đăng nhập thất bại",
+			};
 		}
 	};
 };
@@ -111,12 +117,41 @@ export const updateAccountMID = (requestData) => {
 		try {
 			const { data, status } = await userApi.updateAccount(requestData);
 			console.log("updateAccountMID", { data, status });
+
+			// set lại key maLoaiNguoiDung = KhachHang nếu không call Api lần 2 sẽ lỗi
 			if (data.content.maLoaiNguoiDung === "Khách hàng") {
 				data.content.maLoaiNguoiDung = "KhachHang";
 			}
 			dispatch(setInfoAccount(data.content));
-		} catch (error) {
-			console.log(error);
+
+			// =======đăng nhập lại ========
+			// đăng nhập lại để cập nhật userLogin và localStorage
+			const requestDataLogin = {
+				taiKhoan: data.content.taiKhoan,
+                matKhau: data.content.matKhau,
+			}
+			const { data:dataLogin, status:statusLogin } = await userApi.login(requestDataLogin);
+
+			console.log("loginMID", { dataLogin, statusLogin });
+
+			//lưu userLogin
+			dispatch(loginREDU(dataLogin.content));
+
+			//lưu localStorage
+			lcStorage.set(USER_LOGIN, dataLogin.content);
+
+			dispatch(setInfoAfterRegister({ taiKhoan: "", matKhau: "" }));
+			// =======đăng nhập lại ========
+
+			return {
+				type: success, // import success
+				mes: "Đổi thông tin tài khoản thành công",
+			};
+		} catch (err) {
+			return {
+				type: error, // import error
+				mes: "Đổi thông tin tài khoản thất bại",
+			};
 		}
 	};
 };

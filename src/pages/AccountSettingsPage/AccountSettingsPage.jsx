@@ -5,12 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getInfoAccountMID, updateAccountMID } from "../../redux/slices/userSlices";
 import style from "./AccountSettingsPage.module.css";
 import Button from "../../components/Button/Button";
-import gifBackground from "../../assets/gif/vsgif_com__.2596252.gif"
-
 
 function AccountSettingsPage() {
-	const [messageApi, contextHolder] = message.useMessage();
-
 	const [formInfo] = Form.useForm();
 	const [formPassword] = Form.useForm();
 	const dispatch = useDispatch();
@@ -40,37 +36,17 @@ function AccountSettingsPage() {
 		return Promise.resolve();
 	};
 
-	const success = (content) => {
-		messageApi.open({
-			type: "success",
-			content,
-		});
-	};
-	const error = (content) => {
-		messageApi.open({
-			type: "error",
-			content,
-		});
-	};
-	const warning = (content) => {
-		messageApi.open({
-			type: "warning",
-			content,
-		});
-	};
-
 	const onFinishInfo = (values) => {
 		values.matKhau = infoAccount.matKhau;
 		values.maNhom = infoAccount.maNhom;
 		values.maLoaiNguoiDung = infoAccount.maLoaiNguoiDung;
-		console.log("valuesInfo",values);
-		dispatch(updateAccountMID({...values}));
+		console.log("valuesInfo", values);
+		dispatch(updateAccountMID({ ...values })).then((result) => {
+			if (result?.mes) result?.type(result?.mes);
+		});
 	};
 
-
-	
-
-	const onFinishPassword = (values) => {
+	const onFinishPassword = async (values) => {
 		// if (values.matKhauCurrent !== infoAccount.matKhau) return error("Mật khẩu hiện tại không chính xác");
 		values.taiKhoan = infoAccount.taiKhoan;
 		values.email = infoAccount.email;
@@ -78,11 +54,10 @@ function AccountSettingsPage() {
 		values.hoTen = infoAccount.hoTen;
 		values.maNhom = infoAccount.maNhom;
 		values.maLoaiNguoiDung = infoAccount.maLoaiNguoiDung;
-		console.log("valuesPassword",values);
+		console.log("valuesPassword", values);
 		formPassword.resetFields();
-		dispatch(updateAccountMID({...values}));
+		dispatch(updateAccountMID({ ...values }));
 	};
-
 
 	// {
 	//     "taiKhoan": "nhi1",
@@ -95,7 +70,6 @@ function AccountSettingsPage() {
 	// }
 	return (
 		<>
-			{contextHolder}
 			<section
 				className=" pt-header relative
             sm:pt-header_sm
@@ -104,7 +78,7 @@ function AccountSettingsPage() {
             xl:pt-header_xl
             2xl:pt-header_2xl"
 			>
-                {/* <BackgroundImg img={imgBackground}/> */}
+				{/* <BackgroundImg img={imgBackground}/> */}
 				{/* <BackgroundVideo type="iframe" src="https://player.vimeo.com/video/791149043?h=a0b62c3daa&badge=0&autopause=0&player_id=0&app_id=58479&loop=1&autoplay=1&background=1"/> */}
 				<div className="container py-24 relative">
 					<h1 className="heading-1 mb-2">Cài đặt tài khoản</h1>
@@ -131,7 +105,13 @@ function AccountSettingsPage() {
 											]}
 											hasFeedback
 										>
-											<Input className={`${style.input} bg-gray-700/60`} size="large" prefix={<ContactsOutlined />} placeholder="Họ và tên" autoComplete="off" />
+											<Input
+												className={`${style.input} bg-gray-700/60`}
+												size="large"
+												prefix={<ContactsOutlined />}
+												placeholder="Họ và tên"
+												autoComplete="off"
+											/>
 										</Form.Item>
 
 										{/* EMAIL */}
