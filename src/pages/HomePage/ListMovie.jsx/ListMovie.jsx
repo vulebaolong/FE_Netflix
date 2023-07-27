@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
-import Slider from "./Slider";
 import Title from "./Title";
+
+
+import SliderDesktop from "./SliderDesktop";
+import SliderMobile from "./SliderMobile";
 
 function ListMovie() {
 	const { listMovie } = useSelector((state) => state.movieSlice);
@@ -11,24 +14,38 @@ function ListMovie() {
 		if (film.sapChieu) return true;
 	});
 	return (
-		<section className="listMovie relative space-y-[3vw] pb-24 ">
-			<div className="item">
-				{/* TITLE */}
-				<Title>Tất cả phim</Title>
-				{/* SWIPER */}
-				<Slider listMovie={listMovie}/>
+		<section
+			className="listMovie relative  lg:pb-24 lg:pt-0
+			pt-header 
+			sm:pt-header_sm
+			md:pt-header_md
+		"
+		>
+			{/* DESKTOP */}
+			<div className="space-y-[3vw] hidden lg:block">
+				<div className="item">
+					{/* TITLE */}
+					<Title>Tất cả phim</Title>
+					{/* SWIPER */}
+					<SliderDesktop listMovie={listMovie} />
+				</div>
+				<div className="item">
+					{/* TITLE */}
+					<Title>Phim đang chiếu</Title>
+					{/* SWIPER */}
+					<SliderDesktop listMovie={phimDangChieu} />
+				</div>
+				<div className="item">
+					{/* TITLE */}
+					<Title>Phim sắp chiếu</Title>
+					{/* SWIPER */}
+					<SliderDesktop listMovie={phimSapChieu} />
+				</div>
 			</div>
-			<div className="item">
-				{/* TITLE */}
-				<Title>Phim đang chiếu</Title>
-				{/* SWIPER */}
-				<Slider listMovie={phimDangChieu}/>
-			</div>
-			<div className="item">
-				{/* TITLE */}
-				<Title>Phim sắp chiếu</Title>
-				{/* SWIPER */}
-				<Slider listMovie={phimSapChieu}/>
+
+			{/* MOBILE */}
+			<div className=" block lg:hidden container py-24">
+				<SliderMobile listMovie={listMovie}/>
 			</div>
 		</section>
 	);

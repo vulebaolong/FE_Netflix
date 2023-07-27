@@ -122,6 +122,8 @@ function Banner({ listMovie }) {
 	return (
 		<section
 			className="banner aspect-[1920/1080] w-full relative 
+			hidden
+			lg:block
 			-mb-[50px]
 			sm:-mb-[90px]
 			md:-mb-[110px]
@@ -180,9 +182,10 @@ function Banner({ listMovie }) {
 				{/* TEXT */}
 				<div
 					className="container-home flex items-end h-full
-                    justify-center
-                    xl:justify-start
+                    
                     "
+					// justify-center
+					// xl:justify-start
 				>
 					<div
 						className="mb-[21.9%]
@@ -192,11 +195,12 @@ function Banner({ listMovie }) {
 					>
 						<h1
 							className="font-black truncate leading-none
-                            text-base text-center mb-2
-                            sm:text-2xl sm:mb-4
-                            lg:text-4xl
-                            xl:text-start
+                            lg:text-3xl
+                            xl:text-4xl
+                            2xl:text-5xl
                             "
+							// text-center
+							// xl:text-start
 						>
 							{movie?.tenPhim}
 						</h1>
@@ -204,18 +208,21 @@ function Banner({ listMovie }) {
 							ellipsis={{
 								rows: 5,
 							}}
-							className="font-medium text-[1.2vw] text-white
-                            hidden
-                            xl:[display:-webkit-box]
+							className="font-normal  text-white
+							lg:text-lg
+							xl:text-xl
+							2xl:text-2xl
                             "
+							
 						>
 							{movie?.moTa}
 						</Paragraph>
 						<div
 							className="flex gap-3
-                            mt-3 justify-center
-                            xl:mt-0 xl:justify-start
+                            mt-3 
                             "
+							// justify-center
+							// xl:mt-0 xl:justify-start
 						>
 							<Link to="detailTab" smooth={true} duration={500} delay={1000}>
 								<Button
@@ -223,12 +230,12 @@ function Banner({ listMovie }) {
 										handleBuyMovie(movie);
 									}}
 									className="flex items-center
-								py-0 px-2 gap-1
-                                sm:py-1 sm:px-2 sm:gap-3
-                                md:py-2 md:px-3
-                                lg:py-2 lg:px-4
-                                xl:py-3 xl:px-5
-                                2xl:py-3 2xl:px-6
+									py-0 px-2 gap-1
+									sm:py-1 sm:px-2 sm:gap-3
+									md:py-2 md:px-3
+									lg:py-2 lg:px-4
+									xl:py-3 xl:px-5
+									2xl:py-3 2xl:px-6
 								"
 									type="secondary"
 								>
@@ -257,24 +264,47 @@ function Banner({ listMovie }) {
 								</Button>
 							</Link>
 							<Button
-								className=" gap-3 items-center
-                                hidden
-                                xl:flex xl:py-3 xl:px-5
-                                2xl:py-3 2xl:px-6
+								className=" 
+                                flex items-center
+									py-0 px-2 gap-1
+									sm:py-1 sm:px-2 sm:gap-3
+									md:py-2 md:px-3
+									lg:py-2 lg:px-4
+									xl:py-3 xl:px-5
+									2xl:py-3 2xl:px-6
                                 "
+								// hidden
+								// xl:flex
 								type="tertiary"
 								onClick={() => {
 									handleDetailMovie(movie);
 								}}
 							>
-								<IconInfo width={35} height={35} />
-								<span className="text-2xl font-semibold ">Thông tin khác</span>
+								<IconInfo
+									className="  w-2 h-2
+                                    sm:w-3 sm:h-3
+                                    md:w-4 md:h-4
+                                    lg:w-4 lg:h-4
+                                    xl:w-5 xl:h-5
+                                    2xl:w-6 2xl:h-6"
+								/>
+								<span
+									className="font-semibold
+                                    text-[10px]
+                                    sm:text-sm
+                                    md:text-sm
+                                    lg:text-base
+                                    xl:text-2xl
+                                    2xl:text-2xl "
+								>
+									Thông tin khác
+								</span>
 							</Button>
 						</div>
 					</div>
 				</div>
 
-				{/* SOUND */}
+				{/* SOUND AND TAG 18 */}
 				<div className="absolute bottom-[35.7%] right-0 ">
 					<div
 						className="flex items-center
@@ -301,8 +331,9 @@ function Banner({ listMovie }) {
 							className="flex items-center bg-[#333333]/60   border-l-[3px]
                             w-10 py-0 pl-1
                             sm:w-16 sm:py-1 sm:pl-2
-                            md:w-20 md:py-2 md:pl-4
-                            lg:w-32 lg:py-2 lg:pl-5
+                            md:w-20 md:py-2 md:pl-3
+                            lg:w-24 lg:py-2 lg:pl-4
+                            xl:w-32 xl:py-2 xl:pl-5
                             "
 						>
 							<span

@@ -172,7 +172,9 @@ function ListMovieAdminPage() {
 							icon={<DeleteOutlined />}
 							onClick={() => {
 								console.log(record.maPhim);
-								dispatch(deleteMovieMID(record.maPhim));
+								dispatch(deleteMovieMID(record.maPhim)).then((result) => {
+									if (result?.mes) result?.type(result?.mes);
+								});
 							}}
 						/>
 					</div>

@@ -78,8 +78,6 @@ function AccountSettingsPage() {
             xl:pt-header_xl
             2xl:pt-header_2xl"
 			>
-				{/* <BackgroundImg img={imgBackground}/> */}
-				{/* <BackgroundVideo type="iframe" src="https://player.vimeo.com/video/791149043?h=a0b62c3daa&badge=0&autopause=0&player_id=0&app_id=58479&loop=1&autoplay=1&background=1"/> */}
 				<div className="container py-24 relative">
 					<h1 className="heading-1 mb-2">Cài đặt tài khoản</h1>
 					<p className="mb-10 text-lg text-gray-300">Xem và cập nhật chi tiết cho tài khoản của bạn.</p>

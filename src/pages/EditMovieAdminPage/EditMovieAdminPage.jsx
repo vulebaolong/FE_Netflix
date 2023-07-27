@@ -41,7 +41,7 @@ function EditMovieAdminPage() {
 		if (typeof values.hinhAnh === "object") {
 			values.hinhAnh = values.hinhAnh.file.originFileObj;
 		}
-		
+
 		console.log("values", values);
 		const formData = new FormData();
 		formData.append("tenPhim", values.tenPhim);
@@ -61,28 +61,10 @@ function EditMovieAdminPage() {
 			formData.append("File", values.hinhAnh, values.hinhAnh.name);
 		}
 
-	
 		console.log(formData.get("File"));
-		dispatch(updateMovieMID(formData))
-		// _.forEach(values, (value, key) => {
-		// 	console.log(`${key}: ${value}`);
-		// 	// formData.append(key, value);
-		// 	if (key !== "hinhAnh") {
-		// 		formData.append(key, value);
-		// 	}
-		// 	if (key === "hinhAnh") {
-		// 		if (typeof value === "object") {
-		// 			formData.append("File", value, value.name);
-		// 		}
-		// 		if (typeof value !== "object") {
-		// 			console.log(value);
-		// 			formData.append(key, value);
-		// 		}
-		// 	}
-		// });
-
-		// console.log(formData.get("hinhAnh"));
-		// console.log(formData.get("File"));
+		dispatch(updateMovieMID(formData)).then((result) => {
+			if (result?.mes) result?.type(result?.mes);
+		});
 	};
 
 	const [loading, setLoading] = useState(false);

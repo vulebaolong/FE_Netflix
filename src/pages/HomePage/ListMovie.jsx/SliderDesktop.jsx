@@ -14,7 +14,7 @@ import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
 import PropTypes from "prop-types";
 
 
-function Slider({ listMovie }) {
+function SliderDesktop({ listMovie }) {
 
 	const dispatch = useDispatch();
 
@@ -143,7 +143,7 @@ function Slider({ listMovie }) {
 					}}
 					pagination={{ clickable: true }}
 					loop={true}
-					className="mySwiper"
+					className="SwiperDesktop"
 					onSwiper={(swiper) => {
 						swiperRef.current = swiper;
 					}}
@@ -245,8 +245,8 @@ function Slider({ listMovie }) {
 	);
 }
 
-Slider.propTypes = {
+SliderDesktop.propTypes = {
 	listMovie: PropTypes.any,
 };
 
-export default Slider;
+export default SliderDesktop;

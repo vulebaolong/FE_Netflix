@@ -25,14 +25,14 @@
 	align-items: center !important;
 }
 
-.swiper {
+.SwiperDesktop {
 	height: 100%;
 	overflow-y: unset;
 	overflow: unset;
 	@apply mx-[calc(4%+2px)] sm:mx-[calc(4%+3px)] md:mx-[calc(4%+4px)] lg:mx-[calc(4%+5px)] xl:mx-[calc(4%+5px)] 2xl:mx-[68px];
 }
 
-.swiper-slide {
+.SwiperDesktop .swiper-slide {
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -40,21 +40,21 @@
 	@apply bg-backgroundHome;
 }
 
-.swiper-slide img {
+.SwiperDesktop .swiper-slide img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
-.swiper-button-next {
+.SwiperDesktop .swiper-button-next {
 	background-color: red;
 }
 
-.swiper-button-prev {
+.SwiperDesktop .swiper-button-prev {
 	background-color: red;
 }
-.swiper-pagination {
+.SwiperDesktop .swiper-pagination {
 	text-align: end;
 	top: unset !important;
 	bottom: 103% !important;
@@ -63,7 +63,7 @@
 	width: 50% !important;
 }
 
-.swiper-pagination-bullet {
+.SwiperDesktop .swiper-pagination-bullet {
 	width: 2%;
 	background-color: gray;
 	border-radius: unset;

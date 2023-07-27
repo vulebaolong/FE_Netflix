@@ -30,7 +30,11 @@ function Media() {
 	const renderDienAnh = () => {
 		return (
 			<div className="flex flex-col gap-10 pb-5 px-5">
-				<div className="grid grid-cols-2 gap-10">
+				<div
+					className="grid grid-cols-1 gap-10
+					md:grid-cols-2
+					"
+				>
 					<div className="overflow-hidden">
 						<div className="w-full h-[300px]">
 							<img className="rounded-lg w-full h-full object-cover" src={imgDienAnh1} alt="" />
@@ -51,7 +55,11 @@ function Media() {
 						</p>
 					</div>
 				</div>
-				<div className="grid grid-cols-3 gap-10">
+				<div
+					className="grid grid-cols-1 gap-10
+					lg:grid-cols-3
+					"
+				>
 					<div className="overflow-hidden">
 						<div className="w-full h-[200px]">
 							<img className="rounded-lg w-full h-full object-cover" src={imgDienAnh3} alt="" />
@@ -107,7 +115,10 @@ function Media() {
 	const renderKhuyenMai = () => {
 		return (
 			<div className="flex flex-col gap-10 pb-5 px-5">
-				<div className="grid grid-cols-2 gap-10">
+				<div
+					className="grid grid-cols-1 gap-10
+					md:grid-cols-2"
+				>
 					<div className="overflow-hidden">
 						<div className="w-full h-[300px]">
 							<img className="rounded-lg w-full h-full object-cover" src={imgKhuyenMai1} alt="" />
@@ -127,7 +138,10 @@ function Media() {
 						</p>
 					</div>
 				</div>
-				<div className="grid grid-cols-3 gap-10">
+				<div
+					className="grid grid-cols-1 gap-10
+					lg:grid-cols-3"
+				>
 					<div className="overflow-hidden">
 						<div className="w-full h-[200px]">
 							<img className="rounded-lg w-full h-full object-cover" src={imgKhuyenMai3} alt="" />
@@ -180,7 +194,10 @@ function Media() {
 	const renderDanhGia = () => {
 		return (
 			<div className="flex flex-col gap-10 pb-5 px-5">
-				<div className="grid grid-cols-2 gap-10">
+				<div
+					className="grid grid-cols-1 gap-10
+					md:grid-cols-2"
+				>
 					<div className="">
 						<div className="w-full h-[300px]">
 							<img className="rounded-lg w-full h-full object-cover" src={imgDanhGia1} alt="" />
@@ -203,7 +220,10 @@ function Media() {
 						</p>
 					</div>
 				</div>
-				<div className="grid grid-cols-3 gap-10">
+				<div
+					className="grid grid-cols-1 gap-10
+					lg:grid-cols-3"
+				>
 					<div>
 						<div className="w-full h-[200px]">
 							<img className="rounded-lg w-full h-full object-cover" src={imgDanhGia3} alt="" />
@@ -260,7 +280,16 @@ function Media() {
 			if (index === 1) content = renderKhuyenMai();
 			if (index === 2) content = renderDanhGia();
 			return {
-				label: <p className="text-xl font-bold">{item}</p>,
+				label: (
+					<p
+						className="text-sm font-bold
+						sm:text-lg
+						md:text-xl
+						"
+					>
+						{item}
+					</p>
+				),
 				key: index,
 				children: content,
 			};

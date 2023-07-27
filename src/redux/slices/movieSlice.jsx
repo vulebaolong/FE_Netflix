@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { movieApi } from "../../api/movieApi";
 import moment from "moment";
 import dayjs from "dayjs";
+import { error, success } from "../../App";
 
 const initialState = {
 	listMovie: [],
@@ -61,8 +62,17 @@ export const deleteMovieMID = (requestData) => {
 
 			// cập nhật lại
 			dispatch(getListMovieMID());
-		} catch (error) {
-			console.log(error);
+
+			return {
+				type: success, // import success
+				mes: "Xoá phim thành công",
+			};
+		} catch (err) {
+			console.log(err);
+			return {
+				type: error, // import error
+				mes: "Xoá phim thất bại",
+			};
 		}
 	};
 };
@@ -76,8 +86,41 @@ export const updateMovieMID = (requestData) => {
 
 			// cập nhật lại
 			dispatch(getOneMovieMID(data.content.maPhim));
-		} catch (error) {
-			console.log(error);
+
+			return {
+				type: success, // import success
+				mes: "Cập nhật phim thành công",
+			};
+		} catch (err) {
+			console.log(err);
+			return {
+				type: error, // import error
+				mes: "Cập nhật phim thất bại",
+			};
+		}
+	};
+};
+
+//addMovieMID
+export const addMovieMID = (requestData) => {
+	return async (dispatch) => {
+		try {
+			const { data, status } = await movieApi.addMovie(requestData);
+			console.log("addMovieMID", { data, status });
+
+			// cập nhật lại
+			// dispatch(getOneMovieMID(data.content.maPhim));
+
+			return {
+				type: success, // import success
+				mes: "Thêm phim thành công",
+			};
+		} catch (err) {
+			console.log(err);
+			return {
+				type: error, // import error
+				mes: "Thêm phim thất bại",
+			};
 		}
 	};
 };
