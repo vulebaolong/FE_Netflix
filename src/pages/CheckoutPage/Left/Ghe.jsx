@@ -1,4 +1,4 @@
-import style from "../CheckoutPage.module.css";
+import  style from "../CheckoutPage.module.css";
 import { Typography } from "antd";
 import PropTypes from "prop-types";
 const { Text } = Typography;

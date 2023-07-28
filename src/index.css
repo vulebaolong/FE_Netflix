@@ -95,14 +95,25 @@
 /* SCROLLBAR - end */
 
 :where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-ink-bar {
-	@apply bg-primary
+	@apply bg-primary;
 }
 :where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-tab:hover,
 :where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-tab-btn:focus:not(:focus-visible) {
-	@apply text-white
+	@apply text-white;
 }
 :where(.css-dev-only-do-not-override-1iacbu2).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-	@apply text-white/90
+	@apply text-white/90;
+}
+
+.ant-table {
+	background-color: transparent !important;
+}
+
+:where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > th,
+:where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td,
+:where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr > th.ant-table-cell-row-hover,
+:where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+	@apply bg-gray-800/80;
 }
 
 .ant-tabs-tab-btn {
@@ -110,17 +121,15 @@
 	border-radius: 0.5rem;
 	overflow: hidden;
 }
-.ant-tabs-tabpane{
+.ant-tabs-tabpane {
 	padding-left: 0 !important;
 }
 .ant-popover {
 	z-index: 1001;
 }
 .ant-table-cell {
-    word-break: break-all;
+	word-break: break-all;
 }
-
-
 
 .container-home {
 	width: 100%;

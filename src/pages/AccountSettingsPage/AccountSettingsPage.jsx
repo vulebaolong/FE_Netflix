@@ -79,9 +79,9 @@ function AccountSettingsPage() {
             2xl:pt-header_2xl"
 			>
 				<div className="container py-24 relative">
-					<h1 className="heading-1 mb-2">Cài đặt tài khoản</h1>
-					<p className="mb-10 text-lg text-gray-300">Xem và cập nhật chi tiết cho tài khoản của bạn.</p>
-					<div className="grid grid-cols-2 gap-10">
+					<h1 className="text-center lg:text-start heading-1 mb-2">Cài đặt tài khoản</h1>
+					<p className="text-center lg:text-start mb-10 text-lg text-gray-300">Xem và cập nhật chi tiết cho tài khoản của bạn.</p>
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 						<div className={`${style.form} p-4 rounded-3xl border sm:p-6 xl:p-8 dark:bg-gray-800/50 backdrop-blur-sm dark:border-gray-700`}>
 							<Form form={formInfo} layout="vertical" initialValues={updatedInfoAccount} onFinish={onFinishInfo} autoComplete="off">
 								<h2 className="mb-4 text-xl font-bold dark:text-white">Thông tin chung</h2>

@@ -7,7 +7,7 @@
 
 /* Ghế Thường */
 .ghe {
-	@apply w-7 h-7 xl:w-8 xl:h-8 2xl:w-9 2xl:h-9 rounded-md flex flex-col justify-between items-center p-1;
+	@apply w-[1.15rem] h-[1.15rem] sm:w-7 sm:h-7 xl:w-8 xl:h-8 2xl:w-9 2xl:h-9 rounded-md flex flex-col justify-between items-center p-[0.09rem] sm:p-1;
 }
 
 .ghe > div:first-child {
@@ -15,7 +15,7 @@
 }
 
 .ghe > div:last-child {
-	@apply w-10/12 h-1/6 bg-slate-200 rounded-sm;
+	@apply hidden sm:block w-10/12 h-1/6 bg-slate-200 rounded-sm;
 }
 
 .gheThuong {

@@ -10,23 +10,22 @@ function Step() {
 		return 0;
 	};
 	return (
-		<div className="container">
 			<Steps
+			className="mb-10 sm:mb-20"
 				current={createCurrentStep()}
 				items={[
 					{
-						title: <strong>CHỌN GHẾ</strong>,
+						title: <strong className="sm:text-xs lg:text-lg xl:text-xl 2xl:text-2xl">CHỌN GHẾ</strong>,
 					},
 					{
-						title: <strong>THANH TOÁN</strong>,
-						description: "Chọn thanh toán",
+						title: <strong className="sm:text-xs lg:text-lg xl:text-xl 2xl:text-2xl">CHỌN THANH TOÁN</strong>,
+						// description: "Chọn thanh toán",
 					},
 					{
-						title: <strong>KẾT QUẢ ĐẶT VÉ</strong>,
+						title: <strong className="sm:text-xs lg:text-lg xl:text-xl 2xl:text-2xl">KẾT QUẢ ĐẶT VÉ</strong>,
 					},
 				]}
 			/>
-		</div>
 	);
 }
 export default Step;

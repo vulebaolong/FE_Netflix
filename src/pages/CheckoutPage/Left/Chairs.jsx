@@ -26,7 +26,18 @@ function Chairs() {
 
 			// GHẾ BẠN MUA
 			if (ghe.taiKhoanNguoiDat === userLogin.taiKhoan) {
-				const element = <Avatar src={`https://i.pravatar.cc/150?img=${numAvatar}`} size={20} />;
+				const element = (
+					<Avatar
+						src={<img src={`https://i.pravatar.cc/150?img=${numAvatar}`} alt="avatar"></img>}
+						className="w-[1rem] h-[1rem]
+						sm:w-4 sm:h-4
+						md:w-4 md:h-4
+						lg:w-4 lg:h-4
+						xl:w-5 xl:h-5
+						2xl:w-6 2xl:h-6
+						"
+					/>
+				);
 				return <Ghe type={"gheDaMua"} key={index} element={element} />;
 			}
 
@@ -57,7 +68,7 @@ function Chairs() {
 
 			if (indexGheBanChon !== -1) {
 				const element = (
-					<span className="text-slate-200 text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
+					<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
 						<strong>{data.tenGhe}</strong>
 					</span>
 				);
@@ -80,10 +91,10 @@ function Chairs() {
 			const letter = String.fromCharCode("A".charCodeAt(0) + index);
 			return (
 				<div className="flex gap-2 xl:gap-3" key={index}>
-					<div className=" w-7 flex items-center justify-center">
+					<div className="w-3 text-xs sm:text-base sm:w-7 flex items-center justify-center">
 						<strong>{letter}</strong>
 					</div>
-					<div className="flex gap-1 xl:gap-2">{renderGhe(hang, letter)}</div>
+					<div className="flex gap-[0.15rem] sm:gap-1 xl:gap-2">{renderGhe(hang, letter)}</div>
 				</div>
 			);
 		});

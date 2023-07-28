@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getInfoAccountMID } from "../../redux/slices/userSlices";
-import BackgroundImg from "../../components/BackgroundImg/BackgroundImg";
 import { Button, Input, Space, Table } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import moment from "moment";
 import Ghe from "../CheckoutPage/Left/Ghe";
-import ButtonMe from "../../components/Button/Button";
-import imgBackground from "../../assets/imgBackground/VN_vi_website_large.jpg"
 
 function HistoryPage() {
 	const dispatch = useDispatch();
@@ -126,17 +123,16 @@ function HistoryPage() {
 	const columns = [
 		{
 			title: "Mã vé",
-			width: "10%",
 			...getColumnSearchProps("maVe"),
 			sorter: (a, b) => a.maVe - b.maVe,
 			sortDirections: ["descend", "ascend"],
 			render: (record) => {
 				return <p className="font-bold">{record.maVe}</p>;
 			},
+			className: "hidden lg:w-[10%] lg:table-cell dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
 			title: "Hình",
-			width: "10%",
 			render: (record) => {
 				return (
 					<div className="w-20">
@@ -144,24 +140,24 @@ function HistoryPage() {
 					</div>
 				);
 			},
+			className: "hidden lg:w-[10%] lg:table-cell dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
 			title: "Tên Phim",
-			width: "20%",
 			...getColumnSearchProps("tenPhim"),
 			render: (record) => {
-				return <p className="text-lg font-bold">{record.tenPhim}</p>;
+				return <p className="text-xs sm:text-lg font-bold">{record.tenPhim}</p>;
 			},
+			className: "w-[35%] lg:w-[20%] dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
 			title: "Ngày đặt",
-			width: "10%",
 			...getColumnSearchProps("ngayDat"),
 			render: (record) => <span>{moment(record.ngayDat).format("DD/MM/YYYY")}</span>,
+			className: "w-[35%] lg:w-[10%] dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
-			title: "Ghế đã đặt",
-			width: "30%",
+			title: <span className="overflow-hidden truncate">Ghế đã đặt</span>,
 			render: (record) => {
 				return (
 					<div className="flex flex-wrap gap-2 max-h-[64px] overflow-y-auto">
@@ -178,21 +174,9 @@ function HistoryPage() {
 					</div>
 				);
 			},
+			className: "w-[30%] lg:w-[30%] dark:bg-gray-800/50 backdrop-blur-sm"
 		},
-		// {
-		// 	title: "Thao tác",
-		// 	width: "10%",
-		// 	render: (record) => {
-		// 		console.log(record);
-		// 		return (
-		// 			<div className="">
-		// 				<ButtonMe type="primary" size="small">
-		// 					Mua thêm
-		// 				</ButtonMe>
-		// 			</div>
-		// 		);
-		// 	},
-		// },
+		
 	];
 	return (
 		<section
@@ -207,7 +191,7 @@ function HistoryPage() {
 			{/* BACKGROUND IMG */}
 			{/* <BackgroundImg img={imgBackground} filter/> */}
 			<div className="container relative py-24">
-				<h1 className="text-center heading-1 mb-14">Thông tin đặt vé</h1>
+				<h1 className="text-center lg:text-start heading-1 mb-14">Thông tin đặt vé</h1>
 				<Table
 					rowKey={(record) => {
 						return record.maVe;

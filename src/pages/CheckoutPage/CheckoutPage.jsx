@@ -12,9 +12,10 @@ function CheckoutPage() {
 			xl:pt-header_xl
 			2xl:pt-header_2xl"
 		>
-			<Step />
-			<div className="container">
-				<div className="flex flex-col lg:flex-row w-full justify-between items-center gap-5">
+			<div className="container py-24">
+				<Step />
+
+				<div className="flex flex-col lg:flex-row w-full justify-between items-center gap-20 lg:gap-5">
 					<Left />
 					<Right />
 				</div>

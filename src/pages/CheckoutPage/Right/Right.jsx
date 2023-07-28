@@ -43,7 +43,7 @@ function Right() {
 		return danhSachGheDangChon.map((ghe, index) => {
 			const { tenGhe, loaiGhe } = ghe;
 			const element = (
-				<span className="text-slate-200 text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
+				<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
 					<strong>{tenGhe}</strong>
 				</span>
 			);
@@ -109,7 +109,7 @@ function Right() {
 	return (
 		<>
 			{contextHolder}
-			<div className="w-[40%]  flex flex-col items-center px-2 self-stretch">
+			<div className="w-full lg:w-[40%]  flex flex-col items-center px-2 self-stretch">
 				<div className="w-[80%] flex-shrink-0 h-[30px] rounded-t-[1rem] border-t-[5px] border-l-[5px] border-r-[5px] border-[rgb(71,85,105)]"></div>
 				<div className="flex flex-shrink-0 flex-col justify-between border-[5px] border-[rgb(71,85,105)] w-full h-[70px%]  rounded-[0.8rem] z-[1] bg-backgroundHome">
 					<div className="ml-auto mr-2 mt-2 right-[10%] top-[10%] w-7 h-7 bg-[rgb(71,85,105)] rounded-full"></div>
@@ -152,7 +152,7 @@ function Right() {
 					</div>
 					<hr className="w-[85%] border-dotted border-2" />
 					<div className="w-full h-[30%] bg-gray-300 rounded-lg relative flex items-center justify-center">
-						<div className="w-[80%] h-[80%]">
+						<div className="w-[80%] h-[120px] py-5">
 							<img className="w-full h-full object-cover" src={imgBarcode} alt="" />
 						</div>
 						<div className="absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-backgroundHome rounded-full"></div>

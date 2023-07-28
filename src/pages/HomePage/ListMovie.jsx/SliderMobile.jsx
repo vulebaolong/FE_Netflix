@@ -8,8 +8,16 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import { Tag, Typography } from "antd";
 import { COLOR_PRIMARY } from "../../../../tailwind.config";
+import Button from "../../../components/Button/Button";
+import { navigate } from "../../../App";
 
 function SliderMobile({ listMovie }) {
+	const handleDetailMovie = (movie) => {
+		navigate(`/detail/${movie.maPhim}`);
+	};
+	const handleBuyMovie = (movie) => {
+		navigate(`/detail/${movie.maPhim}#detailTab`);
+	};
 	const renderSwiper = () => {
 		if (listMovie.length > 0) {
 			return (
@@ -27,19 +35,26 @@ function SliderMobile({ listMovie }) {
 						console.log(movie.moTa);
 						return (
 							<SwiperSlide key={i} className="bg-transparent w-full">
-								<div className="w-full h-full rounded-lg dark:bg-gray-800/50 backdrop-blur-sm dark:border-gray-700 p-5 overflow-hidden">
-									<img className="w-full h-full object-cover" src={movie.hinhAnh} alt="" />
-									<div className=" bg-[#181818] overflow-hidden rounded-b-[0.2vw]">
+								<div className="w-full rounded-lg dark:bg-gray-800 dark:border-gray-800 p-4 overflow-hidden">
+									<div className="aspect-[16/9] rounded-t-md overflow-hidden">
+										{/* <img className="w-full h-full object-cover" src={movie.hinhAnh} alt="" /> */}
+										<img
+											className="w-full h-full object-cover"
+											src="https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABQzFKX--7urXzmDAho8UO--1_f2IQiZWy1RD5BKoXVCodfPd--G3z12AoX0u7Sk1Z-F4PUfld73NobbFcNXx3d55InOiHc-DCOi5.webp?r=051"
+											alt=""
+										/>
+									</div>
+									<div className=" bg-[#181818] overflow-hidden rounded-b-rounded-t-md p-3">
 										{/* TITLE */}
-										<div className="whitespace-normal px-2 flex gap-2 items-center">
-											<h3 className="text-base font-bold truncate">{movie.tenPhim}</h3>
+										<div className="whitespace-normal flex gap-2 items-center">
+											<h3 className="text-sm sm:text-base md:text-xl font-bold truncate">{movie.tenPhim}</h3>
 											<Tag className="text-[7px] font-extrabold leading-normal" color={COLOR_PRIMARY}>
 												HOT
 											</Tag>
 										</div>
 
 										{/* TAG */}
-										<div className="px-2 flex flex-wrap">
+										<div className=" flex flex-wrap mb-2">
 											<Tag color="red" className="text-[8px] mt-1 font-bold leading-normal">
 												18+
 											</Tag>
@@ -56,11 +71,51 @@ function SliderMobile({ listMovie }) {
 										</div>
 
 										{/* DESCRIPTION */}
-										<div className="DESCRIPTION px-2 pt-2 pb-4">
-											<Paragraph ellipsis={{ rows: 3 }} className="text-[10px] !mb-0 ">
+										<div className="DESCRIPTION  pt-2 pb-4">
+											<Paragraph ellipsis={{ rows: 3 }} className="text-xs md:text-sm !mb-0 ">
 												{/* <span className="text-xs font-bold">Mô tả: </span> */}
 												{movie.moTa}
 											</Paragraph>
+										</div>
+
+										{/* BUTTON */}
+										<div className="flex gap-2">
+											<Button
+												onClick={() => {
+													handleBuyMovie(movie);
+												}}
+												className="w-1/2 !px-0"
+												type="secondary"
+												size="big"
+											>
+												<span
+													className=" font-bold
+													text-base
+													sm:text-lg
+													md:text-xl
+                                    				"
+												>
+													Đặt vé
+												</span>
+											</Button>
+											<Button
+												onClick={() => {
+													handleDetailMovie(movie);
+												}}
+												className="w-1/2 !px-0"
+												type="tertiary"
+												size="big"
+											>
+												<span
+													className=" font-bold
+													text-base
+													sm:text-lg
+													md:text-xl
+                                    				"
+												>
+													Thông tin
+												</span>
+											</Button>
 										</div>
 									</div>
 								</div>

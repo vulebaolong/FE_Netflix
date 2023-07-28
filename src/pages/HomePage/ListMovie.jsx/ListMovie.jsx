@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import Title from "./Title";
 
-
 import SliderDesktop from "./SliderDesktop";
 import SliderMobile from "./SliderMobile";
 
@@ -44,8 +43,21 @@ function ListMovie() {
 			</div>
 
 			{/* MOBILE */}
-			<div className=" block lg:hidden container py-24">
-				<SliderMobile listMovie={listMovie}/>
+			<div className=" block lg:hidden container py-24 space-y-12">
+				<div className="">
+					<h2 className="text-center heading-1 mb-8">Tất cả phim</h2>
+					<SliderMobile listMovie={listMovie} />
+				</div>
+				<hr className="border-gray-600 my-3" />
+				<div className="">
+					<h2 className="text-center heading-1 mb-8">Phim đang chiếu</h2>
+					<SliderMobile listMovie={phimDangChieu} />
+				</div>
+				<hr className="border-gray-600 my-3" />
+				<div className="">
+					<h2 className="text-center heading-1 mb-8">Phim sắp chiếu</h2>
+					<SliderMobile listMovie={phimSapChieu} />
+				</div>
 			</div>
 		</section>
 	);

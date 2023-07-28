@@ -121,13 +121,13 @@ function ListMovieAdminPage() {
 	});
 	const columns = [
 		{
-			title: "Mã phim",
+			title: "ID",
 			dataIndex: "maPhim",
-			width: 125,
 			...getColumnSearchProps("maPhim"),
 			sorter: (item2, item1) => item2.maPhim - item1.maPhim,
 			sortDirections: ["descend", "ascend"],
 			editable: true,
+			className: "w-[30%] sm:w-[20%] md:w-[18%] lg:w-[15%] dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
 			title: "Hình ảnh",
@@ -140,23 +140,24 @@ function ListMovieAdminPage() {
 				);
 			},
 			editable: true,
+			className: "hidden lg:table-cell dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
 			title: "Tên phim",
 			dataIndex: "tenPhim",
-			width: 125,
 			...getColumnSearchProps("tenPhim"),
 			editable: true,
+			className: "sm:w-[20%] lg:w-[20%] dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
 			title: "Mô tả",
 			dataIndex: "moTa",
 			...getColumnSearchProps("moTa"),
 			editable: true,
+			className: "hidden sm:table-cell dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 		{
 			title: "Action",
-			width: 100,
 			render: (_, record) => {
 				return (
 					<div className="flex gap-2">
@@ -180,6 +181,7 @@ function ListMovieAdminPage() {
 					</div>
 				);
 			},
+			className: " lg:w-[10%] dark:bg-gray-800/50 backdrop-blur-sm"
 		},
 	];
 	return (
@@ -191,8 +193,8 @@ function ListMovieAdminPage() {
             xl:pt-header_xl
             2xl:pt-header_2xl"
 		>
-			<div className="container">
-				<h1 className="heading-1  mb-2">List movie</h1>
+			<div className="container py-24">
+				<h1 className="text-center lg:text-start heading-1 mb-14">Danh sách phim</h1>
 				<Table rowKey={"maPhim"} theme={"dark"} columns={columns} dataSource={listMovie} />
 			</div>
 		</section>

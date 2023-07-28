@@ -45,6 +45,9 @@ function LoggedDesktop() {
 		navigate("/add-movie");
 		setOpen(false);
 	};
+	const handleTrungTamTroGiup = () => {
+		setOpen(false);
+	};
 	const renderControlAdmin = () => {
 		if (userLogin.maLoaiNguoiDung !== "QuanTri") return;
 
@@ -84,7 +87,7 @@ function LoggedDesktop() {
 				<span className="text-base font-semibold">Thông tin đặt vé</span>
 			</div>
 
-			<div className="flex items-center gap-3 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer py-1 px-3 rounded-md">
+			<div onClick={handleTrungTamTroGiup} className="flex items-center gap-3 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer py-1 px-3 rounded-md">
 				<div className="rounded-full shadow-md bg-white/10 p-[6px]">
 					<IoIosHelpCircleOutline className="text-3xl" />
 				</div>
