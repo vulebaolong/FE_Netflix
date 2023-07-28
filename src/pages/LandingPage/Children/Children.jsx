@@ -10,10 +10,11 @@ function Children() {
 					xl:grid-cols-2
 					"
 				>
-					<div className="relative">
+					<div data-aos-delay="500" data-aos="fade-right" data-aos-duration="1000" className="relative">
 						<img className="w-full" src={imgChild} alt="" />
 					</div>
-					<div className="justify-self-end self-center">
+
+					<div data-aos-delay="1000" data-aos="fade-left" data-aos-duration="1000" className="justify-self-end self-center">
 						<h2
 							className="heading-1
 							text-center

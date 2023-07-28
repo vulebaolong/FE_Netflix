@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { navigate } from "../../../App";
 import Button from "../../../components/Button/Button";
+import { wait } from "../../../helpers/awaitHelper";
 
 function Logout() {
+	const delay30Second = async () => {
+		await wait(30000);
+		navigate("/");
+	};
+	useEffect(() => {
+		delay30Second();
+	}, []);
 
 	return (
 		<div

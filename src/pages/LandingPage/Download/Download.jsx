@@ -13,7 +13,10 @@ function Download() {
 					"
 				>
 					<div
-						className="relative
+						data-aos-delay="1000"
+						data-aos-duration="1000"
+						data-aos="fade-right"
+						className="relative 
 						order-2
 						xl:order-1
 						"
@@ -70,7 +73,11 @@ function Download() {
 							</div>
 						</div>
 					</div>
+
 					<div
+						data-aos-delay="500"
+						data-aos="fade-left"
+						data-aos-duration="1000"
 						className=" self-center 
 						order-1 
 						xl:order-2 

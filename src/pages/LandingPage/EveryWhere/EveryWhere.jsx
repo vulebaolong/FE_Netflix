@@ -11,7 +11,7 @@ function EveryWhere() {
 					xl:grid-cols-2
 					"
 				>
-					<div className="justify-self-end self-center">
+					<div data-aos-delay="500" data-aos="fade-right" data-aos-duration="1000" className="justify-self-end self-center">
 						<h2
 							className="heading-1
 							text-center
@@ -29,7 +29,8 @@ function EveryWhere() {
 							Phát trực tuyến không giới hạn phim và chương trình truyền hình trên điện thoại, máy tính bảng, máy tính xách tay và TV.
 						</p>
 					</div>
-					<div className="relative">
+
+					<div data-aos-delay="1000" data-aos="fade-left" data-aos-duration="1000" className="relative">
 						<img className="relative z-[1] mx-auto" src={imgDevice} alt="" />
 						<div
 							className="w-full h-ful absolute overflow-hidden z-0

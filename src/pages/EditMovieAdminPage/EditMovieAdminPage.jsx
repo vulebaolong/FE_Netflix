@@ -42,7 +42,7 @@ function EditMovieAdminPage() {
 			values.hinhAnh = values.hinhAnh.file.originFileObj;
 		}
 
-		console.log("values", values);
+		// console.log("values", values);
 		const formData = new FormData();
 		formData.append("tenPhim", values.tenPhim);
 		formData.append("trailer", values.trailer);
@@ -61,7 +61,7 @@ function EditMovieAdminPage() {
 			formData.append("File", values.hinhAnh, values.hinhAnh.name);
 		}
 
-		console.log(formData.get("File"));
+		// console.log(formData.get("File"));
 		dispatch(updateMovieMID(formData)).then((result) => {
 			if (result?.mes) result?.type(result?.mes);
 		});

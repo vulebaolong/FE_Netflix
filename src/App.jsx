@@ -14,12 +14,19 @@ import { message } from "antd";
 import AddMovieAdminPage from "./pages/AddMovieAdminPage/AddMovieAdminPage";
 import ListMovieAdminPage from "./pages/ListMovieAdminPage/ListMovieAdminPage";
 import EditMovieAdminPage from "./pages/EditMovieAdminPage/EditMovieAdminPage";
+import Loading from "./components/Loading.jsx/Loading";
 export let navigate = null;
 export let success = null;
 export let error = null;
 export let warning = null;
+import "aos/dist/aos.css";
+import AOS from "aos";
+import { useEffect } from "react";
 
 function App() {
+	useEffect(() => {
+		AOS.init();
+	}, []);
 	navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
 	success = (content) => {
@@ -42,6 +49,7 @@ function App() {
 	};
 	return (
 		<>
+			<Loading />
 			{contextHolder}
 			<Routes>
 				{/* LANDING LAYOUT */}

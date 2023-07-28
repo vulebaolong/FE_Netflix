@@ -113,13 +113,15 @@ function Faq() {
 	return (
 		<section className="py-16 bg-black">
 			<div className="container">
-				<Collapse
-					items={items}
-					accordion
-					onChange={onChange}
-					size="large"
-					expandIcon={({ isActive }) => <RightOutlined style={{ fontSize: 15 }} rotate={isActive ? 90 : 0} />}
-				/>
+				<div data-aos-delay="500" data-aos="fade-right" data-aos-duration="1000">
+					<Collapse
+						items={items}
+						accordion
+						onChange={onChange}
+						size="large"
+						expandIcon={({ isActive }) => <RightOutlined style={{ fontSize: 15 }} rotate={isActive ? 90 : 0} />}
+					/>
+				</div>
 				<div className="mt-[2.85rem]">
 					<StartWithMail />
 				</div>

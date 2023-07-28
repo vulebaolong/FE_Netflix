@@ -32,7 +32,6 @@ function SliderMobile({ listMovie }) {
 						"
 				>
 					{listMovie.map((movie, i) => {
-						console.log(movie.moTa);
 						return (
 							<SwiperSlide key={i} className="bg-transparent w-full">
 								<div className="w-full rounded-lg dark:bg-gray-800 dark:border-gray-800 p-4 overflow-hidden">

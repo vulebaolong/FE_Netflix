@@ -11,7 +11,7 @@ function Tv() {
 					xl:grid-cols-2
 					"
 				>
-					<div className="justify-self-end self-center">
+					<div data-aos-delay="500" data-aos-duration="1000" data-aos="fade-right" className="justify-self-end self-center">
 						<h2
 							className="heading-1
 							text-center
@@ -29,7 +29,8 @@ function Tv() {
 							Xem trên TV thông minh, Playstation, Xbox, Chromecast, Apple TV, đầu phát Blu-ray và nhiều thiết bị khác.
 						</p>
 					</div>
-					<div className="relative">
+
+					<div className="relative" data-aos-delay="1000" data-aos-duration="1000" data-aos="fade-left">
 						<img className=" relative z-[1] mx-auto" src={imageTv} alt="" />
 						<div
 							className="w-full h-ful absolute overflow-hidden z-0

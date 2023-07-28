@@ -1,5 +1,5 @@
 import { EditOutlined, DeleteOutlined, SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Space, Table } from "antd";
+import { Button, Input, Popconfirm, Space, Table } from "antd";
 import { useEffect, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import { useDispatch, useSelector } from "react-redux";
@@ -119,6 +119,11 @@ function ListMovieAdminPage() {
 				text
 			),
 	});
+	const handleDelete = (maPhim) => {
+		dispatch(deleteMovieMID(maPhim)).then((result) => {
+			if (result?.mes) result?.type(result?.mes);
+		});
+	};
 	const columns = [
 		{
 			title: "ID",
@@ -127,7 +132,7 @@ function ListMovieAdminPage() {
 			sorter: (item2, item1) => item2.maPhim - item1.maPhim,
 			sortDirections: ["descend", "ascend"],
 			editable: true,
-			className: "w-[30%] sm:w-[20%] md:w-[18%] lg:w-[15%] dark:bg-gray-800/50 backdrop-blur-sm"
+			className: "w-[30%] sm:w-[20%] md:w-[18%] lg:w-[15%] dark:bg-gray-800/50 backdrop-blur-sm",
 		},
 		{
 			title: "Hình ảnh",
@@ -140,21 +145,21 @@ function ListMovieAdminPage() {
 				);
 			},
 			editable: true,
-			className: "hidden lg:table-cell dark:bg-gray-800/50 backdrop-blur-sm"
+			className: "hidden lg:table-cell dark:bg-gray-800/50 backdrop-blur-sm",
 		},
 		{
 			title: "Tên phim",
 			dataIndex: "tenPhim",
 			...getColumnSearchProps("tenPhim"),
 			editable: true,
-			className: "sm:w-[20%] lg:w-[20%] dark:bg-gray-800/50 backdrop-blur-sm"
+			className: "sm:w-[20%] lg:w-[20%] dark:bg-gray-800/50 backdrop-blur-sm",
 		},
 		{
 			title: "Mô tả",
 			dataIndex: "moTa",
 			...getColumnSearchProps("moTa"),
 			editable: true,
-			className: "hidden sm:table-cell dark:bg-gray-800/50 backdrop-blur-sm"
+			className: "hidden sm:table-cell dark:bg-gray-800/50 backdrop-blur-sm",
 		},
 		{
 			title: "Action",
@@ -168,20 +173,19 @@ function ListMovieAdminPage() {
 								navigate(`/edit-movie/${record.maPhim}`);
 							}}
 						/>
-						<Button
-							danger
-							icon={<DeleteOutlined />}
-							onClick={() => {
-								console.log(record.maPhim);
-								dispatch(deleteMovieMID(record.maPhim)).then((result) => {
-									if (result?.mes) result?.type(result?.mes);
-								});
-							}}
-						/>
+						<Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.maPhim)}>
+							<Button
+								danger
+								icon={<DeleteOutlined />}
+								onClick={() => {
+									console.log(record.maPhim);
+								}}
+							/>
+						</Popconfirm>
 					</div>
 				);
 			},
-			className: " lg:w-[10%] dark:bg-gray-800/50 backdrop-blur-sm"
+			className: " lg:w-[10%] dark:bg-gray-800/50 backdrop-blur-sm",
 		},
 	];
 	return (

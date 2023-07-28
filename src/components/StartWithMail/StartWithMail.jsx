@@ -101,7 +101,7 @@ function StartWithMail() {
 	};
 
 	return (
-		<div className="">
+		<div data-aos-delay="700" data-aos="fade-left" data-aos-duration="1000">
 			<h3 className="heading-3 text-center">Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư cách thành viên của bạn.</h3>
 			<form onSubmit={onSubmit}>
 				<div className="flex flex-col lg:flex-row gap-3 justify-center mt-4">
