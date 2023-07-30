@@ -1,15 +1,21 @@
 import { useEffect } from "react";
 import { navigate } from "../../../App";
 import Button from "../../../components/Button/Button";
-import { wait } from "../../../helpers/awaitHelper";
 
 function Logout() {
+	let timeOut = null;
 	const delay30Second = async () => {
-		await wait(30000);
-		navigate("/");
+		timeOut = setTimeout(() => {
+			navigate("/");
+		}, 30000);
 	};
 	useEffect(() => {
-		delay30Second();
+		// delay30Second();
+
+		// return () => {
+		// 	console.log("clearTimeout");
+		// 	clearTimeout(timeOut);
+		// };
 	}, []);
 
 	return (

@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 function BackgroundImg({ img, filter }) {
 	return (
 		<div className="BACKGROUNDIMG absolute h-full w-full top-0 left-0">
-			<img className="object-cover w-full h-full " src={img} alt="" />
+			<div className="absolute h-full w-full top-0 left-0 bg-black"></div>
+			<img className="relative object-cover w-full h-full " src={img} alt="" />
 			{filter && (
 				<div
 					className="absolute bg-black/40 top-0 left-0 bottom-0 right-0 "

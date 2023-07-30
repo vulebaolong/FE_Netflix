@@ -7,15 +7,11 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useRef } from "react";
 import Button from "../../../components/Button/Button";
-import { useDispatch} from "react-redux";
-import { playAgain, setModalMovieActive, setPlayingModalMovie } from "../../../redux/slices/modalMovieSlice";
-import { showImgModalMovie } from "../../../helpers/modalMovieHelper";
-import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
+import { useDispatch } from "react-redux";
+import { setLocationMovieEl, setModalMovieActive} from "../../../redux/slices/modalMovieSlice";
 import PropTypes from "prop-types";
 
-
 function SliderDesktop({ listMovie }) {
-
 	const dispatch = useDispatch();
 
 	const swiperRef = useRef();
@@ -37,88 +33,20 @@ function SliderDesktop({ listMovie }) {
 		swiperRef.current?.slideNext();
 	};
 
-	const locationViewModalMovie = (e) => {
-		// modalMovieEl là modal sở popup khi hover
-		// movieEl là từng movie nằm trong slide
-		const modalMovieEl = document.querySelector(".modalMovie");
-		const movieEl = e.target;
-		modalMovieEl.style.display = "block";
-
-		// viewport tới đỉnh của trang web
-		const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-
-		// VIEW PORT
-		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-		// const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-
-		// MOVIE
-		const rectMovie = movieEl.getBoundingClientRect();
-		const top = rectMovie.top;
-		const left = rectMovie.left;
-		const right = rectMovie.right;
-		const widthMovieEl = rectMovie.width;
-		// const heightMovieEl = rectMovie.height;
-
-		// SET CHIEEUF CAO CHO MODAL MOVIE
-		modalMovieEl.style.width = `${widthMovieEl}px`;
-
-		// MODAL MOVIE
-		const rectModalMovie = modalMovieEl.getBoundingClientRect();
-		const widthModalMovieEl = rectModalMovie.width;
-		// const heightModalMovieEl = rectModalMovie.height;
-
-		// TÍNH RA PHẦN TRĂM
-		// const topPercentage = (top / viewportHeight) * 100;
-		const leftPercentage = Math.round((left / viewportWidth) * 100);
-
-		// await wait(500);
-		// Hiện modal movie
-		modalMovieEl.style.transform = "scale(1.5)";
-
-		// PHẢI
-		if (leftPercentage > 75) {
-			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
-			modalMovieEl.style.top = `${top + scrollTop}px`;
-			modalMovieEl.style.left = `${right - widthModalMovieEl}px`;
-			modalMovieEl.style.width = `${widthMovieEl}px`;
-			modalMovieEl.style.transformOrigin = "center right";
-		}
-
-		// TRÁI
-		if (leftPercentage < 10) {
-			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
-			modalMovieEl.style.top = `${top + scrollTop}px`;
-			modalMovieEl.style.left = `${left}px`;
-			modalMovieEl.style.width = `${widthMovieEl}px`;
-			modalMovieEl.style.transformOrigin = "center left";
-		}
-
-		// GIỮA
-		if (!(leftPercentage < 10) && !(leftPercentage > 75)) {
-			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
-			modalMovieEl.style.top = `${top + scrollTop}px`;
-			modalMovieEl.style.left = `${left + widthMovieEl / 2 - widthModalMovieEl / 2}px`;
-			modalMovieEl.style.transformOrigin = "center center";
-			console.log("top", top);
-			console.log("left", left);
-			console.log("widthModalMovieEl", widthModalMovieEl);
-			console.log("widthMovieEl", widthMovieEl);
-		}
-	};
-
 	let hoverTimeout;
 
 	const handleMouseEnter = (e, movie) => {
 		clearTimeout(hoverTimeout);
 
 		hoverTimeout = setTimeout(() => {
-			showImgModalMovie("opacity 0s")
-
+			const movieEl = e.target;
+			const rectMovie = movieEl.getBoundingClientRect();
+			const top = rectMovie.top;
+			const left = rectMovie.left;
+			const right = rectMovie.right;
+			const width = rectMovie.width;
+			dispatch(setLocationMovieEl({ top, left, right, width }));
 			dispatch(setModalMovieActive(movie));
-			dispatch(playAgain());
-			dispatch(setPlayingModalMovie(true));
-			dispatch(setPlayingBannerREDU(false));
-			locationViewModalMovie(e);
 		}, 500);
 	};
 

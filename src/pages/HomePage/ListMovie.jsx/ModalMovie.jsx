@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlayingModalMovie } from "../../../redux/slices/modalMovieSlice";
 import { wait } from "../../../helpers/awaitHelper";
 import Button from "../../../components/Button/Button";
 import IconMute from "../../../components/Icons/IconMute";
@@ -19,11 +18,17 @@ const { Paragraph } = Typography;
 
 const ModalMovie = () => {
 	const playerRef = useRef(null);
+
 	const dispatch = useDispatch();
-	const { modalMovieActive, playingModalMovie, playAgain } = useSelector((state) => state.modalMovieSlice);
+
+	const [playing, setPlaying] = useState(false);
+
+	const { modalMovieActive } = useSelector((state) => state.modalMovieSlice);
+
 	const { endedBanner } = useSelector((state) => state.bannerHomeSlice);
-	// const baseUrl = "https://www.youtube.com/embed/";
-	// const id2 = "OaDdVqW5CeE";\
+
+	const { locationMovieEl } = useSelector((state) => state.modalMovieSlice);
+
 	const [isMuted, setIsMuted] = useState(true);
 
 	const handlePlayAgain = () => {
@@ -31,15 +36,11 @@ const ModalMovie = () => {
 		player?.seekTo(0);
 	};
 
-	useEffect(() => {
-		handlePlayAgain();
-	}, [playAgain]);
-
 	const toggleMute = () => {
-		if (playingModalMovie) {
+		if (playing) {
 			setIsMuted(!isMuted);
 		}
-		if (!playingModalMovie) {
+		if (!playing) {
 			handlePlayAgain();
 		}
 	};
@@ -92,7 +93,7 @@ const ModalMovie = () => {
 		const timePause = duration - 15;
 		const playedSeconds = e.playedSeconds;
 		if (playedSeconds > timePause) {
-			dispatch(setPlayingModalMovie(false));
+			setPlaying(false);
 		}
 	};
 
@@ -109,7 +110,7 @@ const ModalMovie = () => {
 
 		modalMovieEl.style.display = "none";
 
-		dispatch(setPlayingModalMovie(false));
+		setPlaying(false);
 
 		if (!endedBanner) {
 			dispatch(setPlayingBannerREDU(true));
@@ -118,11 +119,90 @@ const ModalMovie = () => {
 
 	const handleMuaVe = () => {
 		navigate(`/detail/${modalMovieActive.maPhim}#detailTab`);
-		handleMouseLeave()
 	};
+
 	const handleThongTinChiTiet = () => {
 		navigate(`/detail/${modalMovieActive.maPhim}`);
-		handleMouseLeave()
+	};
+
+	useEffect(() => {
+		if (!locationMovieEl) return;
+		showImgModalMovie("opacity 0s");
+		locationViewModalMovie(locationMovieEl);
+		dispatch(setPlayingBannerREDU(false));
+		handlePlayAgain();
+		setPlaying(true);
+
+		// return () => {
+		// 	handleMouseLeave();
+		// };
+	}, [locationMovieEl]);
+
+	const locationViewModalMovie = (locationMovieEl) => {
+		// modalMovieEl là modal sở popup khi hover
+		// movieEl là từng movie nằm trong slide
+		const modalMovieEl = document.querySelector(".modalMovie");
+		modalMovieEl.style.display = "block";
+
+		// viewport tới đỉnh của trang web
+		const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+
+		// VIEW PORT
+		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+		console.log("viewportWidth", viewportWidth);
+		// const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+		// MOVIE
+		const top = locationMovieEl.top;
+		const left = locationMovieEl.left;
+		const right = locationMovieEl.right;
+		const widthMovieEl = locationMovieEl.width;
+		// const heightMovieEl = locationMovieEl.height;
+
+		// SET CHIEEUF CAO CHO MODAL MOVIE
+		modalMovieEl.style.width = `${widthMovieEl}px`;
+
+		// MODAL MOVIE
+		const rectModalMovie = modalMovieEl.getBoundingClientRect();
+		const widthModalMovieEl = rectModalMovie.width;
+		// const heightModalMovieEl = rectModalMovie.height;
+
+		// TÍNH RA PHẦN TRĂM
+		// const topPercentage = (top / viewportHeight) * 100;
+		const leftPercentage = Math.round((left / viewportWidth) * 100);
+
+		// await wait(500);
+		// Hiện modal movie
+		modalMovieEl.style.transform = "scale(1.5)";
+
+		// PHẢI
+		if (leftPercentage > 75) {
+			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
+			modalMovieEl.style.top = `${top + scrollTop}px`;
+			modalMovieEl.style.left = `${right - widthModalMovieEl}px`;
+			modalMovieEl.style.width = `${widthMovieEl}px`;
+			modalMovieEl.style.transformOrigin = "center right";
+			console.log("PHẢI");
+		}
+
+		// TRÁI
+		if (leftPercentage < 10) {
+			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
+			modalMovieEl.style.top = `${top + scrollTop}px`;
+			modalMovieEl.style.left = `${left}px`;
+			modalMovieEl.style.width = `${widthMovieEl}px`;
+			modalMovieEl.style.transformOrigin = "center left";
+			console.log("TRÁI");
+		}
+
+		// GIỮA
+		if (!(leftPercentage < 10) && !(leftPercentage > 75)) {
+			// modalMovieEl.style.top = `${top + scrollTop + heightMovieEl / 2 - heightModalMovieEl / 2}px`;
+			modalMovieEl.style.top = `${top + scrollTop}px`;
+			modalMovieEl.style.left = `${left + widthMovieEl / 2 - widthModalMovieEl / 2}px`;
+			modalMovieEl.style.transformOrigin = "center center";
+			console.log("GIỮA");
+		}
 	};
 
 	return (
@@ -145,7 +225,7 @@ const ModalMovie = () => {
 								onEnded={onEnded}
 								onProgress={onProgress}
 								ref={playerRef}
-								playing={playingModalMovie}
+								playing={playing}
 								muted={isMuted}
 								// url={`${baseUrl}${id2}`}
 								url={`${modalMovieActive.trailer}`}
