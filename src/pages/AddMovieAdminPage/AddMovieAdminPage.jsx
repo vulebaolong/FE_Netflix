@@ -8,6 +8,7 @@ import moment from "moment";
 import { MANHOM } from "../../contants/apiContants";
 import { useDispatch } from "react-redux";
 import { addMovieMID } from "../../redux/slices/movieSlice";
+import { navigate } from "../../App";
 const getBase64 = (file) =>
 	new Promise((resolve, reject) => {
 		const reader = new FileReader();
@@ -52,6 +53,7 @@ function AddMovieAdminPage() {
 		console.log(formData.get("hinhAnh"));
 		dispatch(addMovieMID(formData)).then((result) => {
 			if (result?.mes) result?.type(result?.mes);
+			if (result?.mes === "Thêm phim thành công") navigate("/list-movie");
 		});
 	};
 
@@ -212,7 +214,7 @@ function AddMovieAdminPage() {
 						{/* BUTTON */}
 						<Form.Item>
 							<ButtonMe type="primary" size="big">
-								<span className="text-base font-medium">Cập nhật phim</span>
+								<span className="text-base font-medium">Thêm phim</span>
 							</ButtonMe>
 						</Form.Item>
 					</Form>

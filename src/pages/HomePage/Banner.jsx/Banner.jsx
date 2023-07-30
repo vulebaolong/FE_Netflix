@@ -61,7 +61,7 @@ function Banner({ listMovie }) {
 		// console.log("playedSeconds", playedSeconds);
 		// console.log("timePause", timePause);
 		// console.log(playedSeconds > timePause);
-		if (playedSeconds > 5) {
+		if (playedSeconds > timePause) {
 			dispatch(setPlayingBannerREDU(false));
 			dispatch(setEndedBannerREDU(true));
 		}
@@ -195,9 +195,9 @@ function Banner({ listMovie }) {
 					>
 						<h1
 							className="font-black truncate leading-none
-                            lg:text-3xl
-                            xl:text-4xl
-                            2xl:text-5xl
+                            lg:text-3xl lg:leading-tight
+                            xl:text-4xl xl:leading-tight
+                            2xl:text-5xl 2xl:leading-snug
                             "
 							// text-center
 							// xl:text-start

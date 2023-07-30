@@ -14,7 +14,7 @@ import { message } from "antd";
 import AddMovieAdminPage from "./pages/AddMovieAdminPage/AddMovieAdminPage";
 import ListMovieAdminPage from "./pages/ListMovieAdminPage/ListMovieAdminPage";
 import EditMovieAdminPage from "./pages/EditMovieAdminPage/EditMovieAdminPage";
-import Loading from "./components/Loading.jsx/Loading";
+import Loading from "./components/Loading/Loading";
 export let navigate = null;
 export let success = null;
 export let error = null;

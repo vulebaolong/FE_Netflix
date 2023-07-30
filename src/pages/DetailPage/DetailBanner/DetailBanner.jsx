@@ -38,7 +38,7 @@ function DetailBanner() {
 		// console.log("playedSeconds", playedSeconds);
 		// console.log("timePause", timePause);
 		// console.log(playedSeconds > timePause);
-		if (playedSeconds > 5) {
+		if (playedSeconds > timePause) {
 			setPlaying(false);
 			// dispatch(setEndedBannerREDU(true));
 		}

@@ -173,7 +173,7 @@ function ListMovieAdminPage() {
 								navigate(`/edit-movie/${record.maPhim}`);
 							}}
 						/>
-						<Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.maPhim)}>
+						<Popconfirm okText="Có" cancelText="Không" title="Bạn có chắc muốn xoá phim này?" onConfirm={() => handleDelete(record.maPhim)}>
 							<Button
 								danger
 								icon={<DeleteOutlined />}
