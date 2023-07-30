@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCommentMID, postCommentMID } from "../../../redux/slices/commentSlice";
 import { useEffect, useRef } from "react";
 import moment from "moment";
+import imgThaySi from "../../../assets/comment/thay_si.jpg"
+import imgGai from "../../../assets/comment/gai.png"
 
 function Comment() {
 	const dispatch = useDispatch();
@@ -24,7 +26,8 @@ function Comment() {
 				if (item.name === userLogin.hoTen) return `https://i.pravatar.cc/150?img=${numAvatar}`;
 
 				// nếu có đường dẫn cụ thể
-				if (item.avatar.length > 5) return item.avatar;
+				if (item.avatar==="100") return imgThaySi;
+				if (item.avatar==="101") return imgGai;
 
 				// còn lại
 				return `https://i.pravatar.cc/150?img=${item.avatar}`;

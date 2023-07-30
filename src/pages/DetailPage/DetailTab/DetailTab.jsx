@@ -1,4 +1,4 @@
-import { Tabs } from "antd";
+import { Tabs, Tag } from "antd";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import { Typography } from "antd";
@@ -85,11 +85,14 @@ function DetailTab() {
 		const renderContentTime = (formattedArray) => {
 			return formattedArray.map((date, i) => {
 				const id = String(i + 1);
+				const dd = date.time.date.split(' ')[0]
+				const hh = date.time.date.split(' ')[1]
 				return {
 					label: (
-						<div className="flex flex-col gap-1 items-center">
-							<p>{date.time.dayOfWeek}</p>
-							<p>{date.time.date}</p>
+						<div className="flex flex-col gap-1 items-center ">
+							<p className="text-gray-300">{date.time.dayOfWeek}</p>
+							<p className="font-semibold">{dd}</p>
+							<Tag className="m-0" color="#f50">{hh}</Tag>
 						</div>
 					),
 					key: id,
@@ -110,7 +113,7 @@ function DetailTab() {
 				.flatMap((cumRap) =>
 					_.map(cumRap.lichChieuPhim, (lichChieuPhim) => ({
 						time: {
-							date: moment(lichChieuPhim.ngayChieuGioChieu).format("DD/MM/YYYY"),
+							date: moment(lichChieuPhim.ngayChieuGioChieu).format("DD/MM/YYYY HH:mm:ss"),
 							dayOfWeek: moment(lichChieuPhim.ngayChieuGioChieu).format("dddd"),
 						},
 						cumRaps: [
@@ -129,7 +132,10 @@ function DetailTab() {
 					time: groupedItems[0].time,
 					cumRaps: _.flatMap(groupedItems, (item) => item.cumRaps),
 				}))
-				.sortBy((item) => moment(item.time.date, "DD/MM/YYYY").unix())
+				.sortBy((item) => {
+					console.log("item", item);
+					return moment(item.time.date, "DD/MM/YYYY  HH:mm:ss").unix()
+				})
 				.value();
 			return {
 				// LOGO RẠP

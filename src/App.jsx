@@ -22,6 +22,7 @@ export let warning = null;
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect } from "react";
+import ShowTimeAdminPage from "./pages/ShowTimeAdminPage/ShowTimeAdminPage";
 
 function App() {
 	useEffect(() => {
@@ -82,6 +83,8 @@ function App() {
 					<Route path="add-movie" element={<AddMovieAdminPage />} />
 
 					<Route path="edit-movie/:id" element={<EditMovieAdminPage />} />
+
+					<Route path="show-time/:id" element={<ShowTimeAdminPage />} />
 
 					<Route path="home" element={<HomePage />} />
 				</Route>

@@ -22,7 +22,7 @@ const showLoading = () => {
 	if (requestCount === 0) {
 		// Code để bật loading ở đây (ví dụ: show loading overlay)
 		store.dispatch(setIsLoading(true));
-		console.log("showLoading");
+		// console.log("showLoading");
 	}
 
 	// Tăng biến đếm khi có api mới được gọi
@@ -33,19 +33,19 @@ const showLoading = () => {
 const hideLoading = async (response) => {
 	// Giảm biến đếm khi api hoàn tất
 	requestCount--;
-	console.log("requestCount", requestCount);
+	// console.log("requestCount", requestCount);
 	// Nếu requestCount bằng 0 (tất cả các api đã hoàn tất), thì tắt loading
 	if (requestCount === 0) {
 		// Code để tắt loading ở đây (ví dụ: hide loading overlay)
 		await wait(500);
-		console.log("đầy",response);
+		// console.log("đầy",response);
 		if (response?.config.url === `${response?.config.baseURL}/QuanLyNguoiDung/DangNhap?maNhom=${MANHOM}`) {
-			console.log("bỏ qua hideLoading");
+			// console.log("bỏ qua hideLoading");
 			return
 		}
-		console.log("hideLoading");
+		// console.log("hideLoading");
 		store.dispatch(setIsLoading(false));
-		console.log("hideLoading");
+		// console.log("hideLoading");
 	}
 };
 
@@ -58,8 +58,11 @@ axios.interceptors.request.use(
 		config.url = `${axios.defaults.baseURL}${config.url}`;
 		config.headers.TokenCybersoft = TOKEN_CYBERSOFT;
 		config.headers.Authorization = `Bearer ${lcStorage.get(USER_LOGIN)?.accessToken}`;
-		console.log("API đi");
-		showLoading();
+		// console.log("API đi");
+		// console.log(config.url.split('=')[0] = `${config.baseURL}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap`);
+		if (config.url.split('=')[0] !== `${config.baseURL}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap`) {
+			showLoading();
+		}
 		return config;
 	},
 	function (error) {
@@ -74,7 +77,7 @@ axios.interceptors.response.use(
 	function (response) {
 		// Any status code that lie within the range of 2xx cause this function to trigger
 		// Do something with response data
-		console.log("API về", response);
+		// console.log("API về", response);
 		hideLoading(response);
 		return response;
 	},

@@ -1,10 +1,13 @@
-import { EditOutlined, DeleteOutlined, SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Popconfirm, Space, Table } from "antd";
+import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from "@ant-design/icons";
+import { Button, Input, Popconfirm, Space, Table, Tooltip, Typography } from "antd";
 import { useEffect, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteMovieMID, getListMovieMID } from "../../redux/slices/movieSlice";
 import { navigate } from "../../App";
+import { lcStorage } from "../../helpers/localStorage";
+import { MOVIE_PARAM } from "./../../contants/movieContant";
+const { Paragraph } = Typography;
 
 function ListMovieAdminPage() {
 	const dispatch = useDispatch();
@@ -132,15 +135,14 @@ function ListMovieAdminPage() {
 			sorter: (item2, item1) => item2.maPhim - item1.maPhim,
 			sortDirections: ["descend", "ascend"],
 			editable: true,
-			className: "w-[30%] sm:w-[20%] md:w-[18%] lg:w-[15%] dark:bg-gray-800/50 backdrop-blur-sm",
+			className: "hidden sm:table-cell w-[30%] sm:w-[20%] md:w-[18%] lg:w-[15%] dark:bg-gray-800/50 backdrop-blur-sm",
 		},
 		{
 			title: "Hình ảnh",
-			render: (text) => {
-				// console.log(text, record, index);
+			render: (movie) => {
 				return (
-					<div className="w-20 h-20">
-						<img className="w-full h-full object-contain" src={text.hinhAnh} alt="" />
+					<div className="w-20">
+						<img className="w-full h-full object-contain rounded-md" src={movie.hinhAnh} alt="" />
 					</div>
 				);
 			},
@@ -156,8 +158,19 @@ function ListMovieAdminPage() {
 		},
 		{
 			title: "Mô tả",
-			dataIndex: "moTa",
-			...getColumnSearchProps("moTa"),
+			render: (movie) => {
+				return (
+					<Paragraph
+						ellipsis={{
+							rows: 2,
+							expandable: true,
+							symbol: "xem thêm",
+						}}
+					>
+						{movie.moTa}
+					</Paragraph>
+				);
+			},
 			editable: true,
 			className: "hidden sm:table-cell dark:bg-gray-800/50 backdrop-blur-sm",
 		},
@@ -166,13 +179,26 @@ function ListMovieAdminPage() {
 			render: (_, record) => {
 				return (
 					<div className="flex gap-2">
-						<Button
-							type="primary"
-							icon={<EditOutlined />}
-							onClick={() => {
-								navigate(`/edit-movie/${record.maPhim}`);
-							}}
-						/>
+						<Tooltip placement="top" title="Chỉnh sửa">
+							<Button
+								type="primary"
+								icon={<EditOutlined />}
+								onClick={() => {
+									navigate(`/edit-movie/${record.maPhim}`);
+								}}
+							/>
+						</Tooltip>
+
+						<Tooltip placement="top" title="Lịch chiếu">
+							<Button
+								type="primary"
+								icon={<CalendarOutlined />}
+								onClick={() => {
+									lcStorage.set(MOVIE_PARAM, record);
+									navigate(`/show-time/${record.maPhim}`);
+								}}
+							/>
+						</Tooltip>
 						<Popconfirm okText="Có" cancelText="Không" title="Bạn có chắc muốn xoá phim này?" onConfirm={() => handleDelete(record.maPhim)}>
 							<Button
 								danger
@@ -204,4 +230,5 @@ function ListMovieAdminPage() {
 		</section>
 	);
 }
+
 export default ListMovieAdminPage;

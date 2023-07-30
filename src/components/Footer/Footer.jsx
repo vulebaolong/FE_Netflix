@@ -7,7 +7,6 @@ import { navigate } from "../../App";
 function Footer() {
 	const { pathname } = useLocation();
 	const path = pathname.split("/")[1];
-	//
 	const backgroundColor = () => {
 		let backgroundColor = "bg-black";
 
@@ -20,7 +19,8 @@ function Footer() {
 			path === "checkout" ||
 			path === "list-movie" ||
 			path === "add-movie" ||
-			path === "edit-movie"
+			path === "edit-movie" ||
+			path === "show-time"
 		) {
 			backgroundColor = "bg-black/50";
 		}
@@ -30,11 +30,6 @@ function Footer() {
 
 	const containerFooter = () => {
 		let container = "container";
-
-		// if (pathname === "/home") {
-		// 	container = "px-[4%] 2xl:px-[60px]";
-		// }
-
 		return container;
 	};
 

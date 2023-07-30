@@ -7,4 +7,7 @@ export const ticketApi = {
 	datVe: (data) => {
 		return axios.post(`/QuanLyDatVe/DatVe`, data);
 	},
+	taoLichChieu: (data) => {
+		return axios.post(`/QuanLyDatVe/TaoLichChieu`, data);
+	},
 };

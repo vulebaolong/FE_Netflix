@@ -131,6 +131,19 @@
 	word-break: break-all;
 }
 
+.ant-picker-panel-container {
+	@apply !bg-gray-700;
+}
+
+.ant-input-number-affix-wrapper {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px !important;
+	@apply !bg-gray-700/60;
+}
+
+.ant-input-number {
+	background-color: transparent !important;
+}
+
 .container-home {
 	width: 100%;
 	@apply px-[4%] 2xl:px-[60px];

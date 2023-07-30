@@ -31,6 +31,7 @@ function MainLayout() {
 		if (path === "list-movie") return <BackgroundImg img={imgListMovie} filter />;
 		if (path === "add-movie") return <BackgroundImg img={imgAddMovie} filter />;
 		if (path === "edit-movie") return <BackgroundImg img={imgEditMovie} filter />;
+		if (path === "show-time") return <BackgroundImg img={imgEditMovie} filter />;
 	};
 
 	return (

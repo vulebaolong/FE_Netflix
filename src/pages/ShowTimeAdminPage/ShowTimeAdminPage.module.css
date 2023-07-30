@@ -1,0 +1,15 @@
+
+
+.input {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px !important;
+}
+
+.cascader > div {
+	@apply !bg-gray-700/60;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px !important;
+}
+
+
+.form {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
