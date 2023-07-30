@@ -38,24 +38,23 @@ function ShowTimeAdminPage() {
 		values.maRap = values.maRap[1];
 		values.ngayChieuGioChieu = moment(values.ngayChieuGioChieu.$d).format("DD/MM/YYYY HH:mm:ss");
 		console.log("values", values);
-        try {
-            if (values.maRap === "glx-nguyen-du") {
-                values.maRap = "glx-nguyen-du\r\n"
-            }
-            const { data } = await ticketApi.taoLichChieu(values);
-            success("Thêm lịch chiếu thành công")
-            navigate(`/detail/${id}#detailTab`)
-        } catch (err) {
-            error("Thêm lịch chiếu thất bại")
-        }
-		
+		try {
+			if (values.maRap === "glx-nguyen-du") {
+				values.maRap = "glx-nguyen-du\r\n";
+			}
+			const { data } = await ticketApi.taoLichChieu(values);
+			success("Thêm lịch chiếu thành công");
+			navigate(`/detail/${id}#detailTab`);
+		} catch (err) {
+			error("Thêm lịch chiếu thất bại");
+		}
 	};
 	const loadData = async (selectedOptions) => {
 		const { value } = selectedOptions[0];
 		const targetOption = selectedOptions[selectedOptions.length - 1];
 		const { data } = await cinemaApi.getInfoCinemaToSystem(value);
 		(targetOption.children = data.content.map((cumRap, index) => {
-            console.log(cumRap);
+			console.log(cumRap);
 			return {
 				label: cumRap.tenCumRap.trim(),
 				value: cumRap.maCumRap.trim(),
@@ -75,10 +74,16 @@ function ShowTimeAdminPage() {
 		>
 			<div className="container py-24">
 				<h2 className="heading-1 mb-5 text-center">Thêm lịch chiếu</h2>
-				{movieParam && <h2 className="heading-1 mb-5 text-center">{movieParam.tenPhim}</h2>}
+
 				<div
 					className={`${style.form} w-full sm:w-[400px] md:w-[450px] lg:w-[500px] xl:w-[525px] 2xl:w-[550px] mx-auto p-4 rounded-3xl border sm:p-6 xl:p-8 dark:bg-gray-800/50 backdrop-blur-sm dark:border-gray-700`}
 				>
+					{movieParam && (
+						<div className="mb-3">
+							<h2 className="text-lg font-bold text-center mb-3">{movieParam.tenPhim}</h2>
+                            <img className="rounded-lg" src={movieParam.hinhAnh} alt="movieParam" />
+						</div>
+					)}
 					<Form form={form} layout="vertical" onFinish={onFinish} initialValues={{ giaVe: 75000 }}>
 						{/* HỆ THỐNG RẠP */}
 						<Form.Item
