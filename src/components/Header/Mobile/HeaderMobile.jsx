@@ -8,7 +8,7 @@ import LoggedMobile from "./LoggedMobile";
 import { lcStorage } from "../../../helpers/localStorage";
 import { USER_LOGIN } from "../../../contants/userContants";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenHeaderMobile } from "../../../redux/slices/drawerSlice";
+import { setOpenHeaderMobileREDU } from "../../../redux/slices/drawerSlice";
 import { navigate } from "../../../App";
 
 function HeaderMobile() {
@@ -39,10 +39,10 @@ function HeaderMobile() {
 	};
 
 	const showDrawer = () => {
-		dispatch(setOpenHeaderMobile(true));
+		dispatch(setOpenHeaderMobileREDU(true));
 	};
 	const onClose = () => {
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 	};
 
 	return (

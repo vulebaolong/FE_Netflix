@@ -54,7 +54,6 @@ function ShowTimeAdminPage() {
 		const targetOption = selectedOptions[selectedOptions.length - 1];
 		const { data } = await cinemaApi.getInfoCinemaToSystem(value);
 		(targetOption.children = data.content.map((cumRap, index) => {
-			console.log(cumRap);
 			return {
 				label: cumRap.tenCumRap.trim(),
 				value: cumRap.maCumRap.trim(),

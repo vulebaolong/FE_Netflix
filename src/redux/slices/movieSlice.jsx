@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { movieApi } from "../../api/movieApi";
-import moment from "moment";
-import dayjs from "dayjs";
 import { error, success } from "../../App";
 
 const initialState = {

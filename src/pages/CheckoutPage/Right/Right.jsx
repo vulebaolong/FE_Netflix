@@ -6,14 +6,13 @@ import Button from "../../../components/Button/Button";
 import { datVeMID, selectedThanhToanREDU } from "../../../redux/slices/ticketSlice";
 import momoImg from "../../../assets/checkoutPage/thanhtoan/momo.png";
 import zalopayImg from "../../../assets/checkoutPage/thanhtoan/zaloPay.png";
-import atmBlackImg from "../../../assets/checkoutPage/thanhtoan/atmBlack.png";
 import atmWhiteImg from "../../../assets/checkoutPage/thanhtoan/atmWhite.png";
 import visaImg from "../../../assets/checkoutPage/thanhtoan/visa_mastercard.png";
 
 function Right() {
 	const dispatch = useDispatch();
 
-	const { thongTinPhim, danhSachGheDangChon, thanhToan, danhSachPhongVe } = useSelector((state) => state.ticketSlice);
+	const { thongTinPhim, danhSachGheDangChon, thanhToan } = useSelector((state) => state.ticketSlice);
 	const [api, contextHolder] = notification.useNotification();
 	const openNotification = (type = "success", title = "Tiêu đề", mes = "Tin nhắn", position = "top") => {
 		api[type]({

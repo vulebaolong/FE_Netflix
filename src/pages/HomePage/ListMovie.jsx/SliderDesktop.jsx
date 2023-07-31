@@ -8,7 +8,7 @@ import "swiper/css/scrollbar";
 import { useRef } from "react";
 import Button from "../../../components/Button/Button";
 import { useDispatch } from "react-redux";
-import { setLocationMovieEl, setModalMovieActive} from "../../../redux/slices/modalMovieSlice";
+import { setLocationMovieEl, setModalMovieActiveREDU} from "../../../redux/slices/modalMovieSlice";
 import PropTypes from "prop-types";
 
 function SliderDesktop({ listMovie }) {
@@ -46,7 +46,7 @@ function SliderDesktop({ listMovie }) {
 			const right = rectMovie.right;
 			const width = rectMovie.width;
 			dispatch(setLocationMovieEl({ top, left, right, width }));
-			dispatch(setModalMovieActive(movie));
+			dispatch(setModalMovieActiveREDU(movie));
 		}, 500);
 	};
 

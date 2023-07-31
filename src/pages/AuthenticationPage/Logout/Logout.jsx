@@ -10,12 +10,12 @@ function Logout() {
 		}, 30000);
 	};
 	useEffect(() => {
-		// delay30Second();
+		delay30Second();
 
-		// return () => {
-		// 	console.log("clearTimeout");
-		// 	clearTimeout(timeOut);
-		// };
+		return () => {
+			console.log("clearTimeout");
+			clearTimeout(timeOut);
+		};
 	}, []);
 
 	return (

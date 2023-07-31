@@ -8,12 +8,12 @@ const loadingSlice = createSlice({
 	name: "loadingSlice",
 	initialState,
 	reducers: {
-		setIsLoading: (state, {payload}) => {
+		setIsLoadingREDU: (state, {payload}) => {
 			state.isLoading = payload;
 		},
 	},
 });
 
-export const {setIsLoading} = loadingSlice.actions;
+export const {setIsLoadingREDU} = loadingSlice.actions;
 
 export default loadingSlice.reducer;

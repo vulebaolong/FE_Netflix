@@ -26,20 +26,20 @@ const userSlices = createSlice({
 		loginREDU: (state, { payload }) => {
 			state.userLogin = payload;
 		},
-		setInfoTicket: (state, { payload }) => {
+		setInfoTicketREDU: (state, { payload }) => {
 			state.infoTicket = payload;
 		},
-		setInfoAccount: (state, { payload }) => {
+		setInfoAccountREDU: (state, { payload }) => {
 			state.infoAccount = payload;
 		},
-		setInfoAfterRegister: (state, { payload }) => {
+		setInfoAfterRegisterREDU: (state, { payload }) => {
 			state.infoAfterRegister.taiKhoan = payload.taiKhoan;
 			state.infoAfterRegister.matKhau = payload.matKhau;
 		},
 	},
 });
 
-export const { setInfoAccount, setInfoAfterRegister, setInfoTicket, loginREDU, openMesREDU, resetUserREDU } = userSlices.actions;
+export const { setInfoAccountREDU, setInfoAfterRegisterREDU, setInfoTicketREDU, loginREDU, openMesREDU, resetUserREDU } = userSlices.actions;
 
 export default userSlices.reducer;
 
@@ -59,7 +59,7 @@ export const loginMID = (requestData) => {
 			//lưu localStorage
 			lcStorage.set(USER_LOGIN, data.content);
 
-			dispatch(setInfoAfterRegister({ taiKhoan: "", matKhau: "" }));
+			dispatch(setInfoAfterRegisterREDU({ taiKhoan: "", matKhau: "" }));
 
 
 			await wait(1000);
@@ -90,7 +90,7 @@ export const registerMID = (requestData) => {
 
 			navigate("/login");
 
-			dispatch(setInfoAfterRegister(data.content));
+			dispatch(setInfoAfterRegisterREDU(data.content));
 		} catch (error) {
 			console.log(error);
 		}
@@ -103,8 +103,8 @@ export const getInfoAccountMID = () => {
 		try {
 			const { data, status } = await userApi.getInfoAccount();
 			console.log("getInfoAccountMID", { data, status });
-			dispatch(setInfoTicket(data.content.thongTinDatVe));
-			dispatch(setInfoAccount(data.content));
+			dispatch(setInfoTicketREDU(data.content.thongTinDatVe));
+			dispatch(setInfoAccountREDU(data.content));
 		} catch (error) {
 			console.log(error);
 		}
@@ -122,7 +122,7 @@ export const updateAccountMID = (requestData) => {
 			if (data.content.maLoaiNguoiDung === "Khách hàng") {
 				data.content.maLoaiNguoiDung = "KhachHang";
 			}
-			dispatch(setInfoAccount(data.content));
+			dispatch(setInfoAccountREDU(data.content));
 
 			// =======đăng nhập lại ========
 			// đăng nhập lại để cập nhật userLogin và localStorage
@@ -140,7 +140,7 @@ export const updateAccountMID = (requestData) => {
 			//lưu localStorage
 			lcStorage.set(USER_LOGIN, dataLogin.content);
 
-			dispatch(setInfoAfterRegister({ taiKhoan: "", matKhau: "" }));
+			dispatch(setInfoAfterRegisterREDU({ taiKhoan: "", matKhau: "" }));
 			// =======đăng nhập lại ========
 
 			return {

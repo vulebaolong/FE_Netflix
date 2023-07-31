@@ -6,7 +6,7 @@ import { lcStorage } from "../../../helpers/localStorage";
 import { USER_LOGIN } from "../../../contants/userContants";
 import { resetUserREDU } from "../../../redux/slices/userSlices";
 import { navigate } from "../../../App";
-import { setOpenHeaderMobile } from "../../../redux/slices/drawerSlice";
+import { setOpenHeaderMobileREDU } from "../../../redux/slices/drawerSlice";
 import { IoListCircleOutline } from "react-icons/io5";
 
 function LoggedMobile() {
@@ -14,11 +14,11 @@ function LoggedMobile() {
 	const { userLogin, numAvatar } = useSelector((state) => state.userSlices);
 	const handleDanhSachPhim = () => {
 		navigate("/list-movie");
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 	};
 	const handleThemPhim = () => {
 		navigate("/add-movie");
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 	};
 	const renderControlAdmin = () => {
 		if (userLogin.maLoaiNguoiDung !== "QuanTri") return;
@@ -44,18 +44,18 @@ function LoggedMobile() {
 		lcStorage.remove(USER_LOGIN);
 		navigate("/logout");
 		dispatch(resetUserREDU());
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 	};
 	const handleAccountSetting = () => {
 		navigate("/account-settings");
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 	};
 	const handleThongTinDatVe = () => {
 		navigate("/history");
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 	};
 	const handleTrungTamTroGiup = () => {
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 	};
 	const renderTag = () => {
 		if (userLogin.maLoaiNguoiDung === "KhachHang") {

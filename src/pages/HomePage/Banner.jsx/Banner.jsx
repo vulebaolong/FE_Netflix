@@ -21,9 +21,6 @@ function Banner({ listMovie }) {
 	const movie = listMovie[randomIndex];
 	const url = movie?.trailer;
 
-	// const baseUrl = "https://www.youtube.com/embed/";
-	// const id2 = "OaDdVqW5CeE";
-
 	const [isMuted, setIsMuted] = useState(true);
 
 	const playerRef = useRef(null);

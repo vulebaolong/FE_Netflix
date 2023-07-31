@@ -3,7 +3,7 @@ import { BASE_URL, MANHOM, TOKEN_CYBERSOFT } from "../contants/apiContants";
 import { lcStorage } from "./../helpers/localStorage";
 import { USER_LOGIN } from "./../contants/userContants";
 import { store } from "./../redux/store";
-import { setIsLoading } from "../redux/slices/loadingSlice";
+import { setIsLoadingREDU } from "../redux/slices/loadingSlice";
 import { wait } from "../helpers/awaitHelper";
 
 // Thiết lập URL cơ sở
@@ -21,7 +21,7 @@ const showLoading = () => {
 	// Nếu requestCount bằng 0 (không có api nào đang được gọi), thì bật loading
 	if (requestCount === 0) {
 		// Code để bật loading ở đây (ví dụ: show loading overlay)
-		store.dispatch(setIsLoading(true));
+		store.dispatch(setIsLoadingREDU(true));
 		// console.log("showLoading");
 	}
 
@@ -44,7 +44,7 @@ const hideLoading = async (response) => {
 			return
 		}
 		// console.log("hideLoading");
-		store.dispatch(setIsLoading(false));
+		store.dispatch(setIsLoadingREDU(false));
 		// console.log("hideLoading");
 	}
 };

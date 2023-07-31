@@ -8,12 +8,12 @@ const drawerSlice = createSlice({
 	name: "drawerSlice",
 	initialState,
 	reducers: {
-		setOpenHeaderMobile: (state, { payload }) => {
+		setOpenHeaderMobileREDU: (state, { payload }) => {
 			state.openHeaderMobile = payload;
 		},
 	},
 });
 
-export const {setOpenHeaderMobile} = drawerSlice.actions;
+export const {setOpenHeaderMobileREDU} = drawerSlice.actions;
 
 export default drawerSlice.reducer;

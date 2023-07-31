@@ -9,7 +9,7 @@ const modalMovieSlice = createSlice({
 	name: "modalMovieSlice",
 	initialState,
 	reducers: {
-		setModalMovieActive: (state, { payload }) => {
+		setModalMovieActiveREDU: (state, { payload }) => {
 			state.modalMovieActive = payload;
 		},
 		setLocationMovieEl: (state, {payload}) => {
@@ -18,6 +18,6 @@ const modalMovieSlice = createSlice({
 	},
 });
 
-export const { setLocationMovieEl, setModalMovieActive } = modalMovieSlice.actions;
+export const { setLocationMovieEl, setModalMovieActiveREDU } = modalMovieSlice.actions;
 
 export default modalMovieSlice.reducer;

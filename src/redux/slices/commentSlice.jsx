@@ -10,14 +10,14 @@ const commentSlice = createSlice({
 	name: "commentSlice",
 	initialState,
 	reducers: {
-		getListComment: (state, { payload }) => {
+		getListCommentREDU: (state, { payload }) => {
             console.log(payload);
 			state.listComment = payload;
 		},
 	},
 });
 
-export const { getListComment } = commentSlice.actions;
+export const { getListCommentREDU } = commentSlice.actions;
 
 export default commentSlice.reducer;
 
@@ -28,7 +28,7 @@ export const getAllCommentMID = () => {
 		try {
 			const { data, status } = await commentApi.getAllComment();
 			console.log("getAllCommentMID", { data, status });
-			dispatch(getListComment(data));
+			dispatch(getListCommentREDU(data));
 		} catch (err) {
 			console.log(err);
 		}

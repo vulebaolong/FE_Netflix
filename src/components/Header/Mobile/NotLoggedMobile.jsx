@@ -1,13 +1,12 @@
-import { MdLanguage } from "react-icons/md";
 import Button from "../../Button/Button";
 import { navigate } from "../../../App";
 import { useDispatch } from "react-redux";
-import { setOpenHeaderMobile } from "../../../redux/slices/drawerSlice";
+import { setOpenHeaderMobileREDU } from "../../../redux/slices/drawerSlice";
 
 function NotLoggedMobile() {
 	const dispatch = useDispatch();
 	const handleButton = () => {
-		dispatch(setOpenHeaderMobile(false));
+		dispatch(setOpenHeaderMobileREDU(false));
 		navigate("/login");
 	};
 	return (

@@ -4,11 +4,11 @@ import { ticketApi } from "./../../api/ticketApi";
 const initialState = {
 	thongTinPhim: {},
 	danhSachGhe: {},
-    danhSachPhongVe: {},
-    danhSachGheDangChon: [],
-	danhSachGheNguoiKhacChon: [{ maGhe: 69962 }, { maGhe: 69963 }],
+	danhSachPhongVe: {},
+	danhSachGheDangChon: [],
+	danhSachGheNguoiKhacChon: [],
 	thanhToan: "0",
-    isDatVe: false,
+	isDatVe: false,
 };
 
 const ticketSlice = createSlice({
@@ -20,31 +20,31 @@ const ticketSlice = createSlice({
 			state.thongTinPhim = payload.thongTinPhim;
 		},
 		gheDangChonREDU: (state, { payload }) => {
-            const ghe = payload;
-            // nếu ghế đã được đặt thì return
-            if (ghe.daDat) return;
-            const index = state.danhSachGheDangChon.findIndex(
-                (itemSelect) => itemSelect.maGhe === ghe.maGhe
-            );
-            if (index !== -1) {
-                state.danhSachGheDangChon = state.danhSachGheDangChon.filter(
-                    (item) => item.maGhe !== payload.maGhe
-                );
-            }
-            if (index === -1) {
-                state.danhSachGheDangChon.push(ghe);
-            }
-        },
+			const ghe = payload;
+			// nếu ghế đã được đặt thì return
+			if (ghe.daDat) return;
+			const index = state.danhSachGheDangChon.findIndex((itemSelect) => itemSelect.maGhe === ghe.maGhe);
+			if (index !== -1) {
+				state.danhSachGheDangChon = state.danhSachGheDangChon.filter((item) => item.maGhe !== payload.maGhe);
+			}
+			if (index === -1) {
+				state.danhSachGheDangChon.push(ghe);
+			}
+		},
 		selectedThanhToanREDU: (state, { payload }) => {
-            state.thanhToan = payload;
-        },
+			state.thanhToan = payload;
+		},
 		setDatVeREDU: (state, { payload }) => {
-            state.isDatVe = payload;
-        },
+			state.isDatVe = payload;
+		},
+		resetThanhToanREDU: (state) => {
+			state.danhSachGheDangChon = [];
+			state.thanhToan = 0;
+		},
 	},
 });
 
-export const {setDatVeREDU, layDanhSachPhongVeREDU, gheDangChonREDU, selectedThanhToanREDU } = ticketSlice.actions;
+export const { resetThanhToanREDU, setDatVeREDU, layDanhSachPhongVeREDU, gheDangChonREDU, selectedThanhToanREDU } = ticketSlice.actions;
 
 export default ticketSlice.reducer;
 
@@ -66,18 +66,15 @@ export const layDanhSachPhongVeMID = (requestData) => {
 
 // datVeMID
 export const datVeMID = (requestData) => {
-    return async (dispatch) => {
-        try {
-            console.log(requestData);
-            const { data, status } = await ticketApi.datVe(requestData);
-            console.log("datVeMID", { data, status });
-
-            await dispatch(layDanhSachPhongVeMID(requestData.maLichChieu));
-            // await dispatch(setDatVeREDU(true));
-            // dispatch(showHideModalDatVeREDU("show"));
-        } catch (error) {
-            console.log(error);
-        }
-    };
+	return async (dispatch) => {
+		try {
+			console.log(requestData);
+			const { data, status } = await ticketApi.datVe(requestData);
+			console.log("datVeMID", { data, status });
+			dispatch(resetThanhToanREDU());
+			await dispatch(layDanhSachPhongVeMID(requestData.maLichChieu));
+		} catch (error) {
+			console.log(error);
+		}
+	};
 };
-
