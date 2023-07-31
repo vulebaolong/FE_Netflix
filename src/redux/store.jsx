@@ -9,6 +9,7 @@ import detailSlice from "./slices/detailSlice";
 import ticketSlice from "./slices/ticketSlice";
 import commentSlice from "./slices/commentSlice";
 import loadingSlice from "./slices/loadingSlice";
+import startWithMailSlice from "./slices/startWithMailSlice";
 export const store = configureStore({
 	reducer: {
 		userSlices,
@@ -20,7 +21,8 @@ export const store = configureStore({
 		detailSlice,
 		ticketSlice,
 		commentSlice,
-		loadingSlice
+		loadingSlice,
+		startWithMailSlice
 	},
 });
 

@@ -2,15 +2,18 @@ import { KeyOutlined, ContactsOutlined, MailOutlined, PhoneOutlined, UserOutline
 import { Form, Input } from "antd";
 import { NavLink } from "react-router-dom";
 import Button from "../../../components/Button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerMID } from "../../../redux/slices/userSlices";
 
 function Register() {
 	const dispatch = useDispatch();
+
+	const { email } = useSelector((state) => state.startWithMailSlice);
+
 	const onFinish = (values) => {
-		console.log("Success:", values);
 		dispatch(registerMID(values));
 	};
+
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
 	};
@@ -28,7 +31,7 @@ function Register() {
 				<h1 className="text-3xl font-medium mb-10">Đăng ký</h1>
 
 				{/* Form */}
-				<Form name="basic" layout={"vertical"} initialValues={{ remember: true }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+				<Form name="basic" layout={"vertical"} initialValues={{ email }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
 					{/* HỌ TÊN */}
 					<Form.Item
 						name="hoTen"

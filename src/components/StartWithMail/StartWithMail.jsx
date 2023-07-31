@@ -2,9 +2,15 @@ import { FaRegCircleXmark, FaAngleRight } from "react-icons/fa6";
 import Button from "../../components/Button/Button";
 import { v4 as uuidv4 } from "uuid";
 import style from "./StartWithMail.module.css";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { navigate } from "./../../App";
+import { wait } from "../../helpers/awaitHelper";
+import { setEmailREDU } from "../../redux/slices/startWithMailSlice";
+import { useDispatch } from "react-redux";
 
 function StartWithMail() {
+	const dispatch = useDispatch();
+
 	const randomUUID = uuidv4();
 
 	const errorRef = useRef(null);
@@ -15,7 +21,13 @@ function StartWithMail() {
 
 	const isOnChangeRef = useRef(false);
 
+	useEffect(() => {
+		dispatch(setEmailREDU(""));
+	}, []);
+
 	const validate = (value) => {
+		let isValid = true;
+
 		const inputEl = inputRef.current;
 
 		const errorEl = errorRef.current;
@@ -53,10 +65,18 @@ function StartWithMail() {
 		if (emailRegex.test(value)) closeError();
 
 		// Có lỗi
-		if (!emailRegex.test(value)) openError("Vui lòng nhập địa chỉ email hợp lệ.");
+		if (!emailRegex.test(value)) {
+			isValid = false;
+			openError("Vui lòng nhập địa chỉ email hợp lệ.");
+		}
 
 		// Có lỗi rỗng
-		if (value.trim() === "") openError("Bạn cần nhập email.");
+		if (value.trim() === "") {
+			isValid = true;
+			openError("Bạn cần nhập email.");
+		}
+
+		return isValid;
 	};
 
 	const handleButton = () => {
@@ -86,18 +106,44 @@ function StartWithMail() {
 		}
 	};
 
+	const actionValid = async (valueInput) => {
+		dispatch(setEmailREDU(valueInput));
+		await wait(500);
+		navigate(`/register`);
+	};
+
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		inputRef.current.focus();
 
-		if (!isOnChangeRef.current) return
+		if (!isOnChangeRef.current) return;
 
-		inputRef.current.required = true
-		
+		inputRef.current.required = true;
+
 		const valueInput = inputRef.current.value;
 
-		validate(valueInput);
+		const isValid = validate(valueInput);
+
+		if (!isValid) return;
+
+		console.log("hợp lệ");
+
+		actionValid(valueInput);
+	};
+
+	const handleKeyPress = (event) => {
+		if (event.key !== "Enter") return;
+
+		const valueInput = inputRef.current.value;
+
+		const isValid = validate(valueInput);
+
+		if (!isValid) return;
+
+		console.log("hợp lệ");
+
+		actionValid(valueInput);
 	};
 
 	return (
@@ -122,6 +168,7 @@ function StartWithMail() {
 							ref={inputRef}
 							onBlur={handleOnblurInput}
 							onChange={handleOnChangeInput}
+							onKeyDown={handleKeyPress}
 						/>
 						<label
 							htmlFor={`floating_filled${randomUUID}`}

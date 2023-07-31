@@ -5,7 +5,6 @@ import DetailBanner from "./DetailBanner/DetailBanner";
 import DetailTab from "./DetailTab/DetailTab";
 import { getMovieDetailMID } from "../../redux/slices/detailSlice";
 import Comment from "./Comment/Comment";
-import Divide from "./../../components/Divide/Divide";
 
 function DetailPage() {
 	const { id } = useParams();
