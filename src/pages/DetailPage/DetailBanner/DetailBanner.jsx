@@ -3,7 +3,6 @@ import ReactPlayer from "react-player/youtube";
 import { Progress, Rate, Typography } from "antd";
 import Button from "../../../components/Button/Button";
 import IconPlay from "../../../components/Icons/IconPlay";
-import IconInfo from "../../../components/Icons/IconInfo";
 import { useSelector } from "react-redux";
 import IconUnMute from "../../../components/Icons/IconUnMute";
 import IconRotate from "../../../components/Icons/IconRotate";
@@ -13,53 +12,54 @@ const { Paragraph } = Typography;
 
 function DetailBanner() {
 	const { movieDetail } = useSelector((state) => state.detailSlice);
+
 	const [playing, setPlaying] = useState(true);
+
 	const [muted, setMuted] = useState(true);
+
 	const playerRef = useRef(null);
+
 	const imgBackgroundBannerRef = useRef(null);
-	// const baseUrl = "https://www.youtube.com/embed/";
-	// const id2 = "OaDdVqW5CeE";
+
 	const onPause = () => {
 		console.log("onPause");
 		imgBackgroundBannerRef.current.style.opacity = 1;
 	};
+
 	const onPlay = () => {
 		console.log("onPlay");
 		imgBackgroundBannerRef.current.style.opacity = 0;
 	};
+
 	const onEnded = () => {
 		console.log("onEnded");
 		imgBackgroundBannerRef.current.style.opacity = 1;
 	};
+
 	const onProgress = (e) => {
 		const duration = playerRef.current.getDuration();
+
 		const timePause = duration - 15;
+
 		const playedSeconds = e.playedSeconds;
-		// console.log("playedSeconds", playedSeconds);
-		// console.log("timePause", timePause);
-		// console.log(playedSeconds > timePause);
-		if (playedSeconds > timePause) {
-			setPlaying(false);
-			// dispatch(setEndedBannerREDU(true));
-		}
+
+		if (playedSeconds > timePause) setPlaying(false);
 	};
+
 	const handlePlayAgain = () => {
 		const player = playerRef.current.getInternalPlayer();
+
 		player.seekTo(0);
+
 		setPlaying(true);
-		// imgBackgroundBannerRef.current.style.opacity = 0;
-		// dispatch(setPlayingBannerREDU(true));
-		// dispatch(setEndedBannerREDU(false));
-		// imgBackgroundBannerRef.current.classList.remove(style.showImg);
 	};
+
 	const toggleMute = () => {
-		if (playing) {
-			setMuted(!muted);
-		}
-		if (!playing) {
-			handlePlayAgain();
-		}
+		if (playing) setMuted(!muted);
+
+		if (!playing) handlePlayAgain();
 	};
+
 	const renderIconVideo = () => {
 		if (playing) {
 			if (muted) {
@@ -106,7 +106,7 @@ function DetailBanner() {
 			);
 		}
 	};
-	const handleBuyMovie = () => {};
+
 	return (
 		<section className="pb-40 pt-32 relative">
 			{/* IMG BLUR */}
@@ -238,7 +238,8 @@ function DetailBanner() {
 
 								{/* ĐÁNH GIÁ */}
 								<div className="space-y-3 w-[18%] flex items-center flex-col flex-shrink-0">
-									<Progress strokeColor={"#7ed321"} type="circle" percent={(+movieDetail.danhGia / 5) * 100} />
+									{console.log(movieDetail.danhGia)}
+									<Progress format={(percent) => `${percent / 100 * 5}/5`} strokeColor={"#7ed321"} type="circle" percent={(+movieDetail.danhGia / 5) * 100} />
 									<Rate allowHalf value={+movieDetail.danhGia} />
 								</div>
 							</div>
