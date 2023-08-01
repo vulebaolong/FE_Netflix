@@ -104,10 +104,10 @@ function Login() {
 
 					<Form.Item className="">
 						<div className="flex justify-between  gap-2">
-							<Button htmlFor={"button"} type={"tertiary"} size={"medium"} onClick={handleButtonKhachHang} className="w-full">
+							<Button htmlFor={"button"} type={"tertiary"} size={"medium"} onClick={handleButtonKhachHang} className="w-full !px-0">
 								<span className="text-lg font-semibold text-white">Khách hàng</span>
 							</Button>
-							<Button htmlFor={"button"} type={"tertiary"} size={"medium"} onClick={handleButtonQuanTri} className="w-full">
+							<Button htmlFor={"button"} type={"tertiary"} size={"medium"} onClick={handleButtonQuanTri} className="w-full !px-0">
 								<span className="text-lg font-semibold text-white">Quản trị</span>
 							</Button>
 						</div>
