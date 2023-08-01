@@ -144,7 +144,7 @@
 	background-color: transparent !important;
 }
 
-:where(.css-dev-only-do-not-override-1iacbu2).ant-btn-primary {
+.ant-btn-primary {
 	background-color: #1668dc;
 }
 
