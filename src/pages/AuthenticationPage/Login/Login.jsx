@@ -3,11 +3,24 @@ import Button from "../../../components/Button/Button";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { loginMID } from "../../../redux/slices/userSlices";
+import { loginMID, setAutoFieldLoginREDU } from "../../../redux/slices/userSlices";
+import { useEffect } from "react";
 
 function Login() {
 	const dispatch = useDispatch();
-	const { infoAfterRegister } = useSelector((state) => state.userSlices);
+
+	const { autoFieldLogin } = useSelector((state) => state.userSlices);
+	useEffect(() => form.resetFields(), [autoFieldLogin]);
+	useEffect(() => {
+		return () => {
+			dispatch(
+				setAutoFieldLoginREDU({
+					taiKhoan: "",
+					matKhau: "",
+				}),
+			);
+		};
+	}, []);
 
 	const onFinish = (values) => {
 		dispatch(loginMID(values)).then((result) => {
@@ -18,9 +31,22 @@ function Login() {
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
 	};
-
-	const handleButton = () => {
-		// errorRef.current.classList.add(style.openError);
+	const [form] = Form.useForm();
+	const handleButtonKhachHang = () => {
+		dispatch(
+			setAutoFieldLoginREDU({
+				taiKhoan: "khachhang",
+				matKhau: "123456",
+			}),
+		);
+	};
+	const handleButtonQuanTri = () => {
+		dispatch(
+			setAutoFieldLoginREDU({
+				taiKhoan: "quantri",
+				matKhau: "123456",
+			}),
+		);
 	};
 
 	return (
@@ -37,7 +63,7 @@ function Login() {
 				<h1 className="text-3xl font-medium mb-10">Đăng nhập</h1>
 
 				{/* Form */}
-				<Form layout={"vertical"} initialValues={infoAfterRegister} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+				<Form form={form} layout={"vertical"} initialValues={autoFieldLogin} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
 					<Form.Item
 						name="taiKhoan"
 						rules={[
@@ -64,10 +90,27 @@ function Login() {
 						<Input.Password prefix={<KeyOutlined />} id="warning" size="large" placeholder="Mật khẩu" autoComplete="current-password" />
 					</Form.Item>
 
-					<Form.Item className="mt-5">
-						<Button htmlFor={"submit"} type={"primary"} size={"big"} onClick={handleButton} className="w-full mt-1">
+					<Form.Item className="mt-5 mb-0">
+						<Button htmlFor={"submit"} type={"primary"} size={"big"} className="w-full mt-1">
 							<span className="text-xl font-semibold text-white">Đăng nhập</span>
 						</Button>
+					</Form.Item>
+
+					<div className="flex items-center py-4 space-x-1">
+						<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
+						<p className="px-3 text-sm dark:text-gray-400">Thử với tài khoản có sẵn</p>
+						<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
+					</div>
+
+					<Form.Item className="">
+						<div className="flex justify-between  gap-2">
+							<Button htmlFor={"button"} type={"tertiary"} size={"medium"} onClick={handleButtonKhachHang} className="w-full">
+								<span className="text-lg font-semibold text-white">Khách hàng</span>
+							</Button>
+							<Button htmlFor={"button"} type={"tertiary"} size={"medium"} onClick={handleButtonQuanTri} className="w-full">
+								<span className="text-lg font-semibold text-white">Quản trị</span>
+							</Button>
+						</div>
 					</Form.Item>
 				</Form>
 

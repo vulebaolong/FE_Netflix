@@ -10,7 +10,7 @@ const initialState = {
 	numAvatar: Math.floor(Math.random() * 70) + 1,
 	infoTicket: [],
 	infoAccount: {},
-	infoAfterRegister: {
+	autoFieldLogin: {
 		taiKhoan: "",
 		matKhau: "",
 	},
@@ -32,14 +32,14 @@ const userSlices = createSlice({
 		setInfoAccountREDU: (state, { payload }) => {
 			state.infoAccount = payload;
 		},
-		setInfoAfterRegisterREDU: (state, { payload }) => {
-			state.infoAfterRegister.taiKhoan = payload.taiKhoan;
-			state.infoAfterRegister.matKhau = payload.matKhau;
+		setAutoFieldLoginREDU: (state, { payload }) => {
+			state.autoFieldLogin.taiKhoan = payload.taiKhoan;
+			state.autoFieldLogin.matKhau = payload.matKhau;
 		},
 	},
 });
 
-export const { setInfoAccountREDU, setInfoAfterRegisterREDU, setInfoTicketREDU, loginREDU, openMesREDU, resetUserREDU } = userSlices.actions;
+export const { setInfoAccountREDU, setAutoFieldLoginREDU, setInfoTicketREDU, loginREDU, openMesREDU, resetUserREDU } = userSlices.actions;
 
 export default userSlices.reducer;
 
@@ -58,9 +58,6 @@ export const loginMID = (requestData) => {
 
 			//lưu localStorage
 			lcStorage.set(USER_LOGIN, data.content);
-
-			dispatch(setInfoAfterRegisterREDU({ taiKhoan: "", matKhau: "" }));
-
 
 			await wait(1000);
 
@@ -90,7 +87,7 @@ export const registerMID = (requestData) => {
 
 			navigate("/login");
 
-			dispatch(setInfoAfterRegisterREDU(data.content));
+			dispatch(setAutoFieldLoginREDU(data.content));
 		} catch (error) {
 			console.log(error);
 		}
@@ -130,6 +127,7 @@ export const updateAccountMID = (requestData) => {
 				taiKhoan: data.content.taiKhoan,
                 matKhau: data.content.matKhau,
 			}
+
 			const { data:dataLogin, status:statusLogin } = await userApi.login(requestDataLogin);
 
 			console.log("loginMID", { dataLogin, statusLogin });
@@ -140,8 +138,6 @@ export const updateAccountMID = (requestData) => {
 			//lưu localStorage
 			lcStorage.set(USER_LOGIN, dataLogin.content);
 
-			dispatch(setInfoAfterRegisterREDU({ taiKhoan: "", matKhau: "" }));
-			// =======đăng nhập lại ========
 
 			return {
 				type: success, // import success

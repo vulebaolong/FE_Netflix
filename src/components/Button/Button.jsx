@@ -55,6 +55,7 @@ const Button = forwardRef((props, ref) => {
 			classNameSize = size;
 			break;
 	}
+	
 	return (
 		<button ref={ref} type={htmlFor} {...rest} className={`${className} ${classNameType} ${classNameSize} transition cursor-pointer`}>
 			{children}
