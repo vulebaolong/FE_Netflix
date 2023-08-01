@@ -36,12 +36,7 @@ function SliderMobile({ listMovie }) {
 							<SwiperSlide key={i} className="bg-transparent w-full">
 								<div className="w-full rounded-lg dark:bg-gray-800 dark:border-gray-800 p-4 overflow-hidden">
 									<div className="aspect-[16/9] rounded-t-md overflow-hidden">
-										{/* <img className="w-full h-full object-cover" src={movie.hinhAnh} alt="" /> */}
-										<img
-											className="w-full h-full object-cover"
-											src="https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABQzFKX--7urXzmDAho8UO--1_f2IQiZWy1RD5BKoXVCodfPd--G3z12AoX0u7Sk1Z-F4PUfld73NobbFcNXx3d55InOiHc-DCOi5.webp?r=051"
-											alt=""
-										/>
+										<img className="w-full h-full object-cover" src={movie.hinhAnh} alt="imgMovie" />
 									</div>
 									<div className=" bg-[#181818] overflow-hidden rounded-b-rounded-t-md p-3">
 										{/* TITLE */}

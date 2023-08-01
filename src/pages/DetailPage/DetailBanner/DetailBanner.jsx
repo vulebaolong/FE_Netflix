@@ -174,8 +174,8 @@ function DetailBanner() {
 								<div className=" flex-grow overflow-hidden">
 									<h1
 										className="font-black truncate leading-none
-										text-base text-center mb-2
-										sm:text-2xl sm:mb-4
+										text-center
+										text-lg
 										lg:text-4xl
 										xl:text-start
 										"
@@ -200,31 +200,25 @@ function DetailBanner() {
 										<Link to="detailTab" smooth={true} duration={500}>
 											<Button
 												className="flex items-center
-											py-0 px-2 gap-1
-											sm:py-1 sm:px-2 sm:gap-3
-											md:py-2 md:px-3
-											lg:py-2 lg:px-4
-											xl:py-3 xl:px-5
+											 gap-1
+											py-2 px-4
+											lg:py-3 lg:px-5
 											2xl:py-3 2xl:px-6
 											"
 												type="secondary"
 											>
 												<IconPlay
 													className="
-												w-2 h-2
-												sm:w-3 sm:h-3
-												md:w-4 md:h-4
-												lg:w-4 lg:h-4
+												
+												w-4 h-4
 												xl:w-5 xl:h-5
 												2xl:w-6 2xl:h-6
 												"
 												/>
 												<span
 													className=" font-semibold
-												text-[10px]
-												sm:text-sm
-												md:text-sm
-												lg:text-base
+												
+												text-base
 												xl:text-2xl
 												2xl:text-2xl
 												"
@@ -237,7 +231,7 @@ function DetailBanner() {
 								</div>
 
 								{/* ĐÁNH GIÁ */}
-								<div className="space-y-3 w-[18%] flex items-center flex-col flex-shrink-0">
+								<div className=" space-y-3 w-[18%] hidden xl:flex items-center flex-col flex-shrink-0">
 									{console.log(movieDetail.danhGia)}
 									<Progress format={(percent) => `${percent / 100 * 5}/5`} strokeColor={"#7ed321"} type="circle" percent={(+movieDetail.danhGia / 5) * 100} />
 									<Rate allowHalf value={+movieDetail.danhGia} />
