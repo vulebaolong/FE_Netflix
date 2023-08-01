@@ -85,14 +85,16 @@ function DetailTab() {
 		const renderContentTime = (formattedArray) => {
 			return formattedArray.map((date, i) => {
 				const id = String(i + 1);
-				const dd = date.time.date.split(' ')[0]
-				const hh = date.time.date.split(' ')[1]
+				const dd = date.time.date.split(" ")[0];
+				const hh = date.time.date.split(" ")[1];
 				return {
 					label: (
 						<div className="flex flex-col gap-1 items-center ">
 							<p className="text-gray-300">{date.time.dayOfWeek}</p>
 							<p className="font-semibold">{dd}</p>
-							<Tag className="m-0" color="#f50">{hh}</Tag>
+							<Tag className="m-0" color="#f50">
+								{hh}
+							</Tag>
 						</div>
 					),
 					key: id,
@@ -134,7 +136,7 @@ function DetailTab() {
 				}))
 				.sortBy((item) => {
 					console.log("item", item);
-					return moment(item.time.date, "DD/MM/YYYY  HH:mm:ss").unix()
+					return moment(item.time.date, "DD/MM/YYYY  HH:mm:ss").unix();
 				})
 				.value();
 			return {
@@ -155,7 +157,12 @@ function DetailTab() {
 	};
 
 	const renderTabLichChieu = () => {
-		return <Tabs style={{ width: "100%", zIndex: 3 }} tabPosition="left" items={renderRap()} />;
+		return (
+			<>
+				<Tabs className="hidden sm:flex" style={{ width: "100%", zIndex: 3 }} tabPosition="left" items={renderRap()} />
+				<Tabs className="flex sm:hiden" style={{ width: "100%", zIndex: 3 }} tabPosition="top" items={renderRap()} />
+			</>
+		);
 	};
 
 	const renderThongTinPhim = () => {

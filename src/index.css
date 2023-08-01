@@ -135,6 +135,10 @@
 	@apply !bg-gray-700;
 }
 
+.ant-picker-datetime-panel {
+	@apply sm:flex-row flex-col
+}
+
 .ant-input-number-affix-wrapper {
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px !important;
 	@apply !bg-gray-700/60;

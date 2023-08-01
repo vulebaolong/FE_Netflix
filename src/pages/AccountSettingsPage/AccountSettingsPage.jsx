@@ -85,7 +85,7 @@ function AccountSettingsPage() {
 						<div className={`${style.form} p-4 rounded-3xl border sm:p-6 xl:p-8 dark:bg-gray-800/50 backdrop-blur-sm dark:border-gray-700`}>
 							<Form form={formInfo} layout="vertical" initialValues={updatedInfoAccount} onFinish={onFinishInfo} autoComplete="off">
 								<h2 className="mb-4 text-xl font-bold dark:text-white">Thông tin chung</h2>
-								<div className="grid grid-cols-2 gap-3">
+								<div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3">
 									<div className="">
 										{/* HỌ TÊN */}
 										<Form.Item
