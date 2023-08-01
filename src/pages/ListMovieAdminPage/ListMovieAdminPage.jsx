@@ -25,75 +25,49 @@ function ListMovieAdminPage() {
 		setSearchText(selectedKeys[0]);
 		setSearchedColumn(dataIndex);
 	};
-	const handleReset = (clearFilters) => {
-		clearFilters();
-		setSearchText("");
-	};
+
 	const getColumnSearchProps = (dataIndex) => ({
-		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-			<div
-				style={{
-					padding: 8,
-				}}
-				onKeyDown={(e) => e.stopPropagation()}
-			>
-				<Input
-					ref={searchInput}
-					placeholder={`Search ${dataIndex}`}
-					value={selectedKeys[0]}
-					onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-					onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => {
+			const renderTitle = () => {
+				if (dataIndex === "maPhim") return "ID";
+				if (dataIndex === "tenPhim") return "Tên phim";
+			};
+			return (
+				<div
 					style={{
-						marginBottom: 8,
-						display: "block",
+						padding: 8,
 					}}
-				/>
-				<Space>
-					<Button
-						type="primary"
-						onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-						icon={<SearchOutlined />}
-						size="small"
+					onKeyDown={(e) => e.stopPropagation()}
+				>
+					<Input
+						ref={searchInput}
+						placeholder={`Tìm kiếm ${renderTitle()}`}
+						value={selectedKeys[0]}
+						onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+						onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
 						style={{
-							width: 90,
+							marginBottom: 8,
+							display: "block",
 						}}
-					>
-						Search
-					</Button>
-					<Button
-						onClick={() => clearFilters && handleReset(clearFilters)}
-						size="small"
-						style={{
-							width: 90,
-						}}
-					>
-						Reset
-					</Button>
-					<Button
-						type="link"
-						size="small"
-						onClick={() => {
-							confirm({
-								closeDropdown: false,
-							});
-							setSearchText(selectedKeys[0]);
-							setSearchedColumn(dataIndex);
-						}}
-					>
-						Filter
-					</Button>
-					<Button
-						type="link"
-						size="small"
-						onClick={() => {
-							close();
-						}}
-					>
-						close
-					</Button>
-				</Space>
-			</div>
-		),
+					/>
+					<div className="flex gap-1">
+						<Button type="primary" onClick={() => handleSearch(selectedKeys, confirm, dataIndex)} icon={<SearchOutlined />} size="small">
+							Tìm kiếm
+						</Button>
+						<Button
+							className="w-full"
+							type="link"
+							size="small"
+							onClick={() => {
+								close();
+							}}
+						>
+							Đóng
+						</Button>
+					</div>
+				</div>
+			);
+		},
 		filterIcon: (filtered) => (
 			<SearchOutlined
 				style={{
