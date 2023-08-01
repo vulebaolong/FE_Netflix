@@ -32,7 +32,7 @@ function Cinema() {
 						<div className="space-y-3">
 							<div className="flex gap-2 items-center">
 								<div
-									className="flex flex-shrink-0 w-16 h-16 items-center bg-cover bg-no-repeat bg-center"
+									className="flex flex-shrink-0 w-10 h-10 sm:w-16 sm:h-16 items-center bg-cover bg-no-repeat bg-center"
 									style={{
 										backgroundImage: `url('${phim.hinhAnh}'), url('https://picsum.photos/64')`,
 									}}
@@ -45,7 +45,7 @@ function Cinema() {
 							<div className="flex gap-2">
 								<div className="w-16"></div>
 								<div
-									className="grid  gap-4
+									className="grid grid-cols-3 gap-4
 									md:grid-cols-2
 									lg:grid-cols-3
 									xl:grid-cols-5
@@ -60,7 +60,7 @@ function Cinema() {
 				);
 			});
 		return (
-			<div className=" overflow-auto divide-y divide-slate-400/25" style={{ height: "465px" }}>
+			<div className=" overflow-auto divide-y divide-slate-400/25 max-h-[270px] sm:max-h-[260px] md:max-h-[465px] border border-slate-700 md:border-0 rounded-md">
 				{contentPhim()}
 			</div>
 		);
@@ -81,11 +81,12 @@ function Cinema() {
 			};
 			return (
 				<div className="flex gap-2 items-center px-2 py-1 hover:bg-[#2f2f2f5c] active:bg-[#2f2f2fb5] transition">
-					<div className="flex w-14 items-center">
+					<div className="flex w-10 sm:w-14 items-center">
 						<img className="w-full" src={cumRap.hinhAnh} />
 					</div>
 					<div
 						className="text-start whitespace-normal
+						w-[150px]
 						md:w-[150px]
 						lg:w-[230px]
 						xl:w-[300px]
@@ -117,7 +118,12 @@ function Cinema() {
 				children: renderListMovie(cumRap.danhSachPhim, cumRap.diaChi),
 			};
 		});
-		return <Tabs tabPosition="left" items={items} className="max-h-[465px]" />;
+		return (
+			<>
+				<Tabs  tabPosition="left" items={items} className="hidden md:flex max-h-[465px]" />
+				<Tabs  tabPosition="top" items={items} className="flex md:hidden max-h-[465px]" />
+			</>
+		);
 	};
 
 	const renderCinema = () => {
@@ -133,8 +139,7 @@ function Cinema() {
 	return (
 		<section
 			className="cinema py-24 bg-backgroundHome
-			hidden
-			md:block
+			
 			"
 		>
 			<div className="container">
@@ -148,8 +153,9 @@ function Cinema() {
 				>
 					Rạp chiếu phim
 				</h2>
-				<div className="rounded-lg border border-slate-700 py-2">
-					<Tabs tabPosition="left" items={renderCinema()} style={{ height: "465px" }} />
+				<div className="rounded-lg border border-slate-700 py-2 px-2 md:px-0 ">
+					<Tabs className="hidden md:flex" tabPosition="left" items={renderCinema()} style={{ height: "465px" }} />
+					<Tabs className="flex md:hidden" tabPosition="top" items={renderCinema()} style={{ height: "465px" }} />
 				</div>
 			</div>
 		</section>

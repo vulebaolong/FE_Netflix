@@ -160,7 +160,7 @@ function DetailTab() {
 		return (
 			<>
 				<Tabs className="hidden sm:flex" style={{ width: "100%", zIndex: 3 }} tabPosition="left" items={renderRap()} />
-				<Tabs className="flex sm:hiden" style={{ width: "100%", zIndex: 3 }} tabPosition="top" items={renderRap()} />
+				<Tabs className="flex sm:hidden" style={{ width: "100%", zIndex: 3 }} tabPosition="top" items={renderRap()} />
 			</>
 		);
 	};
