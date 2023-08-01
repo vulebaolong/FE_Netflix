@@ -1,4 +1,4 @@
-import { Radio, Space, Tag, notification } from "antd";
+import { Modal, Radio, Space, Tag, notification } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import Ghe from "../Left/Ghe";
 import imgBarcode from "../../../assets/checkoutPage/barcode.png";
@@ -8,6 +8,9 @@ import momoImg from "../../../assets/checkoutPage/thanhtoan/momo.png";
 import zalopayImg from "../../../assets/checkoutPage/thanhtoan/zaloPay.png";
 import atmWhiteImg from "../../../assets/checkoutPage/thanhtoan/atmWhite.png";
 import visaImg from "../../../assets/checkoutPage/thanhtoan/visa_mastercard.png";
+import { useState } from "react";
+import { wait } from "../../../helpers/awaitHelper";
+import { navigate } from "../../../App";
 
 function Right() {
 	const dispatch = useDispatch();
@@ -21,6 +24,19 @@ function Right() {
 			placement: position,
 		});
 	};
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isMes, setMes] = useState("");
+	const showModal = () => {
+		setIsModalOpen(true);
+	};
+	const handleOk = async () => {
+		setIsModalOpen(false);
+		await wait(350)
+		navigate("/history")
+	};
+	const handleCancel = () => {
+		setIsModalOpen(false);
+	};
 	const handleDatVe = () => {
 		if (danhSachGheDangChon.length === 0) {
 			openNotification("warning", "Cảnh báo", "Xin vui lòng chọn ghế");
@@ -30,12 +46,22 @@ function Right() {
 			openNotification("warning", "Cảnh báo", "Xin vui lòng chọn hình thức thanh toán");
 			return;
 		}
-		
-		// showModal();
-		dispatch(datVeMID({
-			maLichChieu: thongTinPhim.maLichChieu,
-			danhSachVe: danhSachGheDangChon,
-		}));
+		dispatch(
+			datVeMID({
+				maLichChieu: thongTinPhim.maLichChieu,
+				danhSachVe: danhSachGheDangChon,
+			}),
+		).then(async (result) => {
+			await wait(500)
+			if (result) {
+				setMes("Đặt vé thành công");
+				showModal();
+			}
+			if (!result) {
+				setMes("Đặt vé thất bại");
+				showModal();
+			}
+		});
 	};
 
 	const renderGhe = () => {
@@ -173,9 +199,16 @@ function Right() {
 					>
 						<span className="text-2xl font-bold">Xác nhận</span>
 					</Button>
+					<Modal okText="Đi tới danh sách đặt vé" cancelText="Ở lại tiếp tục mua" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+						<div className="">
+							<h3 className="my-16 text-center text-4xl font-bold">{isMes}</h3>
+						</div>
+					</Modal>
 				</div>
 			</div>
 		</>
 	);
 }
 export default Right;
+
+//TODO: tạo popup thanh toán

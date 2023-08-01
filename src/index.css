@@ -144,6 +144,10 @@
 	background-color: transparent !important;
 }
 
+:where(.css-dev-only-do-not-override-1iacbu2).ant-btn-primary {
+	background-color: #1668dc;
+}
+
 .container-home {
 	width: 100%;
 	@apply px-[4%] 2xl:px-[60px];

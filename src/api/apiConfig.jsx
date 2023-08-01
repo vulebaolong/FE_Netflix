@@ -9,8 +9,8 @@ import { wait } from "../helpers/awaitHelper";
 // Thiết lập URL cơ sở
 axios.defaults.baseURL = BASE_URL;
 
-//chúng ta sử dụng biến requestCount để đếm số api đang được gọi. 
-//Khi có api mới được gọi, chúng ta tăng biến đếm, và khi api hoàn tất, chúng ta giảm biến đếm. 
+//chúng ta sử dụng biến requestCount để đếm số api đang được gọi.
+//Khi có api mới được gọi, chúng ta tăng biến đếm, và khi api hoàn tất, chúng ta giảm biến đếm.
 //Sau đó, chúng ta kiểm tra nếu requestCount bằng 0 (tức là không còn api nào đang được gọi), thì ta tắt loading.
 
 // Khởi tạo biến đếm để đếm số api đã hoàn tất
@@ -39,9 +39,12 @@ const hideLoading = async (response) => {
 		// Code để tắt loading ở đây (ví dụ: hide loading overlay)
 		await wait(500);
 		// console.log("đầy",response);
-		if (response?.config.url === `${response?.config.baseURL}/QuanLyNguoiDung/DangNhap?maNhom=${MANHOM}`) {
+		if (
+			response?.config.url === `${response?.config.baseURL}/QuanLyNguoiDung/DangNhap?maNhom=${MANHOM}` ||
+			response?.config.url === `${response?.config.baseURL}/QuanLyDatVe/DatVe`
+		) {
 			// console.log("bỏ qua hideLoading");
-			return
+			return;
 		}
 		// console.log("hideLoading");
 		store.dispatch(setIsLoadingREDU(false));
@@ -60,7 +63,7 @@ axios.interceptors.request.use(
 		config.headers.Authorization = `Bearer ${lcStorage.get(USER_LOGIN)?.accessToken}`;
 		// console.log("API đi");
 		// console.log(config.url.split('=')[0] = `${config.baseURL}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap`);
-		if (config.url.split('=')[0] !== `${config.baseURL}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap`) {
+		if (config.url.split("=")[0] !== `${config.baseURL}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap`) {
 			showLoading();
 		}
 		return config;

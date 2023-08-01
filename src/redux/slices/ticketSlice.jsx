@@ -39,7 +39,7 @@ const ticketSlice = createSlice({
 		},
 		resetThanhToanREDU: (state) => {
 			state.danhSachGheDangChon = [];
-			state.thanhToan = 0;
+			state.thanhToan = "0";
 		},
 	},
 });
@@ -73,8 +73,10 @@ export const datVeMID = (requestData) => {
 			console.log("datVeMID", { data, status });
 			dispatch(resetThanhToanREDU());
 			await dispatch(layDanhSachPhongVeMID(requestData.maLichChieu));
-		} catch (error) {
-			console.log(error);
+			return true;
+		} catch (errr) {
+			console.log(errr);
+			return false;
 		}
 	};
 };
