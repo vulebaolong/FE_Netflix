@@ -136,7 +136,7 @@ function HistoryPage() {
 			render: (record) => {
 				return (
 					<div className="w-20">
-						<img className="rounded-xl w-full h-full object-cover" src={record.hinhAnh} alt="" />
+						<img className="rounded-md w-full h-full object-cover" src={record.hinhAnh} alt="" />
 					</div>
 				);
 			},
