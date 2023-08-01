@@ -199,9 +199,9 @@ function Right() {
 					>
 						<span className="text-2xl font-bold">Xác nhận</span>
 					</Button>
-					<Modal okText="Đi tới danh sách đặt vé" cancelText="Ở lại tiếp tục mua" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+					<Modal okText="Danh sách đặt vé" cancelText="Tiếp tục mua" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 						<div className="">
-							<h3 className="my-16 text-center text-4xl font-bold">{isMes}</h3>
+							<h3 className="my-16 text-center text-3xl sm:text-4xl font-bold">{isMes}</h3>
 						</div>
 					</Modal>
 				</div>
