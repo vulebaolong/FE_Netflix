@@ -3,7 +3,7 @@ import { userApi } from "../../api/userApi";
 import { error, navigate, success } from "../../App";
 import { wait } from "../../helpers/awaitHelper";
 import { lcStorage } from "../../helpers/localStorage";
-import { USER_LOGIN } from "../../contants/userContants";
+import { ACCESS_TOKEN, USER_LOGIN } from "../../contants/userContants";
 
 const initialState = {
 	userLogin: lcStorage.get(USER_LOGIN),
@@ -54,10 +54,12 @@ export const loginMID = (requestData) => {
 			console.log("loginMID", { data, status });
 
 			//lưu userLogin
-			dispatch(loginREDU(data.content));
+			dispatch(loginREDU(data.result.data));
 
 			//lưu localStorage
-			lcStorage.set(USER_LOGIN, data.content);
+			lcStorage.set(USER_LOGIN, data.result.data);
+
+			lcStorage.set(ACCESS_TOKEN, data.result.data.accessToken);
 
 			await wait(1000);
 
@@ -68,7 +70,6 @@ export const loginMID = (requestData) => {
 				mes: "Đăng nhập thành công",
 			};
 		} catch (err) {
-
 			return {
 				type: error, // import error
 				mes: "Đăng nhập thất bại",
@@ -87,7 +88,7 @@ export const registerMID = (requestData) => {
 
 			navigate("/login");
 
-			dispatch(setAutoFieldLoginREDU(data.content));
+			dispatch(setAutoFieldLoginREDU(data.result.data));
 		} catch (error) {
 			console.log(error);
 		}
@@ -100,8 +101,8 @@ export const getInfoAccountMID = () => {
 		try {
 			const { data, status } = await userApi.getInfoAccount();
 			console.log("getInfoAccountMID", { data, status });
-			dispatch(setInfoTicketREDU(data.content.thongTinDatVe));
-			dispatch(setInfoAccountREDU(data.content));
+			// dispatch(setInfoTicketREDU(data.result.data.thongTinDatVe));
+			dispatch(setInfoAccountREDU(data.result.data));
 		} catch (error) {
 			console.log(error);
 		}
@@ -115,29 +116,17 @@ export const updateAccountMID = (requestData) => {
 			const { data, status } = await userApi.updateAccount(requestData);
 			console.log("updateAccountMID", { data, status });
 
-			// set lại key maLoaiNguoiDung = KhachHang nếu không call Api lần 2 sẽ lỗi
-			if (data.content.maLoaiNguoiDung === "Khách hàng") {
-				data.content.maLoaiNguoiDung = "KhachHang";
-			}
-			dispatch(setInfoAccountREDU(data.content));
-
-			// =======đăng nhập lại ========
-			// đăng nhập lại để cập nhật userLogin và localStorage
-			const requestDataLogin = {
-				taiKhoan: data.content.taiKhoan,
-                matKhau: data.content.matKhau,
-			}
-
-			const { data:dataLogin, status:statusLogin } = await userApi.login(requestDataLogin);
-
-			console.log("loginMID", { dataLogin, statusLogin });
+			// // set lại key maLoaiNguoiDung = KhachHang nếu không call Api lần 2 sẽ lỗi
+			// if (data.result.data.maLoaiNguoiDung === "Khách hàng") {
+			// 	data.result.data.maLoaiNguoiDung = "KhachHang";
+			// }
+			dispatch(setInfoAccountREDU(data.result.data));
 
 			//lưu userLogin
-			dispatch(loginREDU(dataLogin.content));
+			dispatch(loginREDU(data.result.data));
 
 			//lưu localStorage
-			lcStorage.set(USER_LOGIN, dataLogin.content);
-
+			lcStorage.set(USER_LOGIN, data.result.data);
 
 			return {
 				type: success, // import success
@@ -148,6 +137,39 @@ export const updateAccountMID = (requestData) => {
 				type: error, // import error
 				mes: "Đổi thông tin tài khoản thất bại",
 			};
+		}
+	};
+};
+
+//updateAccountMID
+export const updatePasswordMID = (requestData) => {
+	return async (dispatch) => {
+		try {
+			const { data, status } = await userApi.updatePassword(requestData);
+			console.log("updatePasswordMID", { data, status });
+
+			return {
+				type: success, // import success
+				mes: "Đổi mật khẩu thành công",
+			};
+		} catch (err) {
+			return {
+				type: error, // import error
+				mes: "Đổi mật khẩu thất bại",
+			};
+		}
+	};
+};
+
+//getInfoTicketMID
+export const getInfoTicketMID = () => {
+	return async (dispatch) => {
+		try {
+			const { data, status } = await userApi.getInfoTicket();
+			console.log("getInfoTicketMID", { data, status });
+			dispatch(setInfoTicketREDU(data.result.data.thongTinDatVe));
+		} catch (error) {
+			console.log(error);
 		}
 	};
 };

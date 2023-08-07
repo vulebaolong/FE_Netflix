@@ -31,6 +31,7 @@ function Title({ children }) {
 								
 								group-hover/title:max-w-[200px]
 								group-hover/title:opacity-100
+								
 								text-[8px] group-hover/title:translate-x-[5px] mr-2
 								sm:text-[9px]
 								md:text-[10px] md:group-hover/title:translate-x-[8px] 

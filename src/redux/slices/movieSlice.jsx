@@ -31,7 +31,8 @@ export const getListMovieMID = () => {
 		try {
 			const { data, status } = await movieApi.getListMoive();
 			console.log("getListMovieMID", { data, status });
-			dispatch(getListMovieREDU(data.content));
+			// console.log("getListMovieMID", data.result.data);
+			dispatch(getListMovieREDU(data.result.data));
 		} catch (error) {
 			console.log(error);
 		}
@@ -44,7 +45,7 @@ export const getOneMovieMID = (requestData) => {
 		try {
 			const { data, status } = await movieApi.getOneMovie(requestData);
 			console.log("getOneMovieMID", { data, status });
-			dispatch(getEditMovieREDU(data.content));
+			dispatch(getEditMovieREDU(data.result.data));
 		} catch (error) {
 			console.log(error);
 		}
@@ -83,7 +84,7 @@ export const updateMovieMID = (requestData) => {
 			console.log("updateMovieMID", { data, status });
 
 			// cập nhật lại
-			dispatch(getOneMovieMID(data.content.maPhim));
+			dispatch(getOneMovieMID(data.result.data._id));
 
 			return {
 				type: success, // import success
@@ -105,9 +106,6 @@ export const addMovieMID = (requestData) => {
 		try {
 			const { data, status } = await movieApi.addMovie(requestData);
 			console.log("addMovieMID", { data, status });
-
-			// cập nhật lại
-			// dispatch(getOneMovieMID(data.content.maPhim));
 
 			return {
 				type: success, // import success

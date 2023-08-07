@@ -111,10 +111,10 @@ function Banner({ listMovie }) {
 	};
 
 	const handleDetailMovie = (movie) => {
-		navigate(`/detail/${movie.maPhim}`);
+		navigate(`/detail/${movie._id}`);
 	};
 	const handleBuyMovie = (movie) => {
-		navigate(`/detail/${movie.maPhim}#detailTab`);
+		navigate(`/detail/${movie._id}#detailTab`);
 	};
 	return (
 		<section

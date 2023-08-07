@@ -27,7 +27,7 @@ export const getMovieDetailMID = (requestData) => {
 		try {
 			const { data, status } = await cinemaApi.getMovieShowtime(requestData);
 			console.log("getMovieDetailMID", { data, status });
-			dispatch(getMovieDetailREDU(data.content));
+			dispatch(getMovieDetailREDU(data.result.data));
 		} catch (error) {
 			console.log(error);
 		}

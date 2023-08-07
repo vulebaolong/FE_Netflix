@@ -57,7 +57,7 @@ export const layDanhSachPhongVeMID = (requestData) => {
 			const { data, status } = await ticketApi.layChiTietPhongVe(requestData);
 			console.log("layDanhSachPhongVeMID", { data, status });
 
-			dispatch(layDanhSachPhongVeREDU(data.content));
+			dispatch(layDanhSachPhongVeREDU(data.result.data));
 		} catch (error) {
 			console.log(error);
 		}

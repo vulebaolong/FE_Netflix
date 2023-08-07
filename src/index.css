@@ -109,11 +109,16 @@
 	background-color: transparent !important;
 }
 
-:where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > th,
+/* :where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > th,
 :where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td,
 :where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr > th.ant-table-cell-row-hover,
 :where(.css-dev-only-do-not-override-1iacbu2).ant-table-wrapper .ant-table-tbody > tr > td.ant-table-cell-row-hover {
 	@apply bg-gray-800/80;
+	@apply bg-red-800/80;
+} */
+.ant-table-cell-row-hover {
+	@apply !bg-gray-800/80;
+	/* @apply !bg-red-800/80; */
 }
 
 .ant-tabs-tab-btn {

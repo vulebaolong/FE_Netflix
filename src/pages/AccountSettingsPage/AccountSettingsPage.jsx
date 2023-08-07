@@ -2,7 +2,7 @@ import { ContactsOutlined, KeyOutlined, MailOutlined, PhoneOutlined, UserOutline
 import { Form, Input, message } from "antd";
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getInfoAccountMID, updateAccountMID } from "../../redux/slices/userSlices";
+import { getInfoAccountMID, updateAccountMID, updatePasswordMID } from "../../redux/slices/userSlices";
 import style from "./AccountSettingsPage.module.css";
 import Button from "../../components/Button/Button";
 
@@ -21,20 +21,9 @@ function AccountSettingsPage() {
 	useEffect(() => {
 		// Thêm thuộc tính mới "soDT"
 		updatedInfoAccount.matKhau = "";
-		// console.log(updatedInfoAccount);
+		console.log(updatedInfoAccount);
 		formInfo.resetFields();
 	}, [updatedInfoAccount, formInfo]);
-
-	const passwordValidator = (_, value) => {
-		if (!value) {
-			// Nếu trường rỗng, trả về thông báo lỗi "Vui lòng nhập mật khẩu!"
-			return Promise.reject("Vui lòng nhập mật khẩu!");
-		}
-		if (value !== infoAccount.matKhau) {
-			return Promise.reject("Mật khẩu không chính xác");
-		}
-		return Promise.resolve();
-	};
 
 	const onFinishInfo = (values) => {
 		values.matKhau = infoAccount.matKhau;
@@ -48,26 +37,19 @@ function AccountSettingsPage() {
 
 	const onFinishPassword = async (values) => {
 		// if (values.matKhauCurrent !== infoAccount.matKhau) return error("Mật khẩu hiện tại không chính xác");
-		values.taiKhoan = infoAccount.taiKhoan;
-		values.email = infoAccount.email;
-		values.soDT = infoAccount.soDT;
-		values.hoTen = infoAccount.hoTen;
-		values.maNhom = infoAccount.maNhom;
-		values.maLoaiNguoiDung = infoAccount.maLoaiNguoiDung;
-		console.log("valuesPassword", values);
+		// values.taiKhoan = infoAccount.taiKhoan;
+		// values.email = infoAccount.email;
+		// values.soDt = infoAccount.soDt;
+		// values.hoTen = infoAccount.hoTen;
+		// values.maNhom = infoAccount.maNhom;
+		// values.maLoaiNguoiDung = infoAccount.maLoaiNguoiDung;
+		// console.log("valuesPassword", values);
 		formPassword.resetFields();
-		dispatch(updateAccountMID({ ...values }));
+		dispatch(updatePasswordMID(values)).then((result) => {
+			if (result?.mes) result?.type(result?.mes);
+		});
 	};
 
-	// {
-	//     "taiKhoan": "nhi1",
-	//     "matKhau": "123456",
-	//     "email": "fawelulise@mailinator.com",
-	//     "soDT": "0836789578",
-	//     "hoTen": "nhi nhi",
-	//     "maNhom": "GP00",
-	//     "maLoaiNguoiDung": "KhachHang"
-	// }
 	return (
 		<>
 			<section
@@ -157,7 +139,7 @@ function AccountSettingsPage() {
 
 										{/* SỐ ĐIỆN THOẠI */}
 										<Form.Item
-											name="soDT"
+											name="soDt"
 											label={<span className="text-sm font-medium">Số điện thoại</span>}
 											rules={[
 												{
@@ -190,9 +172,14 @@ function AccountSettingsPage() {
 							<Form form={formPassword} layout="vertical" onFinish={onFinishPassword} autoComplete="off">
 								<h2 className="mb-4 text-xl font-bold dark:text-white">Cập nhật mật khẩu</h2>
 								<Form.Item
-									name="matKhauCurrent"
+									name="matKhauCurent"
 									label={<span className="text-sm font-medium">Mật khẩu hiện tại</span>}
-									rules={[{ validator: passwordValidator }]}
+									rules={[
+										{
+											required: true,
+											message: "Vui lòng nhập mật khẩu hiện tại",
+										},
+									]}
 									hasFeedback
 								>
 									<Input.Password
@@ -205,12 +192,12 @@ function AccountSettingsPage() {
 									/>
 								</Form.Item>
 								<Form.Item
-									name="matKhau"
+									name="matKhauNew"
 									label={<span className="text-sm font-medium">Mật khẩu mới</span>}
 									rules={[
 										{
 											required: true,
-											message: "Vui lòng nhập mật khẩu",
+											message: "Vui lòng nhập mật khẩu mới",
 										},
 									]}
 									hasFeedback

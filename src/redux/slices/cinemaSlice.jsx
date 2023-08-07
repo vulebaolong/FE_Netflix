@@ -27,7 +27,7 @@ export const getCinemaSystemMID = () => {
 		try {
 			const { data, status } = await cinemaApi.getCinemaSystem();
 			console.log("getCinemaSystemMID", { data, status });
-			dispatch(getCinemaSystemREDU(data.content));
+			dispatch(getCinemaSystemREDU(data.result.data));
 		} catch (error) {
 			console.log(error);
 		}

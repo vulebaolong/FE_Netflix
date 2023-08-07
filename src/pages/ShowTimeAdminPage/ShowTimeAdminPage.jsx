@@ -19,7 +19,7 @@ function ShowTimeAdminPage() {
 		async function fetchData() {
 			const { data } = await cinemaApi.getInfoCinemaSystem();
 			setOptions(
-				data.content.map((htr, index) => {
+				data.result.data.map((htr, index) => {
 					return {
 						label: htr.tenHeThongRap,
 						value: htr.maHeThongRap,
@@ -53,7 +53,7 @@ function ShowTimeAdminPage() {
 		const { value } = selectedOptions[0];
 		const targetOption = selectedOptions[selectedOptions.length - 1];
 		const { data } = await cinemaApi.getInfoCinemaToSystem(value);
-		(targetOption.children = data.content.map((cumRap, index) => {
+		(targetOption.children = data.result.data.map((cumRap, index) => {
 			return {
 				label: cumRap.tenCumRap.trim(),
 				value: cumRap.maCumRap.trim(),

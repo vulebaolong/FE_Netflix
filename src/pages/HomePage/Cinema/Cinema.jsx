@@ -14,10 +14,10 @@ function Cinema() {
 
 	const renderListMovie = (danhSachPhim, diaChi) => {
 		const contentLichChieu = (movie) => {
-			return movie.lstLichChieuTheoPhim.map((item, index) => {
+			return movie.lichChieuTheoPhim.map((item, index) => {
 				const time = moment(item.ngayChieuGioChieu).format("hh:MM A");
 				return (
-					<NavLink to={`/checkout/${item.maLichChieu}`} key={index}>
+					<NavLink to={`/checkout/${item._id}`} key={index}>
 						<Tag color="green" style={{ margin: 0 }}>
 							{time}
 						</Tag>

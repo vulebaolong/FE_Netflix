@@ -1,7 +1,7 @@
 import axios from "axios";
-import { BASE_URL, MANHOM, TOKEN_CYBERSOFT } from "../contants/apiContants";
+import { BASE_URL, TOKEN_CYBERSOFT } from "../contants/apiContants";
 import { lcStorage } from "./../helpers/localStorage";
-import { USER_LOGIN } from "./../contants/userContants";
+import { ACCESS_TOKEN, USER_LOGIN } from "./../contants/userContants";
 import { store } from "./../redux/store";
 import { setIsLoadingREDU } from "../redux/slices/loadingSlice";
 import { wait } from "../helpers/awaitHelper";
@@ -39,10 +39,7 @@ const hideLoading = async (response) => {
 		// Code để tắt loading ở đây (ví dụ: hide loading overlay)
 		await wait(500);
 		// console.log("đầy",response);
-		if (
-			response?.config.url === `${response?.config.baseURL}/QuanLyNguoiDung/DangNhap?maNhom=${MANHOM}` ||
-			response?.config.url === `${response?.config.baseURL}/QuanLyDatVe/DatVe`
-		) {
+		if (response?.config.url === `${response?.config.baseURL}/QuanLyNguoiDung/DangNhap` || response?.config.url === `${response?.config.baseURL}/QuanLyDatVe/DatVe`) {
 			// console.log("bỏ qua hideLoading");
 			return;
 		}
@@ -60,7 +57,7 @@ axios.interceptors.request.use(
 		// Kết hợp URL cơ sở và phần đường dẫn cụ thể
 		config.url = `${axios.defaults.baseURL}${config.url}`;
 		config.headers.TokenCybersoft = TOKEN_CYBERSOFT;
-		config.headers.Authorization = `Bearer ${lcStorage.get(USER_LOGIN)?.accessToken}`;
+		config.headers.Authorization = `Bearer ${lcStorage.get(ACCESS_TOKEN)}`;
 		// console.log("API đi");
 		// console.log(config.url.split('=')[0] = `${config.baseURL}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap`);
 		if (config.url.split("=")[0] !== `${config.baseURL}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap`) {

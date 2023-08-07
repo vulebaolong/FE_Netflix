@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getInfoAccountMID } from "../../redux/slices/userSlices";
+import { getInfoAccountMID, getInfoTicketMID } from "../../redux/slices/userSlices";
 import { Button, Input, Space, Table } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
@@ -10,9 +10,10 @@ import Ghe from "../CheckoutPage/Left/Ghe";
 function HistoryPage() {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(getInfoAccountMID());
+		dispatch(getInfoTicketMID());
 	}, []);
 	const { infoTicket } = useSelector((state) => state.userSlices);
+	console.log(infoTicket);
 
 	const [searchText, setSearchText] = useState("");
 	const [searchedColumn, setSearchedColumn] = useState("");
@@ -132,7 +133,8 @@ function HistoryPage() {
 				return (
 					<div className="flex flex-wrap gap-2 max-h-[64px] overflow-y-auto">
 						{record.danhSachGhe.map((ghe, index) => {
-							const { tenGhe } = ghe;
+							const { maGhe } = ghe;
+							const tenGhe = maGhe.split("-")[1]
 							const element = (
 								<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
 									<strong>{tenGhe}</strong>

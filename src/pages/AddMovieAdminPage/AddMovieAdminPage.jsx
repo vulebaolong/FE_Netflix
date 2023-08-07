@@ -5,7 +5,6 @@ import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
-import { MANHOM } from "../../contants/apiContants";
 import { useDispatch } from "react-redux";
 import { addMovieMID } from "../../redux/slices/movieSlice";
 import { navigate } from "../../App";
@@ -22,7 +21,6 @@ function AddMovieAdminPage() {
 	const [form] = Form.useForm();
 	const onFinish = (values) => {
 		values.ngayKhoiChieu = moment(values.ngayKhoiChieu.$d).format("DD/MM/YYYY");
-		values.maNhom = MANHOM;
 		if (typeof values.hinhAnh === "object") {
 			values.hinhAnh = values.hinhAnh.file.originFileObj;
 		}
@@ -47,10 +45,10 @@ function AddMovieAdminPage() {
 			formData.append("hinhAnh", null);
 		}
 		if (typeof values.hinhAnh === "object") {
-			formData.append("File", values.hinhAnh, values.hinhAnh.name);
+			formData.append("hinhAnh", values.hinhAnh, values.hinhAnh.name);
 		}
-
 		console.log(formData.get("hinhAnh"));
+		console.log(formData.get("ngayKhoiChieu"));
 		dispatch(addMovieMID(formData)).then((result) => {
 			if (result?.mes) result?.type(result?.mes);
 			if (result?.mes === "Thêm phim thành công") navigate("/list-movie");

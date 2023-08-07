@@ -118,11 +118,11 @@ const ModalMovie = () => {
 	};
 
 	const handleMuaVe = () => {
-		navigate(`/detail/${modalMovieActive.maPhim}#detailTab`);
+		navigate(`/detail/${modalMovieActive._id}#detailTab`);
 	};
 
 	const handleThongTinChiTiet = () => {
-		navigate(`/detail/${modalMovieActive.maPhim}`);
+		navigate(`/detail/${modalMovieActive._id}`);
 	};
 
 	useEffect(() => {

@@ -1,9 +1,8 @@
 import axios from "axios";
-import { MANHOM } from "../contants/apiContants";
 
 export const movieApi = {
 	getListMoive: () => {
-		return axios.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=${MANHOM}`);
+		return axios.get(`/QuanLyPhim/LayDanhSachPhim`);
 	},
 	getOneMovie: (data) => {
 		return axios.get(`/QuanLyPhim/LayThongTinPhim?MaPhim=${data}`);
@@ -12,7 +11,7 @@ export const movieApi = {
 		return axios.delete(`/QuanLyPhim/XoaPhim?MaPhim=${data}`);
 	},
 	updateMovie: (data) => {
-		return axios.post(`/QuanLyPhim/CapNhatPhimUpload`, data);
+		return axios.post(`/QuanLyPhim/CapNhatPhim`, data);
 	},
 	addMovie: (data) => {
 		return axios.post(`/QuanLyPhim/ThemPhimUploadHinh`, data);

@@ -15,6 +15,15 @@ function ListMovieAdminPage() {
 		dispatch(getListMovieMID());
 	}, []);
 	const { listMovie } = useSelector((state) => state.movieSlice);
+	const changeObj = (item) => {
+		return JSON.parse(JSON.stringify(item));
+	};
+	const listMovieNew = changeObj(listMovie).map((item, i) => {
+		item.maPhim = i
+		return item
+	});
+	console.log(listMovie);
+	console.log(changeObj(listMovie));
 
 	const [searchText, setSearchText] = useState("");
 	const [searchedColumn, setSearchedColumn] = useState("");
@@ -104,8 +113,8 @@ function ListMovieAdminPage() {
 	const columns = [
 		{
 			title: "ID",
-			dataIndex: "maPhim",
-			...getColumnSearchProps("maPhim"),
+			dataIndex: "_id",
+			...getColumnSearchProps("_id"),
 			sorter: (item2, item1) => item2.maPhim - item1.maPhim,
 			sortDirections: ["descend", "ascend"],
 			editable: true,
@@ -158,7 +167,7 @@ function ListMovieAdminPage() {
 								type="primary"
 								icon={<EditOutlined />}
 								onClick={() => {
-									navigate(`/edit-movie/${record.maPhim}`);
+									navigate(`/edit-movie/${record._id}`);
 								}}
 							/>
 						</Tooltip>
@@ -169,7 +178,7 @@ function ListMovieAdminPage() {
 								icon={<CalendarOutlined />}
 								onClick={() => {
 									lcStorage.set(MOVIE_PARAM, record);
-									navigate(`/show-time/${record.maPhim}`);
+									navigate(`/show-time/${record._id}`);
 								}}
 							/>
 						</Tooltip>
@@ -178,7 +187,7 @@ function ListMovieAdminPage() {
 								danger
 								icon={<DeleteOutlined />}
 								onClick={() => {
-									console.log(record.maPhim);
+									console.log(record._id);
 								}}
 							/>
 						</Popconfirm>
@@ -199,7 +208,7 @@ function ListMovieAdminPage() {
 		>
 			<div className="container py-24">
 				<h1 className="text-center lg:text-start heading-1 mb-14">Danh sách phim</h1>
-				<Table rowKey={"maPhim"} theme={"dark"} columns={columns} dataSource={listMovie} />
+				<Table rowKey={"maPhim"} theme={"dark"} columns={columns} dataSource={listMovieNew} />
 			</div>
 		</section>
 	);

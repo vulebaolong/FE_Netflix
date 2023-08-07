@@ -9,7 +9,6 @@ import ButtonMe from "./../../components/Button/Button";
 import style from "./EditMovieAdminPage.module.css";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { MANHOM } from "../../contants/apiContants";
 
 const getBase64 = (file) =>
 	new Promise((resolve, reject) => {
@@ -25,24 +24,25 @@ function EditMovieAdminPage() {
 	const dispatch = useDispatch();
 	const { editMovie } = useSelector((state) => state.movieSlice);
 
+	console.log("editMovie", editMovie);
+
 	useEffect(() => {
 		if (id) dispatch(getOneMovieMID(id));
 	}, [id, dispatch]);
 	const initialValues = {
 		...editMovie,
-		ngayKhoiChieu: dayjs(moment(editMovie.ngayKhoiChieu).format("DD-MM-YYYY"), "DD-MM-YYYY"),
+		ngayKhoiChieu: dayjs(editMovie.ngayKhoiChieu, "DD-MM-YYYY"),
 	};
 	useEffect(() => form.resetFields(), [editMovie, form]);
 
 	const onFinish = (values) => {
 		values.ngayKhoiChieu = moment(values.ngayKhoiChieu.$d).format("DD/MM/YYYY");
-		values.maPhim = editMovie.maPhim;
-		values.maNhom = MANHOM;
+		values.maPhim = editMovie._id;
 		if (typeof values.hinhAnh === "object") {
 			values.hinhAnh = values.hinhAnh.file.originFileObj;
 		}
 
-		// console.log("values", values);
+		console.log("values", values);
 		const formData = new FormData();
 		formData.append("tenPhim", values.tenPhim);
 		formData.append("trailer", values.trailer);
@@ -53,15 +53,14 @@ function EditMovieAdminPage() {
 		formData.append("hot", values.hot);
 		formData.append("danhGia", values.danhGia);
 		formData.append("maPhim", values.maPhim);
-		formData.append("maNhom", values.maNhom);
 		if (typeof values.hinhAnh === "string") {
 			formData.append("hinhAnh", null);
 		}
 		if (typeof values.hinhAnh === "object") {
-			formData.append("File", values.hinhAnh, values.hinhAnh.name);
+			formData.append("hinhAnh", values.hinhAnh, values.hinhAnh.name);
 		}
 
-		// console.log(formData.get("File"));
+		console.log(formData.get("File"));
 		dispatch(updateMovieMID(formData)).then((result) => {
 			if (result?.mes) result?.type(result?.mes);
 		});

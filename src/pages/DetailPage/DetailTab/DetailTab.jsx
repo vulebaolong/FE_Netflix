@@ -120,7 +120,7 @@ function DetailTab() {
 						},
 						cumRaps: [
 							{
-								maLichChieu: lichChieuPhim.maLichChieu,
+								maLichChieu: lichChieuPhim._id,
 								maCumRap: cumRap.maCumRap,
 								tenCumRap: cumRap.tenCumRap,
 								hinhAnh: cumRap.hinhAnh,
