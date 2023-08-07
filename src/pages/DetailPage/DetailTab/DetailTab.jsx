@@ -115,8 +115,8 @@ function DetailTab() {
 				.flatMap((cumRap) =>
 					_.map(cumRap.lichChieuPhim, (lichChieuPhim) => ({
 						time: {
-							date: moment(lichChieuPhim.ngayChieuGioChieu).format("DD/MM/YYYY HH:mm:ss"),
-							dayOfWeek: moment(lichChieuPhim.ngayChieuGioChieu).format("dddd"),
+							date: lichChieuPhim.ngayChieuGioChieu,
+							dayOfWeek: moment(lichChieuPhim.ngayChieuGioChieu, "DD/MM/YYYY HH:mm:ss").format("dddd"),
 						},
 						cumRaps: [
 							{
@@ -171,7 +171,7 @@ function DetailTab() {
 				<div className="space-y-2">
 					<p>
 						<span className="text-[#777]">Ngày khởi chiếu: </span>
-						<span>{moment(movieDetail.ngayKhoiChieu).format("DD/MM/YYYY")}</span>
+						<span>{movieDetail.ngayKhoiChieu}</span>
 					</p>
 					<p>
 						<span className="text-[#777]">Nội dung: </span>

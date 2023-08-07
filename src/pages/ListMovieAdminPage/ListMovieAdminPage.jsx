@@ -182,7 +182,7 @@ function ListMovieAdminPage() {
 								}}
 							/>
 						</Tooltip>
-						<Popconfirm okText="Có" cancelText="Không" title="Bạn có chắc muốn xoá phim này?" onConfirm={() => handleDelete(record.maPhim)}>
+						<Popconfirm okText="Có" cancelText="Không" title="Bạn có chắc muốn xoá phim này?" onConfirm={() => handleDelete(record._id)}>
 							<Button
 								danger
 								icon={<DeleteOutlined />}

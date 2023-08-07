@@ -1,4 +1,4 @@
-import { Cascader, DatePicker, Form, Input, InputNumber } from "antd";
+import { Cascader, DatePicker, Form, InputNumber } from "antd";
 import ButtonMe from "./../../components/Button/Button";
 import style from "./ShowTimeAdminPage.module.css";
 import { useEffect, useState } from "react";
@@ -39,10 +39,7 @@ function ShowTimeAdminPage() {
 		values.ngayChieuGioChieu = moment(values.ngayChieuGioChieu.$d).format("DD/MM/YYYY HH:mm:ss");
 		console.log("values", values);
 		try {
-			if (values.maRap === "glx-nguyen-du") {
-				values.maRap = "glx-nguyen-du\r\n";
-			}
-			const { data } = await ticketApi.taoLichChieu(values);
+			await ticketApi.taoLichChieu(values);
 			success("Thêm lịch chiếu thành công");
 			navigate(`/detail/${id}#detailTab`);
 		} catch (err) {
@@ -80,7 +77,7 @@ function ShowTimeAdminPage() {
 					{movieParam && (
 						<div className="mb-3">
 							<h2 className="text-lg font-bold text-center mb-3">{movieParam.tenPhim}</h2>
-                            <img className="rounded-lg" src={movieParam.hinhAnh} alt="movieParam" />
+							<img className="rounded-lg" src={movieParam.hinhAnh} alt="movieParam" />
 						</div>
 					)}
 					<Form form={form} layout="vertical" onFinish={onFinish} initialValues={{ giaVe: 75000 }}>
