@@ -22,7 +22,7 @@ const showLoading = () => {
 	if (requestCount === 0) {
 		// Code để bật loading ở đây (ví dụ: show loading overlay)
 		store.dispatch(setIsLoadingREDU(true));
-		// console.log("showLoading");
+		console.log("showLoading");
 	}
 
 	// Tăng biến đếm khi có api mới được gọi
@@ -40,12 +40,12 @@ const hideLoading = async (response) => {
 		await wait(500);
 		// console.log("đầy",response);
 		if (response?.config.url === `${response?.config.baseURL}/QuanLyNguoiDung/DangNhap` || response?.config.url === `${response?.config.baseURL}/QuanLyDatVe/DatVe`) {
-			// console.log("bỏ qua hideLoading");
+			console.log(`bỏ qua hideLoading - ${response?.config.url}`);
 			return;
 		}
 		// console.log("hideLoading");
 		store.dispatch(setIsLoadingREDU(false));
-		// console.log("hideLoading");
+		console.log("hideLoading");
 	}
 };
 
