@@ -4,6 +4,7 @@
 		"title": "API Moive - Vũ Lê Bảo Long",
 		"version": "1.0.0"
 	},
+	"host": "movie-api-f6vr.onrender.com",
 	"paths": {
 		"/api/v1/QuanLyDatVe/DatVe": {
 			"post": {

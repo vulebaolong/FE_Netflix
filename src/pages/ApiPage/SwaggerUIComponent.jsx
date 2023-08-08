@@ -8,7 +8,7 @@ function SwaggerUIComponent() {
 		<section className="pb-24">
 			<div className="container">
 				{/* <SwaggerUI url=" http://localhost:3001/api/v1/QuanLySwagger/Swagger" /> */}
-				<SwaggerUI spec={swaggerJson} />
+				<SwaggerUI spec={swaggerJson}  host="http://localhost:3001" />
 			</div>
 		</section>
 	);
