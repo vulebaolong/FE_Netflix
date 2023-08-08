@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getInfoAccountMID, getInfoTicketMID } from "../../redux/slices/userSlices";
-import { Button, Input, Space, Table } from "antd";
+import { getInfoTicketMID } from "../../redux/slices/userSlices";
+import { Button, Input, Table } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import moment from "moment";
 import Ghe from "../CheckoutPage/Left/Ghe";
+import { v4 as uuidv4 } from "uuid";
 
 function HistoryPage() {
 	const dispatch = useDispatch();
@@ -95,14 +96,14 @@ function HistoryPage() {
 			),
 	});
 	const columns = [
-		{
-			title: "Mã vé",
-			dataIndex: "maVe",
-			...getColumnSearchProps("maVe"),
-			sorter: (a, b) => a.maVe - b.maVe,
-			sortDirections: ["descend", "ascend"],
-			className: "hidden lg:w-[10%] lg:table-cell dark:bg-gray-800/50 backdrop-blur-sm",
-		},
+		// {
+		// 	title: "Mã vé",
+		// 	dataIndex: "maVe",
+		// 	...getColumnSearchProps("maVe"),
+		// 	sorter: (a, b) => a.maVe - b.maVe,
+		// 	sortDirections: ["descend", "ascend"],
+		// 	className: "hidden lg:w-[10%] lg:table-cell dark:bg-gray-800/50 backdrop-blur-sm",
+		// },
 		{
 			title: "Hình",
 			render: (record) => {
@@ -134,7 +135,7 @@ function HistoryPage() {
 					<div className="flex flex-wrap gap-2 max-h-[64px] overflow-y-auto">
 						{record.danhSachGhe.map((ghe, index) => {
 							const { maGhe } = ghe;
-							const tenGhe = maGhe.split("-")[1]
+							const tenGhe = maGhe.split("-")[1];
 							const element = (
 								<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
 									<strong>{tenGhe}</strong>
@@ -163,13 +164,7 @@ function HistoryPage() {
 			{/* <BackgroundImg img={imgBackground} filter/> */}
 			<div className="container relative py-24">
 				<h1 className="text-center lg:text-start heading-1 mb-14">Thông tin đặt vé</h1>
-				<Table
-					rowKey={(record) => {
-						return record.maVe;
-					}}
-					columns={columns}
-					dataSource={infoTicket}
-				/>
+				<Table rowKey={() => uuidv4()} columns={columns} dataSource={infoTicket} />
 			</div>
 		</section>
 	);

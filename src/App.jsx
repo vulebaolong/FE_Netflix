@@ -23,6 +23,9 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect } from "react";
 import ShowTimeAdminPage from "./pages/ShowTimeAdminPage/ShowTimeAdminPage";
+import ApiLayout from "./layouts/ApiLayout/ApiLayout";
+import ApiPage from "./pages/ApiPage/ApiPage";
+
 
 function App() {
 	useEffect(() => {
@@ -53,7 +56,7 @@ function App() {
 			<Loading />
 			{contextHolder}
 			<Routes>
-				{/* LANDING LAYOUT */}
+				{/* MAIN LAYOUT */}
 				<Route element={<MainLayout />}>
 					<Route index element={<LandingPage />} />
 
@@ -89,11 +92,10 @@ function App() {
 					<Route path="home" element={<HomePage />} />
 				</Route>
 
-				{/* USER LAYOUT */}
-				{/* <Route element={<UserLayout />}>
-				<Route path="login" element={<Login />} />
-				<Route path="signin" element={<SignIn />} />
-			</Route> */}
+				{/* API LAYOUT */}
+				<Route element={<ApiLayout />}>
+					<Route path="api" element={<ApiPage />} />
+				</Route>
 
 				{/* OTHER */}
 				<Route path="*" element={<Navigate to={"/"} />} />

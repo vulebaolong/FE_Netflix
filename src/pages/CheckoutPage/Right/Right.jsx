@@ -31,8 +31,8 @@ function Right() {
 	};
 	const handleOk = async () => {
 		setIsModalOpen(false);
-		await wait(350)
-		navigate("/history")
+		await wait(350);
+		navigate("/history");
 	};
 	const handleCancel = () => {
 		setIsModalOpen(false);
@@ -42,10 +42,12 @@ function Right() {
 			openNotification("warning", "Cảnh báo", "Xin vui lòng chọn ghế");
 			return;
 		}
+
 		if (thanhToan === "0") {
 			openNotification("warning", "Cảnh báo", "Xin vui lòng chọn hình thức thanh toán");
 			return;
 		}
+		
 		dispatch(
 			datVeMID({
 				maLichChieu: thongTinPhim.maLichChieu,

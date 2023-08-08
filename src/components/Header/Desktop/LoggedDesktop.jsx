@@ -8,6 +8,8 @@ import { USER_LOGIN } from "../../../contants/userContants";
 import { navigate } from "../../../App";
 import { resetUserREDU } from "../../../redux/slices/userSlices";
 import { useState } from "react";
+import { ApiOutlined } from "@ant-design/icons";
+import { PiCaretCircleUpDown } from "react-icons/pi";
 
 function LoggedDesktop() {
 	const [open, setOpen] = useState(false);
@@ -45,6 +47,10 @@ function LoggedDesktop() {
 		navigate("/add-movie");
 		setOpen(false);
 	};
+	const handleApi = () => {
+		navigate("/api");
+		setOpen(false);
+	};
 	const handleTrungTamTroGiup = () => {
 		setOpen(false);
 	};
@@ -64,6 +70,12 @@ function LoggedDesktop() {
 						<IoIosAddCircleOutline className="text-3xl" />
 					</div>
 					<span className="text-base font-semibold">Thêm phim</span>
+				</div>
+				<div onClick={handleApi} className="flex items-center gap-3 hover:bg-[#343434] active:bg-[#2a2a2a] transition cursor-pointer py-1 px-3 rounded-md">
+					<div className="rounded-full shadow-md bg-white/10 p-[6px]">
+						<PiCaretCircleUpDown className="text-3xl"/>
+					</div>
+					<span className="text-base font-semibold">Api</span>
 				</div>
 			</>
 		);

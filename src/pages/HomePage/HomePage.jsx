@@ -33,9 +33,9 @@ function HomePage() {
 		dispatch(getListMovieMID());
 		dispatch(setPlayingBannerREDU(true));
 
-		return () => {
-			hideModal()
-		};
+		// return () => {
+		// 	hideModal()
+		// };
 	}, []);
 
 	return (

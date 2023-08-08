@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	@apply font-inter
+}
+
 .heading-1 {
 	@apply text-2xl font-black 
 	sm:text-3xl 
