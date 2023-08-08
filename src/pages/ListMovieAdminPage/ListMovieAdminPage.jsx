@@ -22,8 +22,6 @@ function ListMovieAdminPage() {
 		item.maPhim = i
 		return item
 	});
-	console.log(listMovie);
-	console.log(changeObj(listMovie));
 
 	const [searchText, setSearchText] = useState("");
 	const [searchedColumn, setSearchedColumn] = useState("");

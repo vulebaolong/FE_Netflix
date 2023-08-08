@@ -18,6 +18,8 @@ let requestCount = 0;
 
 // Hàm để bật loading
 const showLoading = () => {
+	console.log("requestCount", requestCount);
+
 	// Nếu requestCount bằng 0 (không có api nào đang được gọi), thì bật loading
 	if (requestCount === 0) {
 		// Code để bật loading ở đây (ví dụ: show loading overlay)
@@ -32,7 +34,9 @@ const showLoading = () => {
 // Hàm để tắt loading
 const hideLoading = async (response) => {
 	// Giảm biến đếm khi api hoàn tất
-	requestCount--;
+	if (requestCount > 0) {
+		requestCount--;
+	}
 	// console.log("requestCount", requestCount);
 	// Nếu requestCount bằng 0 (tất cả các api đã hoàn tất), thì tắt loading
 	if (requestCount === 0) {
@@ -82,8 +86,7 @@ axios.interceptors.response.use(
 		return response;
 	},
 	function (error) {
-		// Any status codes that falls outside the range of 2xx cause this function to trigger
-		// Do something with response error
+	
 		hideLoading();
 		console.log(error);
 		return Promise.reject(error);
