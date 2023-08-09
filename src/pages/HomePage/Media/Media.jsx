@@ -1,12 +1,12 @@
 import { Tabs } from "antd";
-import imgDienAnh1 from "../../../assets/media/dienanh/1.png";
-import imgDienAnh2 from "../../../assets/media/dienanh/2.png";
-import imgDienAnh3 from "../../../assets/media/dienanh/3.png";
-import imgDienAnh4 from "../../../assets/media/dienanh/4.png";
-import imgDienAnh5 from "../../../assets/media/dienanh/5.png";
-import imgDienAnh6 from "../../../assets/media/dienanh/6.png";
-import imgDienAnh7 from "../../../assets/media/dienanh/7.png";
-import imgDienAnh8 from "../../../assets/media/dienanh/8.png";
+import imgDienAnh1 from "../../../assets/media/dienanh/1.jpg";
+import imgDienAnh2 from "../../../assets/media/dienanh/2.jpg";
+import imgDienAnh3 from "../../../assets/media/dienanh/3.jpg";
+import imgDienAnh4 from "../../../assets/media/dienanh/4.jpg";
+import imgDienAnh5 from "../../../assets/media/dienanh/5.jpg";
+import imgDienAnh6 from "../../../assets/media/dienanh/6.jpg";
+import imgDienAnh7 from "../../../assets/media/dienanh/7.jpg";
+import imgDienAnh8 from "../../../assets/media/dienanh/8.jpg";
 
 import imgKhuyenMai1 from "../../../assets/media/khuyenmai/1.jpg";
 import imgKhuyenMai2 from "../../../assets/media/khuyenmai/2.jpg";
@@ -17,14 +17,14 @@ import imgKhuyenMai6 from "../../../assets/media/khuyenmai/6.jpg";
 import imgKhuyenMai7 from "../../../assets/media/khuyenmai/7.jpg";
 import imgKhuyenMai8 from "../../../assets/media/khuyenmai/8.jpg";
 
-import imgDanhGia1 from "../../../assets/media/danhgia/1.png";
-import imgDanhGia2 from "../../../assets/media/danhgia/2.png";
-import imgDanhGia3 from "../../../assets/media/danhgia/3.png";
-import imgDanhGia4 from "../../../assets/media/danhgia/4.png";
-import imgDanhGia5 from "../../../assets/media/danhgia/5.png";
-import imgDanhGia6 from "../../../assets/media/danhgia/6.png";
-import imgDanhGia7 from "../../../assets/media/danhgia/7.png";
-import imgDanhGia8 from "../../../assets/media/danhgia/8.png";
+import imgDanhGia1 from "../../../assets/media/danhgia/1.jpg";
+import imgDanhGia2 from "../../../assets/media/danhgia/2.jpg";
+import imgDanhGia3 from "../../../assets/media/danhgia/3.jpg";
+import imgDanhGia4 from "../../../assets/media/danhgia/4.jpg";
+import imgDanhGia5 from "../../../assets/media/danhgia/5.jpg";
+import imgDanhGia6 from "../../../assets/media/danhgia/6.jpg";
+import imgDanhGia7 from "../../../assets/media/danhgia/7.jpg";
+import imgDanhGia8 from "../../../assets/media/danhgia/8.jpg";
 
 function Media() {
 	const renderDienAnh = () => {

@@ -6,7 +6,7 @@ import { getAllCommentMID, postCommentMID } from "../../../redux/slices/commentS
 import { useEffect, useRef } from "react";
 import moment from "moment";
 import imgThaySi from "../../../assets/comment/thay_si.jpg"
-import imgGai from "../../../assets/comment/gai.png"
+import imgGai from "../../../assets/comment/gai.jpg"
 
 function Comment() {
 	const dispatch = useDispatch();
