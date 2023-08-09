@@ -55,7 +55,7 @@ function DetailTab() {
 							}}
 						>
 							<div className="flex gap-2 rounded-lg items-center  ">
-								<div className="flex w-14 items-center flex-shrink-0">
+								<div className="flex w-14 items-center flex-shrink-0 rounded-md overflow-hidden">
 									<img className="w-full" src={cumRap.hinhAnh} />
 								</div>
 								<div className="text-start flex-grow overflow-hidden">

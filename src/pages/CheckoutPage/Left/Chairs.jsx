@@ -77,12 +77,22 @@ function Chairs() {
 
 			// GHẾ VIP
 			if (loaiGhe === "Vip") {
-				return <Ghe type={"gheVip"} key={index} onClick={handleOnclick} />;
+				const element = (
+					<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
+						<strong>{data.tenGhe}</strong>
+					</span>
+				);
+				return <Ghe type={"gheVip"} key={index} onClick={handleOnclick} element={element}/>;
 			}
 
 			// GHẾ THƯỜNG
 			if (loaiGhe === "Thuong") {
-				return <Ghe type={"gheThuong"} key={index} onClick={handleOnclick} />;
+				const element = (
+					<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
+						<strong>{data.tenGhe}</strong>
+					</span>
+				);
+				return <Ghe type={"gheThuong"} key={index} onClick={handleOnclick} element={element}/>;
 			}
 		});
 	};

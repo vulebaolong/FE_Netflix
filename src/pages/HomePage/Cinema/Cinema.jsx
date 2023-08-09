@@ -32,7 +32,7 @@ function Cinema() {
 						<div className="space-y-3">
 							<div className="flex gap-2 items-center">
 								<div
-									className="flex flex-shrink-0 w-10 h-10 sm:w-16 sm:h-16 items-center bg-cover bg-no-repeat bg-center"
+									className="flex flex-shrink-0 w-10 h-10 sm:w-16 sm:h-16 items-center bg-cover bg-no-repeat bg-center rounded-md"
 									style={{
 										backgroundImage: `url('${phim.hinhAnh}'), url('https://picsum.photos/64')`,
 									}}
@@ -81,7 +81,7 @@ function Cinema() {
 			};
 			return (
 				<div className="flex gap-2 items-center px-2 py-1 hover:bg-[#2f2f2f5c] active:bg-[#2f2f2fb5] transition">
-					<div className="flex w-10 sm:w-14 items-center">
+					<div className="flex w-10 sm:w-14 items-center rounded-md overflow-hidden">
 						<img className="w-full" src={cumRap.hinhAnh} />
 					</div>
 					<div

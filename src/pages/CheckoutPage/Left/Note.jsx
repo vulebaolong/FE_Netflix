@@ -8,10 +8,26 @@ function Note() {
 	return (
 		<div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2 mx-auto" style={{ width: "100%" }}>
 			{/* Ghế thường */}
-			<Ghe type="gheThuong" note="Ghế thường" />
+			<Ghe
+				type="gheThuong"
+				note="Ghế thường"
+				element={
+					<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
+						<strong>A1</strong>
+					</span>
+				}
+			/>
 
 			{/* Ghế Vip */}
-			<Ghe type="gheVip" note="Ghế vip" />
+			<Ghe
+				type="gheVip"
+				note="Ghế vip"
+				element={
+					<span className="text-slate-200 text-[0.4rem] sm:text-[0.62rem] xl:text-[0.70rem] 2xl:text-[0.72rem]">
+						<strong>C35</strong>
+					</span>
+				}
+			/>
 
 			{/* Ghế bạn chọn */}
 			<Ghe
