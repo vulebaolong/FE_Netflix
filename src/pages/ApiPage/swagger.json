@@ -4,8 +4,24 @@
 		"title": "API Moive - Vũ Lê Bảo Long",
 		"version": "1.0.0"
 	},
+	"tags": [
+		{
+			"name": "Welcome",
+			"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
+		}
+	],
 	"host": "movie-api-f6vr.onrender.com",
 	"paths": {
+		"/api/v1/welcome": {
+			"get": {
+				"tags": ["Welcome"],
+				"responses": {
+					"200": {
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
+					}
+				}
+			}
+		},
 		"/api/v1/QuanLyDatVe/DatVe": {
 			"post": {
 				"tags": ["QuanLyDatVe"],
@@ -50,7 +66,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -79,7 +95,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -122,7 +138,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -150,7 +166,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -188,7 +204,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -209,7 +225,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -230,7 +246,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -274,7 +290,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -308,7 +324,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -329,7 +345,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -358,7 +374,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -389,7 +405,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -420,7 +436,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -449,7 +465,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -478,7 +494,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -499,7 +515,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -520,7 +536,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -549,7 +565,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}
@@ -596,7 +612,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Success"
+						"description": "The server might take some time to restart after a period of inactivity. \nMáy chủ có thể mất một chút thời gian để khởi động lại sau một thời gian không hoạt động"
 					}
 				}
 			}

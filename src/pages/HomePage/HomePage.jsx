@@ -17,15 +17,7 @@ function HomePage() {
 
 	const hideModal = async () => {
 		const modalMovieEl = document.querySelector(".modalMovie");
-
-		showImgModalMovie("opacity 0.2s");
-
-		hideBtnMuteModalMovie();
-
-		modalMovieEl.style.transform = "scale(1)";
-
-		await wait(300);
-
+		console.log(modalMovieEl);
 		modalMovieEl.style.display = "none";
 	};
 
@@ -33,9 +25,9 @@ function HomePage() {
 		dispatch(getListMovieMID());
 		dispatch(setPlayingBannerREDU(true));
 
-		// return () => {
-		// 	hideModal()
-		// };
+		return () => {
+			hideModal()
+		};
 	}, []);
 
 	return (
