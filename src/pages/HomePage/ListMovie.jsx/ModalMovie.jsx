@@ -14,6 +14,7 @@ import { Tag, Typography, Tooltip } from "antd";
 import { COLOR_PRIMARY } from "./../../../../tailwind.config";
 import { setPlayingBannerREDU } from "../../../redux/slices/bannerHomeSlice";
 import { navigate } from "../../../App";
+import { setIsOpenModalMovieREDU } from "../../../redux/slices/modalMovieSlice";
 const { Paragraph } = Typography;
 
 const ModalMovie = () => {
@@ -23,11 +24,9 @@ const ModalMovie = () => {
 
 	const [playing, setPlaying] = useState(false);
 
-	const { modalMovieActive } = useSelector((state) => state.modalMovieSlice);
+	const { modalMovieActive, locationMovieEl, isOpenModalMovie } = useSelector((state) => state.modalMovieSlice);
 
 	const { endedBanner } = useSelector((state) => state.bannerHomeSlice);
-
-	const { locationMovieEl } = useSelector((state) => state.modalMovieSlice);
 
 	const [isMuted, setIsMuted] = useState(true);
 
@@ -112,8 +111,11 @@ const ModalMovie = () => {
 
 		setPlaying(false);
 
+		dispatch(setIsOpenModalMovieREDU(false));
+
 		if (!endedBanner) {
 			dispatch(setPlayingBannerREDU(true));
+			console.log("OKE");
 		}
 	};
 
@@ -127,9 +129,11 @@ const ModalMovie = () => {
 
 	useEffect(() => {
 		if (!locationMovieEl) return;
+		if (!isOpenModalMovie) return;
 		showImgModalMovie("opacity 0s");
 		locationViewModalMovie(locationMovieEl);
 		dispatch(setPlayingBannerREDU(false));
+		console.log("OKE");
 		handlePlayAgain();
 		setPlaying(true);
 

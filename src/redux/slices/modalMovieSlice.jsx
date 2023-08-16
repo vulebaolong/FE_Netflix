@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	modalMovieActive: {},
-	locationMovieEl: null
+	locationMovieEl: null,
+	isOpenModalMovie: false,
 };
 
 const modalMovieSlice = createSlice({
@@ -12,12 +13,15 @@ const modalMovieSlice = createSlice({
 		setModalMovieActiveREDU: (state, { payload }) => {
 			state.modalMovieActive = payload;
 		},
-		setLocationMovieEl: (state, {payload}) => {
+		setLocationMovieEl: (state, { payload }) => {
 			state.locationMovieEl = payload;
+		},
+		setIsOpenModalMovieREDU: (state, { payload }) => {
+			state.isOpenModalMovie = payload;
 		},
 	},
 });
 
-export const { setLocationMovieEl, setModalMovieActiveREDU } = modalMovieSlice.actions;
+export const { setIsOpenModalMovieREDU, setLocationMovieEl, setModalMovieActiveREDU } = modalMovieSlice.actions;
 
 export default modalMovieSlice.reducer;
