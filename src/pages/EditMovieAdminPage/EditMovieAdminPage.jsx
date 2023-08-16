@@ -9,6 +9,7 @@ import ButtonMe from "./../../components/Button/Button";
 import style from "./EditMovieAdminPage.module.css";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
+import { navigate } from "../../App";
 
 const getBase64 = (file) =>
 	new Promise((resolve, reject) => {
@@ -19,6 +20,11 @@ const getBase64 = (file) =>
 	});
 
 function EditMovieAdminPage() {
+	const { userLogin } = useSelector((state) => state.userSlices);
+
+	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
 	const [form] = Form.useForm();
 	const { id } = useParams();
 	const dispatch = useDispatch();

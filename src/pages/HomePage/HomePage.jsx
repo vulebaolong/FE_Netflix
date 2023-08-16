@@ -7,8 +7,14 @@ import Cinema from "./Cinema/Cinema";
 import Devices from "./Devices/Devices";
 import Divide from "../../components/Divide/Divide";
 import Media from "./Media/Media";
+import { navigate } from "../../App";
 
 function HomePage() {
+	const { userLogin } = useSelector((state) => state.userSlices);
+
+	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
 	const dispatch = useDispatch();
 
 	const hideModal = async () => {

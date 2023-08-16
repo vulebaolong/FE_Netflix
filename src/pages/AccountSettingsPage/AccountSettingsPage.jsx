@@ -5,8 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getInfoAccountMID, updateAccountMID, updatePasswordMID } from "../../redux/slices/userSlices";
 import style from "./AccountSettingsPage.module.css";
 import Button from "../../components/Button/Button";
+import { navigate } from "../../App";
 
 function AccountSettingsPage() {
+	const { userLogin } = useSelector((state) => state.userSlices);
+
+	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
 	const [formInfo] = Form.useForm();
 	const [formPassword] = Form.useForm();
 	const dispatch = useDispatch();

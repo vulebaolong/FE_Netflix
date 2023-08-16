@@ -1,8 +1,16 @@
+import { useSelector } from "react-redux";
 import Left from "./Left/Left";
 import Right from "./Right/Right";
 import Step from "./Step/Step";
+import { useEffect } from "react";
+import { navigate } from "../../App";
 
 function CheckoutPage() {
+	const { userLogin } = useSelector((state) => state.userSlices);
+
+	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
 	return (
 		<section
 			className="pt-header 

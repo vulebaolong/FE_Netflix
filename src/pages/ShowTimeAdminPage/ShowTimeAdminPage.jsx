@@ -10,8 +10,14 @@ import { lcStorage } from "../../helpers/localStorage";
 import { MOVIE_PARAM } from "../../contants/movieContant";
 import { navigate, success } from "../../App";
 import { error } from "./../../App";
+import { useSelector } from "react-redux";
 
 function ShowTimeAdminPage() {
+	const { userLogin } = useSelector((state) => state.userSlices);
+
+	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
 	const { id } = useParams();
 	const [options, setOptions] = useState([]);
 	const [movieParam, setMovieParam] = useState(null);

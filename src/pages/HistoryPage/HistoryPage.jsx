@@ -7,13 +7,24 @@ import Highlighter from "react-highlight-words";
 import moment from "moment";
 import Ghe from "../CheckoutPage/Left/Ghe";
 import { v4 as uuidv4 } from "uuid";
+import { navigate } from "../../App";
 
 function HistoryPage() {
-	const dispatch = useDispatch();
+	const { userLogin } = useSelector((state) => state.userSlices);
+
 	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+
 		dispatch(getInfoTicketMID());
+
 	}, []);
 	const { infoTicket } = useSelector((state) => state.userSlices);
+	
 	console.log(infoTicket);
 
 	const [searchText, setSearchText] = useState("");

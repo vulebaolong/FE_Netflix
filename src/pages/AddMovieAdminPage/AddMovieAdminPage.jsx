@@ -2,10 +2,10 @@ import ButtonMe from "./../../components/Button/Button";
 import { DatePicker, Form, Input, Modal, Rate, Switch, Upload } from "antd";
 import style from "./AddMovieAdminPage.module.css";
 import TextArea from "antd/es/input/TextArea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMovieMID } from "../../redux/slices/movieSlice";
 import { navigate } from "../../App";
 const getBase64 = (file) =>
@@ -17,6 +17,12 @@ const getBase64 = (file) =>
 	});
 
 function AddMovieAdminPage() {
+	const { userLogin } = useSelector((state) => state.userSlices);
+
+	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
+
 	const dispatch = useDispatch();
 	const [form] = Form.useForm();
 	const onFinish = (values) => {

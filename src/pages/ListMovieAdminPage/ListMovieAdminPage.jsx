@@ -10,6 +10,16 @@ import { MOVIE_PARAM } from "./../../contants/movieContant";
 const { Paragraph } = Typography;
 
 function ListMovieAdminPage() {
+	const { userLogin } = useSelector((state) => state.userSlices);
+	useEffect(() => {
+		if (userLogin === null) navigate("/");
+	}, []);
+
+	const [searchText, setSearchText] = useState("");
+	const [searchedColumn, setSearchedColumn] = useState("");
+
+	const searchInput = useRef(null);
+
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getListMovieMID());
@@ -19,13 +29,9 @@ function ListMovieAdminPage() {
 		return JSON.parse(JSON.stringify(item));
 	};
 	const listMovieNew = changeObj(listMovie).map((item, i) => {
-		item.maPhim = i
-		return item
+		item.maPhim = i;
+		return item;
 	});
-
-	const [searchText, setSearchText] = useState("");
-	const [searchedColumn, setSearchedColumn] = useState("");
-	const searchInput = useRef(null);
 
 	const handleSearch = (selectedKeys, confirm, dataIndex) => {
 		confirm();
@@ -195,6 +201,7 @@ function ListMovieAdminPage() {
 			className: " lg:w-[10%] dark:bg-gray-800/50 backdrop-blur-sm",
 		},
 	];
+
 	return (
 		<section
 			className="pt-header 
