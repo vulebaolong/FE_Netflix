@@ -13,10 +13,11 @@ import { navigate } from "../../../App";
 
 function SliderMobile({ listMovie }) {
 	const handleDetailMovie = (movie) => {
-		navigate(`/detail/${movie.maPhim}`);
+		navigate(`/detail/${movie._id}`);
 	};
 	const handleBuyMovie = (movie) => {
-		navigate(`/detail/${movie.maPhim}#detailTab`);
+		console.log(movie);
+		navigate(`/detail/${movie._id}#detailTab`);
 	};
 	const renderSwiper = () => {
 		if (listMovie.length > 0) {

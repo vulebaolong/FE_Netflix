@@ -142,7 +142,7 @@ function DetailTab() {
 			return {
 				// LOGO RẠP
 				label: (
-					<div className="flex items-center gap-2 p-2 hover:bg-[#2f2f2f5c] active:bg-[#2f2f2fb5] transition">
+					<div className="flex items-center gap-2 lg:p-2 hover:bg-[#2f2f2f5c] active:bg-[#2f2f2fb5] transition">
 						<img className="rounded-full w-12" src={cumRapChieu.logo} />
 						<Title className="hidden md:block" style={{ margin: 0 }} level={5}>
 							{cumRapChieu.tenHeThongRap}
