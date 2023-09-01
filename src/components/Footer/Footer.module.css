@@ -1,0 +1,24 @@
+footer .footer__item {
+	color: rgba(255, 255, 255, 0.7);
+	transition: all 0.3s;
+	position: relative;
+}
+footer .footer__item:hover {
+	color: rgba(255, 255, 255, 1);
+}
+
+footer .footer__item::after {
+	content: "";
+
+	width: 0%;
+	height: 2px;
+	border-radius: 1px;
+	position: absolute;
+	top: 110%;
+	left: 0;
+	transition: all 0.4s;
+	@apply bg-white;
+}
+footer .footer__item:hover::after {
+	width: 100%;
+}
